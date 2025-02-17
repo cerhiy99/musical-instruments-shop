@@ -1,0 +1,55 @@
+# Відкидаємо директорії залежностей
+/node_modules
+/client/node_modules
+
+# Next.js білди
+/.next/
+/client/.next/
+/out/
+/client/out/
+
+# Production білди
+/build
+/client/build
+
+# Файли логів та відлагодження
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+/coverage
+
+# Локальні конфігураційні файли
+.env
+.env.local
+.env.*.local
+/client/.env
+/client/.env.local
+/client/.env.*.local
+
+# Файли кешу та тимчасові файли
+.pnp
+.pnp.js
+/.vercel
+/.turbo
+/.eslintcache
+.next-env.d.ts
+
+# Системні файли (MacOS, Windows, Linux)
+/.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Vercel та інші CI/CD платформи
+.vercel
+now.json
+client/now.json
+
+# Idea/WebStorm
+.idea/
+*.iml
+
+# VSCode
+.vscode/
