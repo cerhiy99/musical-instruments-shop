@@ -4,8 +4,17 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
+      use: [
+        {
+          loader: "@svgr/webpack",
+          options: {
+            icon: true,
+            svgo: true,
+          },
+        },
+      ],
     });
+
     return config;
   },
   // Приклад: відключення автоматичного підбору Webpack

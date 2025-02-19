@@ -1,10 +1,16 @@
+@import "variables";
+@import "reset";
+
 body {
   min-height: 100vh;
-  margin: 0;
+  margin: 0 auto;
   overflow-x: hidden;
+  background: #ffffff;
+  font-family: "Ubuntu", sans-serif;
 }
 
 main {
+  max-width: 1440px;
   min-height: 50vh;
 }
 
@@ -27,3 +33,9 @@ footer {
     width: 95%;
   }
 }
+
+// .sprite {
+//   display: inline-block;
+//   background-repeat: no-repeat;
+//   image-rendering: pixelated;
+// }
