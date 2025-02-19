@@ -1,0 +1,190 @@
+@import "../../App.scss";
+
+.header {
+  //   padding-top: 62px;
+  width: 100%;
+}
+
+.topBar {
+  height: 64px;
+  border-bottom: 1px solid $color-gray-50;
+
+  &__container {
+    height: 64px;
+    max-width: 1440px;
+    padding: 13px 30px;
+    margin: 0 auto;
+    display: flex;
+    // justify-content: space-between;
+    align-items: flex-start;
+    gap: 23px;
+    font-size: 14px;
+  }
+}
+.contact {
+  position: relative;
+  width: 464px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  // margin-bottom: 20px;
+
+  &__number {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+}
+
+.schedule {
+  color: $color-gray-450;
+  &-info {
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.callback {
+  color: $color-blue-300;
+  font-size: 11.3px;
+}
+
+.controls {
+  margin-left: 203px;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  &:hover {
+    color: #107bb1;
+  }
+}
+
+.mainBar {
+  height: 104px;
+  border-bottom: 1px solid $color-gray-50;
+  &__container {
+    max-width: 1440px;
+    padding: 13px 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  display: block;
+
+  img {
+    height: auto;
+  }
+}
+
+.nav {
+  display: flex;
+  //   gap: 48px;
+  align-items: center;
+
+  a {
+    color: #333333;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 700;
+    transition: color 0.2s;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    &:hover {
+      color: #107bb1;
+    }
+  }
+}
+
+.shopTitle {
+  width: 170px;
+
+  &__wrapper {
+    white-space: wrap;
+    font-size: 13px;
+    line-height: 18px;
+    color: $color-gray-400;
+  }
+}
+
+.flagBanner {
+  top: 0;
+  left: 236px;
+  position: absolute;
+  width: 228px;
+  height: 35px;
+  overflow: hidden;
+}
+.btn__container {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+}
+.btn-text {
+  padding-top: 16px;
+  padding-left: 10px;
+  color: $color-blue-300;
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.langSelect {
+  display: flex;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: nowrap;
+
+  &__btn {
+    padding: 0px 5px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+}
+
+.text-login {
+  margin-left: 12px;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: $color-gray-300;
+  color: white;
+}
+.favorite-btn {
+  margin-left: 5px;
+}
+
+.basket-btn {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.search-btn {
+  margin-left: 11px;
+}
