@@ -1,0 +1,13 @@
+{
+  "navigation": {
+    "catalog": "Catalog",
+    "news": "News",
+    "service": "Services",
+    "partners": "Partners",
+    "delivery": "Delivery",
+    "dealer": "Dealers",
+    "about": "About company",
+    "contacts": "Contacts"
+  },
+  "Home": {}
+}

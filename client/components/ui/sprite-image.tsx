@@ -1,26 +1,26 @@
 import React from "react";
-import { StaticImageData } from "next/image"; // ✅ Добавляем импорт
+import { StaticImageData } from "next/image";
 
 interface SpriteImageProps {
   sprite: StaticImageData; // Локальный спрайт
-  index: number; // Индекс кадра
+  x: number;
+  y: number;
   frameWidth: number; // Ширина кадра
   frameHeight: number; // Высота кадра
-  columns: number; // Количество колонок в спрайте
+  className?: string;
 }
 
 const SpriteImage: React.FC<SpriteImageProps> = ({
   sprite,
-  index,
+  x,
+  y,
   frameWidth,
   frameHeight,
-  columns,
+  className,
 }) => {
-  const x = -(index % columns) * frameWidth;
-  const y = -Math.floor(index / columns) * frameHeight;
-
   return (
     <div
+      className={className}
       style={{
         width: frameWidth,
         height: frameHeight,

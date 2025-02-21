@@ -1,0 +1,48 @@
+@import "@/styles/variables.scss";
+
+.footer {
+  background-color: $color-black-700;
+  color: #ffffff;
+  height: 24.6rem;
+  width: 100%;
+  padding-top: 4.2rem;
+
+  &__container {
+    padding: 0 3rem;
+    max-width: 144rem;
+    margin: 0 auto;
+  }
+  &__col {
+    display: flex;
+    gap: 15rem;
+  }
+
+  &__contact {
+    font-weight: 700;
+    a {
+      font-size: 1.6rem;
+    }
+  }
+}
+.item__contacts {
+  margin-bottom: 1.9rem;
+}
+.item__title {
+  font-weight: 400;
+  color: $color-gray-425;
+}
+.schedule__callback {
+  font-size: 1.3rem;
+  color: $color-blue-300;
+}
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  &__icon {
+    border-radius: 50%;
+  }
+}
+.socialLinks__title {
+  padding-bottom: 0.9rem;
+}

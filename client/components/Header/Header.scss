@@ -1,4 +1,4 @@
-@import "../../App.scss";
+@import "@/styles/variables.scss";
 
 .header {
   //   padding-top: 62px;
@@ -80,7 +80,8 @@
   border-bottom: 1px solid $color-gray-50;
   &__container {
     max-width: 1440px;
-    padding: 13px 30px;
+    padding-left: 3rem;
+    padding-right: 3rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -90,15 +91,12 @@
 
 .logo {
   display: block;
-
-  img {
-    height: auto;
-  }
+  padding: 1.1rem 0;
 }
 
-.nav {
+.header__nav {
   display: flex;
-  //   gap: 48px;
+
   align-items: center;
 
   a {
@@ -107,8 +105,8 @@
     line-height: 22px;
     font-weight: 700;
     transition: color 0.2s;
-    padding-left: 24px;
-    padding-right: 24px;
+    // padding-left: 24px;
+    // padding-right: 24px;
 
     &:hover {
       color: #107bb1;
@@ -117,13 +115,15 @@
 }
 
 .shopTitle {
-  width: 170px;
+  width: 17rem;
 
   &__wrapper {
     white-space: wrap;
-    font-size: 13px;
+    font-size: 1.3rem;
     line-height: 18px;
     color: $color-gray-400;
+    font-weight: 400;
+    padding: 1.1rem 0;
   }
 }
 
@@ -147,20 +147,6 @@
   line-height: 18px;
   font-size: 14px;
   font-weight: 500;
-}
-
-.langSelect {
-  display: flex;
-  font-size: 13px;
-  line-height: 18px;
-  white-space: nowrap;
-
-  &__btn {
-    padding: 0px 5px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 18px;
-  }
 }
 
 .text-login {

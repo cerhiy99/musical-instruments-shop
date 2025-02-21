@@ -1,0 +1,13 @@
+.langSelect {
+  display: flex;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: nowrap;
+
+  &__btn {
+    padding: 0px 5px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+}
