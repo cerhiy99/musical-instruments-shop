@@ -1,3 +1,13 @@
 {
+  "navigation": {
+    "catalog": "Каталог",
+    "news": "Новости",
+    "service": "Услуги",
+    "partners": "Партнеры",
+    "delivery": "Доставка",
+    "dealer": "Дилеры",
+    "about": "О компании",
+    "contacts": "Контакты"
+  },
   "Home": {}
 }

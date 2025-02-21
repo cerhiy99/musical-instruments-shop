@@ -1,4 +1,4 @@
-@import "../App.scss";
+@import "@/styles/variables.scss";
 
 .nav-link {
   line-height: 22px;
@@ -8,8 +8,8 @@
   transition: color 0.2s;
   position: relative;
   display: inline-block;
-  padding: 19px 0px 21px;
-  margin: 0px 16px;
+  // padding: 19px 0px 21px;
+  // margin: 0px 16px;
 
   &__underline {
     position: absolute;

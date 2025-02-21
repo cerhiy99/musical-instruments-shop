@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
+import type { GetServerSideProps, Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import { Locale, i18n } from "@/i18n.config";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import { getDictionary } from "@/lib/dictionary";
+import Sidebar from "../../components/Aside/Sidebar";
+import "@/styles/App.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,14 +32,30 @@ export default async function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={ubuntu.className}>
-        <header>
-          <Header lang={params.lang} />
-        </header>
-        <main>{children}</main>
-        <footer>
-          <Footer lang={params.lang} />
-        </footer>
+        <Header lang={params.lang} />
+        <div className="wrapper">
+          <Sidebar />
+          <main>{children}</main>
+        </div>
+        <Footer lang={params.lang} />
       </body>
     </html>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const locale = params?.locale || "uk"; // Получаем язык из параметра или по умолчанию "en"
+  try {
+    const dictionary = await getDictionary(locale as Locale); // Загружаем словарь для нужного языка
+    return {
+      props: {
+        dictionary, // Передаем в компонент
+      },
+    };
+  } catch (error) {
+    console.error("Error loading dictionary:", error);
+    return {
+      notFound: true, // Возвращаем 404 если не удалось загрузить словарь
+    };
+  }
+};
