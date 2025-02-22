@@ -1,0 +1,20 @@
+@import "@/styles/variables.scss";
+
+.brand__container--main {
+  margin-top: 5.3rem;
+  border-top: 0.1rem solid $color-gray-50;
+  padding-bottom: 1.9rem;
+}
+
+.brand__container--grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  box-shadow: 0 0 0 0.05rem $color-gray-50;
+}
+.brand__container--item {
+  height: 12.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 0 0.05rem $color-gray-50;
+}

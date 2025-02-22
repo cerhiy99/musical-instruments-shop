@@ -3,6 +3,9 @@ import "./Home.scss";
 import ImageSlider from "../../components/ImageSlider/ImageSlider";
 import Link from "next/link";
 import Image from "next/image";
+import HotProducts from "@/components/HomePage/HotProducts";
+import GreetingBanner from "@/components/HomePage/GreetingBanner";
+import Brands from "@/components/HomePage/Brands";
 
 const sliderImages = [
   {
@@ -31,6 +34,92 @@ const sliderImages = [
   },
 ];
 
+export const categories = [
+  {
+    id: 1,
+    title: "Струнно-смичкові інструменти",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/string-instruments",
+  },
+  {
+    id: 2,
+    title: "Футляри и чехли для струнних інструментів",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/cases",
+  },
+  {
+    id: 3,
+    title: "Аксесуари для струнних інструментів",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/accessories",
+  },
+  {
+    id: 4,
+    title: "Струни",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/strings",
+  },
+  {
+    id: 5,
+    title: "Аксесуари для духових інструментів",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/wind-accessories",
+  },
+  {
+    id: 6,
+    title: "Духові інструменти",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/wind-instruments",
+  },
+  {
+    id: 7,
+    title: "Пюпітри, стійки и прочие аксесуари",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/stands",
+  },
+  {
+    id: 8,
+    title: "Канцелярія и сувеніри",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/souvenirs",
+  },
+  {
+    id: 9,
+    title: "Музикальна література, ноти",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/literature",
+  },
+  {
+    id: 10,
+    title: "Аксесуари для духових інструментів",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/wind-accessories",
+  },
+  {
+    id: 11,
+    title: "Духові інструменти",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/wind-instruments",
+  },
+  {
+    id: 12,
+    title: "Пюпітри, стійки и прочие аксесуари",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/stands",
+  },
+  {
+    id: 13,
+    title: "Канцелярія и сувеніри",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/souvenirs",
+  },
+  {
+    id: 14,
+    title: "Музикальна література, ноти",
+    image: "/placeholder.svg?height=200&width=200",
+    link: "/categories/literature",
+  },
+];
 export default async function Home({
   params: { lang },
 }: {
@@ -39,57 +128,30 @@ export default async function Home({
   return (
     <div className="home">
       <ImageSlider images={sliderImages} interval={5000} />
-      <h4>Популярные категории</h4>
-      <Link href={"/catalog"}>Весь каталог</Link>
-      <div className="categories__grid">
-        <Link href={"/catalog"}>
-          <div className="categories__grid--item">
-            <Image
-              src={"/images/banner1.jpg"}
-              width={140}
-              height={140}
-              alt="text"
-            />
-            <div className="grid--item-text">
-              <p>Струнно-смычковые инструменты</p>
-            </div>
-          </div>
-        </Link>
+      <div className="titleCategoty__container">
+        <h4 className="titleCategoty__title">Популярные категории</h4>
+        <Link href={"/catalog"}>Весь каталог</Link>
       </div>
-
-      <Link href={"/catalog"}>Хит</Link>
-      <Link href={"/catalog"}>Советуем</Link>
-      <Link href={"/catalog"}>Новинка</Link>
-      <Link href={"/catalog"}>Акция</Link>
       <div className="categories__grid">
-        <Link href={"/catalog"}>
-          <div className="hotGoods__grid--item">
-            <div className="badge__wrapper">
-              <div className="badge discount">Акция</div>
-              <div className="badge hit">Хит</div>
-              <div className="badge advice">Советуем</div>
-
-              {/* <div className="badge new">Новинка</div> */}
+        {categories.map((category) => (
+          <Link href={"/catalog"} key={category.id}>
+            <div className="categories__grid--item">
               <Image
                 src={"/images/banner1.jpg"}
-                width={135}
-                height={135}
+                width={140}
+                height={140}
                 alt="text"
               />
+              <div className="grid--item-text">
+                <p>{category.title}</p>
+              </div>
             </div>
-            <div className="grid--item-text">
-              <p>Струнно-смычковые инструменты</p>
-            </div>
-            <div className="grid--item-store">
-              <p>✅ Есть на складе (2)</p>
-            </div>
-            <div className="hotGoods__prices">
-              <p className="hotGoods__currentPrice">447грн</p>
-              <p className="hotGoods__prevPrice">470грн</p>
-            </div>
-          </div>
-        </Link>
+          </Link>
+        ))}
       </div>
+      <HotProducts />
+      <GreetingBanner />
+      <Brands />
     </div>
   );
 }
