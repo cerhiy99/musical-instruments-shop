@@ -1,96 +1,387 @@
 "use client";
 import Link from "next/link";
 import "./Sidebar.scss";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import ArrowIcon from "@/public/arrow.svg";
+import Image from "next/image";
 
-// const categories = [
-//   "Струнно-смычковые инструменты",
-//   "Футляры и чехлы для струнных инструментов",
-//   "Аксессуары для струнных инструментов",
-//   "Струны",
-//   "Аксессуары для духовых инструментов",
-//   "Духовые инструменты",
-//   "Медные духовые инструменты",
-//   "Футляры и чехлы для духовых инструментов",
-//   "Пюпитры, стойки и прочие аксессуары",
-//   "Канифоли и средства",
-//   "Музыкальная литература, ноты",
-//   "Ремонт музыкальных инструментов, мастерская",
-// ];
-
+const imageUrl = "/images/banner1.jpg";
 const categories = [
   {
     name: "Струнно-смычковые инструменты",
-    subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Футляры и чехлы для струнных инструментов",
-    subcategories: ["Флейты", "Кларнеты", "Саксофоны", "Трубы"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Аксессуары для струнных инструментов",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Струны",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Инструменты и материалы для скрипичных и гитарных мастеров",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Аксессуары для духовых инструментов",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Деревянные духовые инструменты",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Медные духовые инструменты",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Футляры и чехлы для духовых инструментов",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Футляры и чехлы для гитар",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Пюпитры, стойки и прочие аксессуары",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Канцелярия и сувениры",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Музыкальная литература, ноты",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
   {
     name: "Ремонт музыкальных инструментов, экспертная оценка",
-    subcategories: ["Смычки", "Струны", "Канифоль", "Футляры"],
+    innerCategory: [
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+      {
+        subcategories: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+      },
+    ],
   },
 ];
-
+const isActive = false;
 export default function Sidebar() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = (categoryName: string) => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setActiveCategory(categoryName);
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setActiveCategory(null);
-    }, 0); // delay if needed
+    setActiveCategory(null);
   };
 
   return (
@@ -103,7 +394,11 @@ export default function Sidebar() {
               onMouseEnter={() => handleMouseEnter(category.name)}
               onMouseLeave={handleMouseLeave}
               className={`categoryItem ${
-                activeCategory === category.name ? ".active" : ""
+                activeCategory === category.name
+                  ? isActive
+                    ? "activeNavLink"
+                    : "active"
+                  : ""
               }`}
             >
               <Link href={`/category/${encodeURIComponent(category.name)}`}>
@@ -114,31 +409,48 @@ export default function Sidebar() {
                   </div>
                 </div>
               </Link>
+              {/* {true && ( */}
               {activeCategory === category.name && (
                 <div
                   className="megaMenu"
                   onMouseEnter={() => handleMouseEnter(category.name)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="megaMenuContainer">
-                    <h4>{category.name}</h4>
+                  {category.innerCategory.map((inner, i) => (
+                    <div
+                      className="megaMenuContainer"
+                      key={inner.subcategories[0] + i}
+                    >
+                      <div className="megaMenuContainer__image">
+                        <Image
+                          width={50}
+                          height={50}
+                          src={imageUrl}
+                          alt="text"
+                        />
+                      </div>
+                      <div className="megaMenuContainer__list">
+                        <h4>{category.name}</h4>
 
-                    <ul>
-                      {category.subcategories.map((subcategory) => (
-                        <li key={subcategory}>
-                          <Link
-                            href={`/category/${encodeURIComponent(
-                              category.name
-                            )}/${encodeURIComponent(subcategory)}`}
-                          >
-                            {subcategory}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                        <ul>
+                          {inner.subcategories.map((subcategory) => (
+                            <li key={subcategory}>
+                              <Link
+                                href={`/category/${encodeURIComponent(
+                                  category.name
+                                )}/${encodeURIComponent(subcategory)}`}
+                              >
+                                {subcategory}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               )}
+              <span className="categoryItem__underline"></span>
             </li>
           ))}
         </ul>
