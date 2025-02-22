@@ -1,0 +1,20 @@
+@import "@/styles/variables.scss";
+
+.greetingBanner {
+  margin-top: 2.8rem;
+  display: flex;
+  gap: 1.5rem;
+  min-height: 46.2rem;
+  .greetingImage {
+    width: 25.8rem;
+  }
+  .greetingText {
+    width: 81.4rem;
+    list-style: none;
+    padding: 2.4rem 2rem;
+
+    a {
+      color: $color-blue-350;
+    }
+  }
+}
