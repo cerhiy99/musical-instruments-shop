@@ -21,6 +21,7 @@ html {
 
 body {
   font-size: 1.5rem; // This sets the default font size to 15px
+  font-weight: 400;
 }
 
 // Reset for images
@@ -39,16 +40,6 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-// Reset for typography
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
 }
 
 // Reset for links

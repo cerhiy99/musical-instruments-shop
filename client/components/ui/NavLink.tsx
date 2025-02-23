@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./NavLink.scss";
@@ -19,7 +19,10 @@ export default function NavLink({
   margin,
 }: NavLinkProps) {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = pathname.includes(href);
+  useEffect(() => {
+    console.log(pathname, href);
+  }, [pathname, href]);
 
   return (
     <Link
