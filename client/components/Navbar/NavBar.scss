@@ -13,8 +13,8 @@
   z-index: 999;
 
   &__container {
-    max-width: 1440px;
-    padding: 0 30px;
+    max-width: 144rem;
+    padding: 0 3rem;
     margin: 0 auto;
     height: 100%;
     display: flex;
@@ -33,7 +33,7 @@
   }
 
   &__nav {
-    margin: 0 30px;
+    margin: 0 3rem;
     display: flex;
 
     @media (max-width: 1440px) {
@@ -43,7 +43,7 @@
 
   &__nav-list {
     display: flex;
-    gap: 32px;
+    gap: 3.2rem;
     list-style: none;
 
     @media (max-width: 1440px) {
