@@ -1,0 +1,25 @@
+@import "@/styles/variables.scss";
+
+.topicHeader {
+  width: 100%;
+  height: 12rem;
+  background-color: $color-gray-75;
+  &__container {
+    width: 144rem;
+    padding: 3rem;
+    margin: 0 auto;
+  }
+  &__title {
+    display: flex;
+    flex-direction: column;
+    // gap: 1.3rem;
+    p {
+      font-size: 1.2rem;
+      color: $color-gray-300;
+    }
+    h2 {
+      font-weight: 400;
+      font-size: 3.2rem;
+    }
+  }
+}

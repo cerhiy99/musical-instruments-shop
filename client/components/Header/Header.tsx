@@ -17,6 +17,8 @@ import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { getDictionary } from "@/lib/dictionary";
 import NavLink from "../ui/NavLink";
 import SearchBar from "../SearchBar/SearchBar";
+import { usePathname } from "next/navigation";
+import TopicHeader from "./TopicHeader";
 
 type Props = {
   lang: Locale;
@@ -34,6 +36,7 @@ const navItems = [
 ];
 
 const Header: React.FC<Props> = ({ lang }) => {
+  const pathname = usePathname();
   const [showNavbar, setShowNavbar] = useState<boolean>(false);
   const [showSearchBar, setSearchBar] = useState<boolean>(false);
   const headerRef = useRef<HTMLElement | null>(null);
@@ -137,8 +140,9 @@ const Header: React.FC<Props> = ({ lang }) => {
               </h1>
             </div>
 
-            <nav className="header__nav ">
+            <nav className="header__nav">
               {/* <Link href="/catalog">Каталог</Link> */}
+
               {navItems.map((navItem) => (
                 <NavLink
                   key={navItem.title}
@@ -153,6 +157,9 @@ const Header: React.FC<Props> = ({ lang }) => {
           </div>
         </div>
       </header>
+      {pathname === "/en" || pathname === "/ru" || pathname === "/uk" ? null : (
+        <TopicHeader />
+      )}
     </>
   );
 };

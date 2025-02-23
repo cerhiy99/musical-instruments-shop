@@ -6,7 +6,6 @@ import Footer from "../../components/Footer/Footer";
 import { getDictionary } from "@/lib/dictionary";
 import Sidebar from "../../components/Aside/Sidebar";
 import "@/styles/App.scss";
-import FloatingButtons from "@/components/FloatingButtons/FloatingButtons";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -39,7 +38,6 @@ export default async function RootLayout({
           <main>{children}</main>
         </div>
         <Footer lang={params.lang} />
-        <FloatingButtons />
       </body>
     </html>
   );
