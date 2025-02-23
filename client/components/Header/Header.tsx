@@ -16,6 +16,7 @@ import flagBanner from "@/public/Navbar/flagBanner.png";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { getDictionary } from "@/lib/dictionary";
 import NavLink from "../ui/NavLink";
+import SearchBar from "../SearchBar/SearchBar";
 
 type Props = {
   lang: Locale;
@@ -33,7 +34,8 @@ const navItems = [
 ];
 
 const Header: React.FC<Props> = ({ lang }) => {
-  const [showNavbar, setShowNavbar] = useState(false);
+  const [showNavbar, setShowNavbar] = useState<boolean>(false);
+  const [showSearchBar, setSearchBar] = useState<boolean>(false);
   const headerRef = useRef<HTMLElement | null>(null);
   const navbarRef = useRef<HTMLElement | null>(null);
 
@@ -59,8 +61,11 @@ const Header: React.FC<Props> = ({ lang }) => {
 
   return (
     <>
+      <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
+        <SearchBar setSearch={setSearchBar} isOpen />
+      </div>
       <nav ref={navbarRef} className={`navbar ${showNavbar ? "visible" : ""}`}>
-        <Navbar lang={lang} href={navItems} />
+        <Navbar lang={lang} href={navItems} setSearch={setSearchBar} />
       </nav>
 
       <header className="header" ref={headerRef}>
@@ -107,7 +112,12 @@ const Header: React.FC<Props> = ({ lang }) => {
 
                 <div className="counter">0</div>
               </Link>
-              <button className="iconButton">
+              <button
+                className="iconButton"
+                onClick={() => {
+                  setSearchBar(true);
+                }}
+              >
                 <Search width={17} height={17} />
                 <p className="search-btn">Поиск</p>
               </button>

@@ -4,6 +4,7 @@ import "./Sidebar.scss";
 import { useState } from "react";
 import ArrowIcon from "@/public/arrow.svg";
 import Image from "next/image";
+import SideNews from "./SideNews";
 
 const imageUrl = "/images/banner1.jpg";
 const categories = [
@@ -455,19 +456,7 @@ export default function Sidebar() {
           ))}
         </ul>
       </nav>
-      <div className="news">
-        <h3>Новости</h3>
-        <div className="newsItem">
-          <span className="date">12 мая 2024</span>
-          <Link href="/news/1">
-            New test international Violin Competition awards plans
-          </Link>
-        </div>
-        <div className="newsItem">
-          <span className="date">17 мая 2024</span>
-          <Link href="/news/2">У нашей мастерской юбилей</Link>
-        </div>
-      </div>
+      <SideNews />
     </aside>
   );
 }
