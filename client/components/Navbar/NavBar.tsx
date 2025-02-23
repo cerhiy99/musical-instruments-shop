@@ -14,9 +14,10 @@ import NavLink from "@/components/ui/NavLink";
 type Props = {
   lang: Locale;
   href: Array<{ title: string; href: string }>;
+  setSearch: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Navbar: React.FC<Props> = ({ lang, href }) => {
+const Navbar: React.FC<Props> = ({ lang, href, setSearch }) => {
   return (
     <div className="navbar__container">
       <Link href="/" className="navbar__logo">
@@ -46,7 +47,10 @@ const Navbar: React.FC<Props> = ({ lang, href }) => {
         <button className="navbar__action-btn narrow-btn">
           <Basket height={22} width={21} />
         </button>
-        <button className="navbar__action-btn wide-btn">
+        <button
+          className="navbar__action-btn wide-btn"
+          onClick={() => setSearch(true)}
+        >
           <Search height={21} width={21} />
         </button>
       </div>
