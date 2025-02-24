@@ -2,6 +2,8 @@ import React from "react";
 import "./Brands.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { getDictionary } from "@/lib/dictionary";
+import { Locale } from "@/i18n.config";
 
 const brandsLinks = [
   { url: "/images/brands/brand1.jpg", height: 33, width: 110 },
@@ -13,12 +15,17 @@ const brandsLinks = [
   { url: "/images/brands/brand7.jpg", height: 29, width: 110 },
   { url: "/images/brands/brand8.jpg", height: 54, width: 110 },
 ];
-const Brands = () => {
+
+type Props = {
+  lang: Locale;
+};
+const Brands = async ({ lang }: Props) => {
+  const { brands } = await getDictionary(lang);
   return (
     <div className="brand__container--main">
       <div className="titleCategoty__container">
-        <h4 className="titleCategoty__title">Производители</h4>
-        <Link href={"/catalog"}>Все бренды</Link>
+        <h4 className="titleCategoty__title">{brands.manufacturer}</h4>
+        <Link href={"/catalog"}>{brands.allBrands}</Link>
       </div>
       <div className="brand__container--grid">
         {brandsLinks.map((brand) => (

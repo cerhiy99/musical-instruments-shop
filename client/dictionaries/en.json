@@ -1,13 +1,49 @@
 {
   "navigation": {
+    "shopTitle": "Online shop of musical instruments",
     "catalog": "Catalog",
     "news": "News",
     "service": "Services",
     "partners": "Partners",
     "delivery": "Delivery",
-    "dealer": "Dealers",
+    "dealers": "Dealers",
     "about": "About company",
-    "contacts": "Contacts"
+    "contacts": "Contacts",
+    "schedule": "Mon-Fri from 11:00 to 18:00 hours",
+    "callBack": "Back call",
+    "login": "Login",
+    "search": "Search",
+    "cart": "Cart"
   },
-  "Home": {}
+  "aside": {
+    "catalog": [
+      "Bowed String Instruments",
+      "String Instrument Cases",
+      "Accessories for String Instruments",
+      "Strings",
+      "Instruments and Supplies for Violin and Guitar Makers",
+      "Accessories for Wind Instruments",
+      "Woodwind Instruments",
+      "Brass Instruments",
+      "Cases for Wind Instruments",
+      "Guitar Cases",
+      "Music stands and other accessories",
+      "Stationery and Gifts",
+      "Musical literature, Sheet music",
+      "Repair of musical instruments, Expert assessment"
+    ],
+    "popularCatalog": "Popular Categories",
+    "allCatalog": "Whole catalog"
+  },
+  "brands": {
+    "manufacturer": "Manufacturers",
+    "allBrands": "All brands"
+  },
+  "footer": {
+    "name": "World of Classical Music",
+    "contacts": "Our contacts",
+    "public": "Public offer",
+    "stayInTouch": "Stay Connected"
+  },
+  "home": {}
 }

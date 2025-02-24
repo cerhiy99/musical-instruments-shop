@@ -7,6 +7,7 @@ import { getDictionary } from "@/lib/dictionary";
 import Sidebar from "../../components/Aside/Sidebar";
 import "@/styles/App.scss";
 import FloatingButtons from "@/components/FloatingButtons/FloatingButtons";
+import { TranslationProvider } from "@/contexts/TranslationProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,13 +34,15 @@ export default async function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={ubuntu.className}>
-        <Header lang={params.lang} />
-        <div className="wrapper">
-          <Sidebar />
-          <main>{children}</main>
-        </div>
-        <Footer lang={params.lang} />
-        <FloatingButtons />
+        <TranslationProvider>
+          <Header lang={params.lang} />
+          <div className="wrapper">
+            <Sidebar />
+            <main>{children}</main>
+          </div>
+          <Footer lang={params.lang} />
+          <FloatingButtons />
+        </TranslationProvider>
       </body>
     </html>
   );

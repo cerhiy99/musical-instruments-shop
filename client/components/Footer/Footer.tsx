@@ -8,22 +8,28 @@ import spiteLogo from "@/public/Footer/FooterIcons/spriteLogo.png";
 import LocationIcon from "@/public/Footer/location.svg";
 import EnvelopeIcon from "@/public/Footer/envelope.svg";
 import MobileIcon from "@/public/Footer/mobile.svg";
+import { getDictionary } from "@/lib/dictionary";
 
 type Props = {
   lang: Locale;
 };
 
-const Footer = (props: Props) => {
+const Footer = async ({ lang }: Props) => {
+  const { navigation, footer } = await getDictionary(lang);
   return (
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__col">
           <div className="footer__item">
-            <p className=" item__title">2025 © Світ класичної музики</p>
+            <p className=" item__title">
+              {new Date().getFullYear()}© {footer.name}
+            </p>
           </div>
           <div className="footer__item ">
             <div className="footer__contacts">
-              <p className="footer__contact item__contacts">Наши контакты</p>
+              <p className="footer__contact item__contacts">
+                {footer.contacts}
+              </p>
               <div className="footer__contact item__contacts">
                 <div className="contactSVG__wrapper">
                   <MobileIcon width={18} height={18} />
@@ -38,7 +44,7 @@ const Footer = (props: Props) => {
                 </div>
               </div>
 
-              <p className="item__contacts">Публичная оферта</p>
+              <p className="item__contacts">{footer.public}</p>
             </div>
           </div>
 
@@ -46,13 +52,13 @@ const Footer = (props: Props) => {
             <div className="footer--schedule">
               <div className="contactSVG__wrapper">
                 <LocationIcon width={16} height={16} />
-                <p>Пн.-Пт. с 11:00 до 18:00 часов</p>
+                <p>{navigation.schedule}</p>
               </div>
             </div>
-            <a className="schedule__callback">Обратный звонок</a>
+            <a className="schedule__callback">{navigation.callBack}</a>
           </div>
           <div className="footer__item">
-            <p className="socialLinks__title">Оставайтесь на связи</p>
+            <p className="socialLinks__title">{footer.stayInTouch}</p>
 
             <div className="socialLinks">
               <SpriteImage

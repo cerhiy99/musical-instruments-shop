@@ -14,23 +14,22 @@ import Navbar from "../Navbar/NavBar";
 import Phone from "@/public/Navbar/NavbarIcons/phone.svg";
 import flagBanner from "@/public/Navbar/flagBanner.png";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
-import { getDictionary } from "@/lib/dictionary";
 import NavLink from "../ui/NavLink";
 import SearchBar from "../SearchBar/SearchBar";
-
+import { useTranslation } from "@/contexts/TranslationProvider";
 type Props = {
   lang: Locale;
 };
 
 const navItems = [
-  { title: "Каталог", href: "/catalog" },
-  { title: "Новости", href: "/news" },
-  { title: "Услуги", href: "/services" },
-  { title: "Партнеры", href: "/partners" },
-  { title: "Доставка", href: "/delivery" },
-  { title: "Дилеры", href: "/dealers" },
-  { title: "О компании", href: "/about" },
-  { title: "Контакты", href: "/contacts" },
+  { title: "catalog", href: "/catalog" },
+  { title: "news", href: "/news" },
+  { title: "service", href: "/services" },
+  { title: "partners", href: "/partners" },
+  { title: "delivery", href: "/delivery" },
+  { title: "dealers", href: "/dealers" },
+  { title: "about", href: "/about" },
+  { title: "contacts", href: "/contacts" },
 ];
 
 const Header: React.FC<Props> = ({ lang }) => {
@@ -38,6 +37,7 @@ const Header: React.FC<Props> = ({ lang }) => {
   const [showSearchBar, setSearchBar] = useState<boolean>(false);
   const headerRef = useRef<HTMLElement | null>(null);
   const navbarRef = useRef<HTMLElement | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,16 +88,16 @@ const Header: React.FC<Props> = ({ lang }) => {
             <div className="schedule">
               <div className="schedule__wrapper">
                 <span className="schedule-info">
-                  <p>Пн.-Пт. с 11:00 до 18:00 часов</p>
+                  <p>{t("navigation.schedule")}</p>
                 </span>
-                <a className="callback">Обратный звонок</a>
+                <a className="callback">{t("navigation.callBack")}</a>
               </div>
             </div>
             <div className="controls">
               <Link href="/account" className="iconButton">
                 <Login width={16} height={17} />
                 <span className="text-login">
-                  <p>Войти</p>
+                  <p>{t("navigation.login")}</p>
                 </span>
               </Link>
               <Link href="/fav" className="iconButton">
@@ -108,7 +108,7 @@ const Header: React.FC<Props> = ({ lang }) => {
               <Link href="/cart" className="iconButton">
                 <Basket width={16} height={17} />
 
-                <p className="basket-btn">Корзина</p>
+                <p className="basket-btn">{t("navigation.cart")}</p>
 
                 <div className="counter">0</div>
               </Link>
@@ -119,9 +119,9 @@ const Header: React.FC<Props> = ({ lang }) => {
                 }}
               >
                 <Search width={17} height={17} />
-                <p className="search-btn">Поиск</p>
+                <p className="search-btn">{t("navigation.search")}</p>
               </button>
-              <LanguageSwitcher />
+              <LanguageSwitcher lang={lang} />
             </div>
           </div>
         </div>
@@ -133,12 +133,11 @@ const Header: React.FC<Props> = ({ lang }) => {
             </Link>
             <div className="shopTitle">
               <h1 className="shopTitle__wrapper">
-                Інтернет-магазин музичних інструментів
+                {t("navigation.shopTitle")}
               </h1>
             </div>
 
             <nav className="header__nav ">
-              {/* <Link href="/catalog">Каталог</Link> */}
               {navItems.map((navItem) => (
                 <NavLink
                   key={navItem.title}
@@ -146,7 +145,7 @@ const Header: React.FC<Props> = ({ lang }) => {
                   margin={{ left: 2.4, right: 2.4 }}
                   padding={{ top: 3.9, bottom: 3.9 }}
                 >
-                  {navItem.title}
+                  {t(`navigation.${navItem.title}`)}
                 </NavLink>
               ))}
             </nav>
