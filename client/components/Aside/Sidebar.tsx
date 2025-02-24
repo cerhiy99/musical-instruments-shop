@@ -5,6 +5,7 @@ import { useState } from "react";
 import ArrowIcon from "@/public/arrow.svg";
 import Image from "next/image";
 import SideNews from "./SideNews";
+import { useTranslation } from "@/contexts/TranslationProvider";
 
 const imageUrl = "/images/banner1.jpg";
 const categories = [
@@ -376,6 +377,7 @@ const categories = [
 const isActive = false;
 export default function Sidebar() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const handleMouseEnter = (categoryName: string) => {
     setActiveCategory(categoryName);
@@ -389,7 +391,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <nav className="categories">
         <ul>
-          {categories.map((category) => (
+          {categories.map((category, i) => (
             <li
               key={category.name}
               onMouseEnter={() => handleMouseEnter(category.name)}
@@ -404,7 +406,7 @@ export default function Sidebar() {
             >
               <Link href={`/category/${encodeURIComponent(category.name)}`}>
                 <div className="categoryItem__wrapper">
-                  <h3>{category.name}</h3>
+                  <h3>{t("aside.catalog")[i]}</h3>
                   <div className="categoryItem__wrapper--svg">
                     <ArrowIcon height={8} />
                   </div>

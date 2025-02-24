@@ -5,6 +5,7 @@ import type React from "react";
 import { useEffect, useRef } from "react";
 import X from "@/public/X.svg";
 import SearchIcon from "@/public/Navbar/NavbarIcons/search.svg";
+import { useTranslation } from "@/contexts/TranslationProvider";
 
 type SearchBarType = {
   setSearch: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,6 +15,7 @@ type SearchBarType = {
 const SearchBar: React.FC<SearchBarType> = ({ setSearch, isOpen }) => {
   // const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -49,7 +51,7 @@ const SearchBar: React.FC<SearchBarType> = ({ setSearch, isOpen }) => {
           autoFocus={isOpen}
           ref={inputRef}
           type="text"
-          placeholder="Пошук..."
+          placeholder={`${t("navigation.search")}...`}
           className="searchBar__input"
         />
         <button type="submit" className="searchSubmit">

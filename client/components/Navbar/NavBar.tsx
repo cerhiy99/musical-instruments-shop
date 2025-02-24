@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import Link from "next/link";
 import "./NavBar.scss";
@@ -10,6 +10,7 @@ import Favorite from "@/public/Navbar/NavbarIcons/favorite.svg";
 import Basket from "@/public/Navbar/NavbarIcons/basket.svg";
 import Search from "@/public/Navbar/NavbarIcons/search.svg";
 import NavLink from "@/components/ui/NavLink";
+import { useTranslation } from "@/contexts/TranslationProvider";
 
 type Props = {
   lang: Locale;
@@ -18,6 +19,7 @@ type Props = {
 };
 
 const Navbar: React.FC<Props> = ({ lang, href, setSearch }) => {
+  const { t } = useTranslation();
   return (
     <div className="navbar__container">
       <Link href="/" className="navbar__logo">
@@ -32,7 +34,7 @@ const Navbar: React.FC<Props> = ({ lang, href, setSearch }) => {
             margin={{ left: 1.6, right: 1.6 }}
             padding={{ top: 1.9, bottom: 2.1 }}
           >
-            {item.title}
+            {t(`navigation.${item.title}`)}
           </NavLink>
         ))}
       </div>
