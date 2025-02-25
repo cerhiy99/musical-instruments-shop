@@ -11,13 +11,23 @@
     justify-content: center;
     align-items: center;
     height: 5.2rem;
+    transition: all ease-out 0.2s;
     svg {
       color: $color-blue-300;
+      transition: transform 0.5s ease;
+    }
+    &:hover {
+      border-color: $color-gray-300;
+
+      svg {
+        transform: rotate(360deg);
+      }
     }
   }
   &__pages {
     width: 100%;
     .pages__container {
+      margin-top: 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -40,6 +50,11 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          &:disabled,
+          &:disabled:hover {
+            color: $color-gray-300;
+            background-color: transparent;
+          }
         }
         &:hover,
         &__arrow:hover {

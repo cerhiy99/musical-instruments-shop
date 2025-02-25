@@ -2,6 +2,7 @@ import React from "react";
 
 import "./Catalog.scss";
 import Image from "next/image";
+import Link from "next/link";
 const imageUrl = "/images/banner1.jpg";
 const categories = [
   {
@@ -89,12 +90,16 @@ const categories = [
     innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
   },
 ];
-export default function page() {
+export default function Page() {
   return (
     <div className="catalogPage">
       <div className="catalogPage__grid">
         {categories.map((category, i) => (
           <div className="catalogPage__grid--item" key={i}>
+            <Link
+              href={`/catalog/${i}`}
+              className="catalogPage__grid--item-overlay"
+            />
             <div className="catalogPage--image">
               <Image width={120} height={120} src={category.image} alt="text" />
             </div>

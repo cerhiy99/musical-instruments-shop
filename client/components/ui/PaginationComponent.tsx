@@ -1,18 +1,33 @@
 "use client";
-import React, { useState, type ReactNode } from "react";
+import React, { useEffect, useState, type ReactNode } from "react";
 import LoaadMore from "@/public/loadMore.svg";
 import ChevronLeft from "@/public/navigation/chevronleft.svg";
 import ChevronRight from "@/public/navigation/chevronright.svg";
 import "./PaginationComponent.scss";
 
-const Pagination = () => {
+const Pagination = ({
+  onCurrentPage,
+  onItemsPerPage,
+  onTotalItems,
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  totalPages,
+}) => {
+  useEffect(() => {
+    console.log(`[PAGINATION]:totalItems - ${totalItems}`);
+    console.log(`[PAGINATION]: itemsPerPage - ${itemsPerPage}`);
+    console.log(`[PAGINATION]: currentPage - ${currentPage}`);
+    console.log(`[PAGINATION]: totalPages - ${totalPages}`);
+  }, [totalItems, itemsPerPage, currentPage, totalPages]);
   // Стейт для текущей страницы и размера страницы
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [totalItems, setTotalItems] = useState(100); // Предположим, у нас есть 100 элементов всего
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [itemsPerPage, setItemsPerPage] = useState(10);
+  // const [totalItems, setTotalItems] = useState(100);
+  // Предположим, у нас есть 100 элементов всего
 
   // Вычисляем общее количество страниц
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  // const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   // Создаём массив номеров страниц для отображения
   const generatePageNumbers = () => {
@@ -53,7 +68,8 @@ const Pagination = () => {
   // Обработчик клика по номеру страницы
   const handlePageClick = (page) => {
     if (page !== "..." && page !== currentPage) {
-      setCurrentPage(page);
+      // setCurrentPage(page);
+      onCurrentPage(page);
     }
   };
 
@@ -61,22 +77,26 @@ const Pagination = () => {
   const handleShowMore = () => {
     // Увеличиваем количество элементов на странице
     const newItemsPerPage = itemsPerPage + 10;
-    setItemsPerPage(newItemsPerPage);
+    // setItemsPerPage(newItemsPerPage);
+    onItemsPerPage(newItemsPerPage);
 
     // Пересчитываем текущую страницу, чтобы сохранить позицию просмотра
     const newCurrentPage = Math.ceil(
       (currentPage * itemsPerPage) / newItemsPerPage
     );
-    setCurrentPage(newCurrentPage || 1);
+    // setCurrentPage(newCurrentPage || 1);
+    onCurrentPage(newCurrentPage || 1);
   };
 
   // Переход к предыдущей странице
   const goToPreviousPage = () =>
-    currentPage > 1 && setCurrentPage(currentPage - 1);
+    // currentPage > 1 && setCurrentPage(currentPage - 1);
+    currentPage > 1 && onCurrentPage(currentPage - 1);
 
   // Переход к следующей странице
   const goToNextPage = () =>
-    currentPage < totalPages && setCurrentPage(currentPage + 1);
+    // currentPage < totalPages && setCurrentPage(currentPage + 1);
+    currentPage < totalPages && onCurrentPage(currentPage + 1);
 
   // Проверка активности кнопок
   const isPrevDisabled = currentPage === 1;
@@ -87,9 +107,9 @@ const Pagination = () => {
   return (
     <div>
       <div className="pagination">
-        {totalItems !== itemsPerPage && (
+        {!isNextDisabled && (
           <button onClick={handleShowMore}>
-            <LoaadMore fill={"green"} width={21} height={21} />
+            <LoaadMore width={21} height={21} />
             <p>Показать еще</p>
           </button>
         )}
