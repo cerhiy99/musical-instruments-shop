@@ -1,0 +1,56 @@
+@import "@/styles/variables.scss";
+
+.pagination {
+  width: 100%;
+  display: flex;
+  button {
+    border: solid 0.1rem $color-gray-50;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    height: 5.2rem;
+    svg {
+      color: $color-blue-300;
+    }
+  }
+  &__pages {
+    width: 100%;
+    .pages__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      .page {
+        border-radius: 0.2rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4rem;
+        font-weight: 700;
+
+        &__arrow {
+          border-radius: 0.2rem;
+          margin: 0 0.3rem;
+          width: 3.2rem;
+          height: 3.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        &:hover,
+        &__arrow:hover {
+          background-color: rgba(199, 199, 199, 0.219);
+          color: $color-blue-300;
+        }
+        &.currentPage {
+          color: white;
+          background-color: $color-blue-300;
+        }
+      }
+    }
+  }
+}
