@@ -1,0 +1,9 @@
+@import "@/styles/variables.scss";
+
+.bulletPoint {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: $color-blue-300;
+}

@@ -1,0 +1,29 @@
+@import "@/styles/variables.scss";
+
+.partnersPage__grid {
+  padding-top: 4rem;
+  width: 109.2rem;
+  margin-bottom: 4.7rem;
+  display: grid;
+  gap: 2.9rem;
+  grid-template-columns: repeat(3, 1fr);
+  &--item {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+
+    width: 32.46rem;
+    height: 16.8rem;
+    border: solid 0.1rem $color-gray-50;
+
+    justify-content: flex-end;
+    padding-bottom: 1.7rem;
+    p {
+      font-weight: 700;
+      &.blue {
+        color: $color-blue-350;
+      }
+    }
+  }
+}

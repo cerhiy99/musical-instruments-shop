@@ -1,3 +1,4 @@
+import BulletPoint from "@/components/ui/BulletPoint";
 import "./Services.scss";
 import Image from "next/image";
 
@@ -17,19 +18,18 @@ const page = async () => {
       <h3 className="servicePage__services">Послуги:</h3>
       <ul className="servicePage__services-list services-list">
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>{" "}
+          <BulletPoint />
           <p>надання звіту про оцінку вартості культурних цінностей;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>{" "}
-          <p>науково-технічна та мистецтвознавча експертиза;</p>
+          <BulletPoint /> <p>науково-технічна та мистецтвознавча експертиза;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>{" "}
+          <BulletPoint />
           <p>надання консультацій з оцінки музичних інструментів;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>
             надання послуг з оцінки ліквідаційної вартості інструментів, які
             знаходяться на балансі установ, підприємств та організацій усіх форм
@@ -52,65 +52,61 @@ const page = async () => {
       <h3 className="servicePage__services">Послуги:</h3>
       <ul className="servicePage__services-list services-list">
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>заміна волоса у смичку;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>ремонт тростини смичка;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>вирівнювання тростини смичка;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>ремонт колодки смичка;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>
             монтування ніхромової/срібної/посрібленої обмотки на тростині
             смичка;
           </p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>{" "}
-          <p>заміна колодки смичка;</p>
+          <BulletPoint /> <p>заміна колодки смичка;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>заміна косточки на головці смичка;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>заміна кілків;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div> <p>заміна грифу;</p>
+          <BulletPoint /> <p>заміна грифу;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>{" "}
-          <p>заміна верхнього та нижнього поріжків;</p>
+          <BulletPoint /> <p>заміна верхнього та нижнього поріжків;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>{" "}
-          <p>заміна гудзика/шпиля у віолончелі;</p>
+          <BulletPoint /> <p>заміна гудзика/шпиля у віолончелі;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>{" "}
-          <p>заміна підставки, душки;</p>
+          <BulletPoint /> <p>заміна підставки, душки;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>ремонт кілкової коробки та завитка;</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>ремонт корпусу інструменту (без знімання дек/із зніманням дек);</p>
         </li>
         <li className="services-list__item">
-          <div className="servicePage__bullet"></div>
+          <BulletPoint />
           <p>капітальний ремонт інструменту.</p>
         </li>
       </ul>

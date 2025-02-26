@@ -29,16 +29,12 @@
     margin-left: 2rem;
   }
   li {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
+    p {
+      margin-left: 0.7rem;
+      display: inline-block;
+    }
+
     color: $color-blue-300;
     line-height: 2.2rem;
-  }
-  &__bullet {
-    width: 1.2rem;
-    height: 1.2rem;
-    border-radius: 50%;
-    background: $color-blue-300;
   }
 }
