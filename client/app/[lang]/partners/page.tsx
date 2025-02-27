@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./Partners.scss";
 import Image from "next/image";
 
@@ -9,10 +10,15 @@ const parntnersLogos = [
   "/images/partners/partners5.jpg",
 ];
 
+export const metadata = {
+  title: "Partners",
+};
+
 const page = async () => {
   return (
     <div className="partnersPage__grid">
       <div className="partnersPage__grid--item">
+        <Link href={"partners/1"} />
         <Image
           src={parntnersLogos[0]}
           alt="Logo of PETZ KOLOPHONIUM"
@@ -22,6 +28,7 @@ const page = async () => {
         <p>PETZ KOLOPHONIUM</p>
       </div>
       <div className="partnersPage__grid--item">
+        <Link href={"partners/2"} />
         <Image
           src={parntnersLogos[1]}
           alt="Logo of JakobWinter"
@@ -31,6 +38,7 @@ const page = async () => {
         <p className="blue">JakobWinter</p>
       </div>
       <div className="partnersPage__grid--item">
+        <Link href={"partners/3"} />
         <Image
           src={parntnersLogos[2]}
           alt="Logo of BAM France"
@@ -40,6 +48,7 @@ const page = async () => {
         <p className="blue">BAM France</p>
       </div>
       <div className="partnersPage__grid--item">
+        <Link href={"partners/4"} />
         <Image
           src={parntnersLogos[3]}
           alt="Logo of Pilgerstorfer"
@@ -49,6 +58,7 @@ const page = async () => {
         <p>Pilgerstorfer</p>
       </div>
       <div className="partnersPage__grid--item">
+        <Link href={"partners/5"} />
         <Image
           src={parntnersLogos[4]}
           alt="Logo of Laubach"
