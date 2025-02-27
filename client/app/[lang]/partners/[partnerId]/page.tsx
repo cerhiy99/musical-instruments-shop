@@ -64,6 +64,9 @@ type Params = {
   partnerId: string;
 };
 
+export function generateStaticParams() {
+  return [1, 2, 3, 4, 5, 6];
+}
 const page = async ({ params }: { params: Params }) => {
   const param = Number(params.partnerId) - 1;
 

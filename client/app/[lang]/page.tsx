@@ -36,7 +36,7 @@ const sliderImages = [
   },
 ];
 
-export const categories = [
+const categories = [
   {
     id: 1,
     title: "Струнно-смичкові інструменти",
