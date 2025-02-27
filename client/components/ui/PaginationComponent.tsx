@@ -13,9 +13,17 @@ const Pagination = ({
   itemsPerPage,
   currentPage,
   totalPages,
+}: {
+  onCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  onItemsPerPage: React.Dispatch<React.SetStateAction<number>>;
+  onTotalItems: React.Dispatch<React.SetStateAction<number>>;
+  totalItems: number;
+  itemsPerPage: number;
+  currentPage: number;
+  totalPages: number;
 }) => {
   useEffect(() => {
-    console.log(`[PAGINATION]:totalItems - ${totalItems}`);
+    console.log(`[PAGINATION]: totalItems - ${totalItems}`);
     console.log(`[PAGINATION]: itemsPerPage - ${itemsPerPage}`);
     console.log(`[PAGINATION]: currentPage - ${currentPage}`);
     console.log(`[PAGINATION]: totalPages - ${totalPages}`);
@@ -66,10 +74,10 @@ const Pagination = ({
   };
 
   // Обработчик клика по номеру страницы
-  const handlePageClick = (page) => {
+  const handlePageClick = (page: number | string) => {
     if (page !== "..." && page !== currentPage) {
       // setCurrentPage(page);
-      onCurrentPage(page);
+      onCurrentPage(Number(page));
     }
   };
 
@@ -126,20 +134,19 @@ const Pagination = ({
           {pageNumbers.map((page, index) => (
             <button
               key={index}
-              onClick={() => handlePageClick(page)}
+              onClick={() => handlePageClick(page as number)}
               className={`page ${currentPage === page && "currentPage"}`}
             >
               {page}
             </button>
           ))}
 
-          <button className="page__next page__arrow">
-            <ChevronRight
-              height={13}
-              strokeWidth={2}
-              onClick={goToNextPage}
-              disabled={isNextDisabled}
-            />
+          <button
+            className="page__next page__arrow"
+            onClick={goToNextPage}
+            disabled={isNextDisabled}
+          >
+            <ChevronRight height={13} strokeWidth={2} />
           </button>
         </div>
       </div>
