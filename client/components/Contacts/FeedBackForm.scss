@@ -1,0 +1,164 @@
+@import "@/styles/variables.scss";
+
+.contactForm {
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  label {
+    display: block;
+    margin-bottom: 0.8rem;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+    color: $color-gray-450;
+  }
+  &__container {
+    display: flex;
+    gap: 3rem;
+
+    .textarea__form {
+      width: 81rem;
+      height: 21.75rem;
+      textarea {
+        height: 19.3rem;
+        resize: vertical;
+      }
+    }
+  }
+  &__subContainer {
+    width: 54rem;
+    input {
+      height: 3.7rem;
+    }
+  }
+}
+
+.formGroup {
+  input,
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: $color-gray-60;
+    border: 0.1rem solid $color-gray-100;
+    border-radius: 0.2rem;
+    margin-bottom: 1.8rem;
+    &:focus {
+      outline: none;
+      border-color: $color-blue-350;
+    }
+  }
+}
+
+.required {
+  color: red;
+}
+
+.captchaGroup {
+  margin-bottom: 3.1rem;
+  .captchaContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .captchaImage {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .captchaInput {
+      height: 3.7rem;
+      width: 18.4rem;
+      padding: 1rem;
+      background-color: $color-gray-60;
+      border: 0.1rem solid $color-gray-100;
+      border-radius: 0.2rem;
+
+      &:focus {
+        outline: none;
+        border-color: $color-blue-350;
+      }
+    }
+  }
+  .devider {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: $color-blue-350;
+    border-radius: 50%;
+  }
+}
+
+.consentGroup {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+  input {
+    margin-right: 10px;
+    margin-top: 3px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+}
+
+.link {
+  color: $color-blue-350;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.submitButton,
+.cancelButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton {
+  background-color: $color-blue-350;
+  color: white;
+
+  &:hover {
+    background-color: darken($color-blue-350, 10%);
+  }
+}
+
+.cancelButton {
+  background-color: white;
+  color: $color-blue-350;
+  border: solid 0.1rem $color-blue-350;
+
+  &:hover {
+    background-color: darken(#f0f0f0, 10%);
+  }
+}
+
+.inputError {
+  border-color: red !important;
+}
+
+.errorText {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.successMessage {
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}

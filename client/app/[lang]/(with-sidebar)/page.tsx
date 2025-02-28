@@ -1,6 +1,6 @@
 import { Locale } from "@/i18n.config";
 import "./Home.scss";
-import ImageSlider from "../../components/ImageSlider/ImageSlider";
+import ImageSlider from "../../../components/ImageSlider/ImageSlider";
 import Link from "next/link";
 import Image from "next/image";
 import HotProducts from "@/components/HomePage/HotProducts";

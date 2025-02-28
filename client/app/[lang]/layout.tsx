@@ -40,8 +40,9 @@ export default async function RootLayout({
         <TranslationProvider>
           <Header lang={params.lang} />
           <div className="wrapper">
-            <Sidebar />
-            <main>{children}</main>
+            {/* <Sidebar />
+            <main>{children}</main> */}
+            {children}
           </div>
           <Footer lang={params.lang} />
           <FloatingButtons />
