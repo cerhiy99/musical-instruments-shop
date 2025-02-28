@@ -1,0 +1,33 @@
+@import "@/styles/variables.scss";
+
+.deliveryInfoPage {
+  width: 109.2rem;
+  margin-bottom: 4.7rem;
+
+  h2 {
+    padding-top: 4.3rem;
+    padding-bottom: 2.6rem;
+  }
+  p {
+    color: $color-gray-450;
+    line-height: 2.2rem;
+  }
+  &__title {
+    width: fit-content;
+    margin: 0 auto;
+  }
+  &__bullet {
+    color: $color-blue-300;
+    line-height: 2.2rem;
+    p {
+      display: inline;
+      margin-left: 0.7rem;
+    }
+  }
+  &__margin {
+    margin-top: 2.2rem;
+  }
+  .title__infoPage {
+    font-style: italic;
+  }
+}

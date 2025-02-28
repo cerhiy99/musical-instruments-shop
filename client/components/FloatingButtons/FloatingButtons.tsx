@@ -4,11 +4,25 @@ import "./FloatingButtons.scss";
 import { useState, useEffect, useRef } from "react";
 import ChatIcon from "@/public/chat.svg";
 import ArrowUpIcon from "@/public/arrowUp.svg";
+import Modal from "../Modal/Modal";
+import FeedbackForm from "../Form/FeedBack/FeedBack";
 
 const FloatingButtons = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
+  // __________________________________________________________________
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleSubmit = (formData: any) => {
+    console.log("Form submitted:", formData);
+    closeModal();
+    // Here you would typically send the data to your backend
+  };
+  // __________________________________________________________________
 
   useEffect(() => {
     headerRef.current = document.querySelector("header");
@@ -39,6 +53,7 @@ const FloatingButtons = () => {
   };
 
   const openFeedback = () => {
+    openModal();
     console.log("Відкрити форму зворотного зв'язку");
   };
 
@@ -60,6 +75,9 @@ const FloatingButtons = () => {
           <ArrowUpIcon width={22} height={30} />
         </button>
       )}
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+        <FeedbackForm onSubmit={handleSubmit} />
+      </Modal>
     </div>
   );
 };
