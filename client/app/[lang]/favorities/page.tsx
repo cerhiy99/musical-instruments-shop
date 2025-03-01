@@ -4,8 +4,8 @@ import Fav from "@/public/cart/favoritites.svg";
 
 export default function page() {
   return (
-    <div className="cartPage">
-      <div className="cartPage__container">
+    <div className="favPage">
+      <div className="favPage__container">
         <div>
           <Fav />
         </div>

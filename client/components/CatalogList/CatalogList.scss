@@ -1,0 +1,41 @@
+@import "@/styles/variables.scss";
+.product-list-container {
+  .view-controls {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: flex-end;
+    margin-bottom: 6.1rem;
+
+    button {
+      width: 3.5rem;
+      height: 3.5rem;
+      background: $color-gray-60;
+      border-radius: 0.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      transition: all 0.3s;
+
+      &:hover,
+      &.active {
+        background-color: $color-blue-300;
+        color: white;
+      }
+    }
+  }
+
+  .product-list {
+    display: grid;
+
+    &.grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &.list,
+    &.compact {
+      grid-template-columns: 1fr;
+    }
+  }
+}

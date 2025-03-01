@@ -4,145 +4,289 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import "./HotProducts.scss";
+import CatalogCardItem from "../Card/CatalogCardItem";
+import { Filter } from "@/types/catalog";
 
-type FilterHot = "hit" | "advice" | "new" | "discount";
+type FilterHot = {
+  isAdviced: boolean;
+  isNew: boolean;
+  isHit: boolean;
+  isDiscount: boolean;
+};
 
 // Mock data
-export const products = [
+const products = [
   {
-    id: 1,
+    id: "1",
     title: "Сувенір 'Нотка'",
-    price: 447,
-    oldPrice: 470,
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 447,
+      old: 470,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
     image: "/placeholder.svg?height=300&width=300",
-    labels: ["hit"],
     inStock: true,
+    labels: {
+      isAdviced: false,
+      isNew: false,
+      isHit: true,
+      isDiscount: false,
+    },
+    isFavorite: false,
   },
   {
-    id: 2,
+    id: "2",
     title: "Скрипка 'CKM-Luthier' Solo 4/4 Artist модель",
-    price: 133950,
-    oldPrice: 145000,
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 133950,
+      old: 145000,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
     image: "/placeholder.svg?height=300&width=300",
-    labels: ["hit", "advice"],
     inStock: true,
+    labels: {
+      isAdviced: true,
+      isNew: false,
+      isHit: true,
+      isDiscount: false,
+    },
+    isFavorite: false,
   },
   {
-    id: 3,
+    id: "3",
     title: "Нотная тетрадь 'CKM'",
-    price: 141,
-    oldPrice: 199,
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 133950,
+      old: 145000,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
     image: "/placeholder.svg?height=300&width=300",
-    labels: ["new", "hit", "advice", "discount"],
     inStock: true,
+    labels: {
+      isAdviced: true,
+      isNew: true,
+      isHit: true,
+      isDiscount: true,
+    },
+    isFavorite: false,
   },
   {
-    id: 4,
+    id: "4",
     title: "Футляр для скрипки MAX&FINN",
-    price: 11261,
-    oldPrice: 12999,
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 11261,
+      old: 12999,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
     image: "/placeholder.svg?height=300&width=300",
-    labels: ["advice", "hit"],
     inStock: false,
+    labels: {
+      isAdviced: true,
+      isNew: false,
+      isHit: true,
+      isDiscount: true,
+    },
+    isFavorite: false,
   },
   {
-    id: 5,
+    id: "5",
     title: "Волос для смичка Silver",
-    price: 670,
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 670,
+      old: 720,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
     image: "/placeholder.svg?height=300&width=300",
-    labels: ["new", "hit", "discount"],
     inStock: false,
+    labels: {
+      isAdviced: true,
+      isNew: false,
+      isHit: true,
+      isDiscount: true,
+    },
+    isFavorite: false,
   },
+
   {
-    id: 6,
+    id: "6",
     title: "Футляр для віолончелі BC1602",
-    price: 13864,
-    oldPrice: 15000,
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 13864,
+      old: 15000,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
     image: "/placeholder.svg?height=300&width=300",
-    labels: ["hit", "advice"],
     inStock: false,
+    labels: {
+      isAdviced: true,
+      isNew: false,
+      isHit: true,
+      isDiscount: true,
+    },
+    isFavorite: false,
   },
   {
-    id: 7,
+    id: "7",
     title: "Полегшений металічний футляр для скрипки",
-    price: 26567,
-    oldPrice: 27999,
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 26567,
+      old: 27999,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
     image: "/placeholder.svg?height=300&width=300",
-    labels: ["hit", "advice"],
     inStock: false,
+    labels: {
+      isAdviced: true,
+      isNew: false,
+      isHit: true,
+      isDiscount: true,
+    },
+    isFavorite: false,
   },
   {
-    id: 8,
+    id: "8",
     title: "Віолончель 'CKM-Luthier' 4/4 Artist",
-    price: 189763,
-    oldPrice: 209763,
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 189763,
+      old: 209763,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
     image: "/placeholder.svg?height=300&width=300",
-    labels: ["hit", "discount"],
-    inStock: true,
-  },
-  {
-    id: 9,
-    title: "Підставка для скрипки Aubert з Міланської фанери",
-    price: 1429,
-    oldPrice: 1500,
-    image: "/placeholder.svg?height=300&width=300",
-    labels: ["hit", "discount"],
-    inStock: true,
-  },
-  {
-    id: 10,
-    title: "Футляр для альта BAM Stylus Oblong до 41,5 см",
-    price: 17637,
-    oldPrice: 19999,
-    image: "/placeholder.svg?height=300&width=300",
-    labels: ["hit", "discount"],
     inStock: false,
+    labels: {
+      isAdviced: false,
+      isNew: false,
+      isHit: true,
+      isDiscount: true,
+    },
+    isFavorite: false,
+  },
+  {
+    id: "9",
+    title: "Підставка для скрипки Aubert з Міланської фанери",
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 1429,
+      old: 1500,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
+    image: "/placeholder.svg?height=300&width=300",
+    inStock: false,
+    labels: {
+      isAdviced: false,
+      isNew: false,
+      isHit: true,
+      isDiscount: true,
+    },
+    isFavorite: false,
+  },
+
+  {
+    id: "10",
+    title: "Футляр для альта BAM Stylus Oblong до 41,5 см",
+    articleNumber: "CKM-V StradAnt",
+    price: {
+      current: 17637,
+      old: 19999,
+    },
+    savings: {
+      amount: 7050,
+      percentage: 5,
+    },
+    image: "/placeholder.svg?height=300&width=300",
+    inStock: false,
+    labels: {
+      isAdviced: false,
+      isNew: false,
+      isHit: true,
+      isDiscount: true,
+    },
+    isFavorite: false,
   },
 ];
 
-const Badge: React.FC<{ type: string }> = ({ type }) => {
-  return (
-    <div className={`badge badge__${type}`}>
-      <p>{type.toUpperCase()}</p>
-    </div>
-  );
-};
-
 const HotProducts: React.FC = () => {
-  const [filter, setFilter] = useState<FilterHot>("hit");
-
-  const handleFilter = (type: FilterHot) => {
-    setFilter(type);
-  };
-  const filteredProducts = products.filter((product) => {
-    return product.labels.some((labelName) => labelName === filter)
-      ? product
-      : "";
+  const [filter, setFilter] = useState<FilterHot>({
+    isAdviced: false,
+    isNew: false,
+    isHit: true,
+    isDiscount: false,
   });
+
+  const handleFilter = (type: keyof FilterHot) => {
+    setFilter({
+      isAdviced: false,
+      isNew: false,
+      isHit: false,
+      isDiscount: false,
+      [type]: true,
+    });
+  };
+  const filteredProducts = products.filter((product) =>
+    Object.keys(filter).some(
+      (key) =>
+        filter[key as keyof FilterHot] && product.labels[key as keyof FilterHot]
+    )
+  );
   return (
     <div className="hotProducts__container">
       <div className="hotProducts__btn--wrapper">
         <button
-          onClick={() => handleFilter("hit")}
-          className={`hotProduct__btn ${filter === "hit" ? "active" : ""}`}
+          onClick={() => handleFilter("isHit")}
+          className={`hotProduct__btn ${filter.isHit && "active"}`}
         >
           Хит
         </button>
         <button
-          onClick={() => handleFilter("advice")}
-          className={`hotProduct__btn ${filter === "advice" ? "active" : ""}`}
+          onClick={() => handleFilter("isAdviced")}
+          className={`hotProduct__btn ${filter.isAdviced && "active"}`}
         >
           Советуем
         </button>
         <button
-          onClick={() => handleFilter("new")}
-          className={`hotProduct__btn ${filter === "new" ? "active" : ""}`}
+          onClick={() => handleFilter("isNew")}
+          className={`hotProduct__btn ${filter.isNew && "active"}`}
         >
           Новинка
         </button>
         <button
-          onClick={() => handleFilter("discount")}
-          className={`hotProduct__btn ${filter === "discount" ? "active" : ""}`}
+          onClick={() => handleFilter("isDiscount")}
+          className={`hotProduct__btn ${filter.isDiscount && "active"}`}
         >
           Акция
         </button>
@@ -150,36 +294,7 @@ const HotProducts: React.FC = () => {
 
       <div className="categories__grid">
         {filteredProducts.map((product) => (
-          <Link href={"/catalog"} key={product.id}>
-            <div className="hotGoods__grid--item">
-              <div className="inner__wrapper">
-                <div className="badge__wrapper">
-                  <div className="badge__wrapper__container">
-                    {product.labels.map((label, i) => (
-                      <Badge type={label} key={`label ${i}`} />
-                    ))}
-                  </div>
-                </div>
-
-                <Image
-                  src={"/images/banner1.jpg"}
-                  width={135}
-                  height={135}
-                  alt="text"
-                />
-              </div>
-              <div className="grid--HotItem-text">{product.title}</div>
-              <div className="grid--HotItem-store">
-                {product.inStock
-                  ? "✅ Есть на складе (2)"
-                  : "Нет на складе (можно заказать)"}
-              </div>
-              <div className="hotGoods__prices">
-                <p className="hotGoods__currentPrice">{product.price}грн.</p>
-                <p className="hotGoods__prevPrice">{product.oldPrice}грн.</p>
-              </div>
-            </div>
-          </Link>
+          <CatalogCardItem key={product.id} product={product} />
         ))}
       </div>
     </div>
