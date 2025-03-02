@@ -44,7 +44,9 @@ const Footer = async ({ lang }: Props) => {
                 </div>
               </div>
 
-              <p className="item__contacts">{footer.public}</p>
+              <Link href={"/public-offer"} className="item__contacts">
+                {footer.public}
+              </Link>
             </div>
           </div>
 

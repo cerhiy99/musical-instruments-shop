@@ -1,33 +1,77 @@
 @import "@/styles/variables.scss";
+.terms-document {
+  margin-bottom: 15rem;
+  color: $color-gray-450;
+}
+.terms-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 4.5rem 0 2.2rem;
+  color: $color-black-700;
+  text-transform: uppercase;
+  &:first-child {
+    margin-top: 0;
+  }
+}
 
-.deliveryInfoPage {
-  width: 109.2rem;
-  margin-bottom: 4.7rem;
+.terms-paragraph {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
 
-  h2 {
-    padding-top: 4.3rem;
-    padding-bottom: 2.6rem;
+.terms-section {
+  margin-bottom: 2rem;
+}
+
+.terms-item {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.terms-item-number,
+.terms-item-title {
+  font-weight: 700;
+  color: $color-black-700;
+}
+
+.terms-link {
+  color: $color-blue-300;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
   }
-  p {
-    color: $color-gray-450;
-    line-height: 2.2rem;
-  }
-  &__title {
-    width: fit-content;
-    margin: 0 auto;
-  }
-  &__bullet {
-    color: $color-blue-300;
-    line-height: 2.2rem;
-    p {
-      display: inline;
-      margin-left: 0.7rem;
+}
+
+.terms-list {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+
+  .terms-list-item {
+    position: relative;
+    padding-left: 2.2rem;
+    margin-bottom: 0.5rem;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: $color-blue-300;
+      border-radius: 50%;
     }
   }
-  &__margin {
-    margin-top: 2.2rem;
+}
+
+@media (max-width: 768px) {
+  .terms-document {
+    padding: 0 1rem;
   }
-  .title__infoPage {
-    font-style: italic;
+
+  .terms-title {
+    font-size: 1.1rem;
   }
 }
