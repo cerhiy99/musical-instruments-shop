@@ -1,0 +1,66 @@
+.privacy-document {
+  color: #333;
+  line-height: 1.6;
+
+  padding: 2rem 0;
+}
+
+.privacy-section {
+  margin-bottom: 2rem;
+}
+
+.privacy-item {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.privacy-item-number {
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.privacy-confirmation {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.privacy-confirmation-text {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  font-weight: 500;
+}
+
+.privacy-terms-list {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.privacy-terms-item {
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  text-align: justify;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .privacy-document {
+    padding: 1rem;
+  }
+
+  .privacy-item {
+    margin-bottom: 1rem;
+  }
+
+  .privacy-terms-item {
+    margin-bottom: 0.75rem;
+  }
+}
