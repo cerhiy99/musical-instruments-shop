@@ -1,0 +1,205 @@
+@import "@/styles/variables.scss";
+.productPage {
+  width: 100%;
+}
+
+.productContainer {
+  display: flex;
+  gap: 3.4rem;
+  margin-bottom: 40px;
+  border: solid 0.1rem $color-gray-50;
+
+  .productLeft {
+    padding-top: 3.4rem;
+    padding-left: 4.1rem;
+    display: flex;
+    flex-direction: column;
+    &__sub {
+      display: flex;
+      justify-content: space-between;
+      .badge__wrapper__container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+    }
+  }
+}
+
+.productGallery {
+  position: relative;
+}
+
+.productInfo {
+  padding-top: 3.2rem;
+  display: flex;
+  flex-direction: column;
+
+  .productMeta {
+    padding-bottom: 2.7rem;
+    display: flex;
+    border-bottom: solid 0.1rem $color-gray-50;
+    .articleInfo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.8rem;
+      color: #666;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.priceBlock {
+  padding-top: 3.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .currentPrice {
+    font-size: 2.6rem;
+    line-height: 2rem;
+    font-weight: 700;
+  }
+
+  .oldPrice {
+    line-height: 1.5rem;
+    color: $color-gray-425;
+    text-decoration: line-through;
+  }
+
+  .savings {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .savingsLabel {
+      font-size: 1.2rem;
+      color: $color-gray-425;
+    }
+
+    .savingsAmount {
+      background-color: $color-yellow-450;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.3rem;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+.availability {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin: 1.6rem 0;
+  color: $color-gray-425;
+
+  .priceMatch {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.3rem;
+    line-height: 2.2rem;
+    color: $color-gray-425;
+    .priceMatchInfo {
+      .spanGreen {
+        font-size: 1.6rem;
+        color: $color-green-300;
+      }
+
+      text-decoration: dotted underline $color-green-300;
+      text-underline-offset: 0.4rem;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 1.2rem;
+  margin: 1.4rem 0;
+
+  .quantitySelector {
+    width: 12.2rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $color-gray-75;
+    overflow: hidden;
+  }
+
+  .quantityButton {
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    width: 2.9rem;
+    height: 2.4rem;
+    cursor: pointer;
+    color: $color-gray-450;
+    &.minus {
+      padding-left: 0.5rem;
+    }
+    &.plus {
+      padding-right: 0.5rem;
+    }
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  .quantityInput {
+    background-color: $color-gray-75;
+    color: $color-gray-450;
+    width: 5.5rem;
+    height: 4rem;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .addToCartButton {
+    width: 11.8rem;
+    height: 4rem;
+    background-color: $color-blue-300;
+    color: white;
+    border: none;
+    line-height: 1.8rem;
+    border-radius: 0.2rem;
+
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $color-blue-400;
+    }
+  }
+}
+
+.buyOneClickButton {
+  width: 15.5rem;
+  height: 4rem;
+  background: white;
+  border: 1px solid $color-blue-300;
+  color: $color-blue-300;
+  border-radius: 0.2rem;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #e3f2fd;
+  }
+  margin-bottom: 5.9rem;
+}
+
+.priceNote {
+  font-size: 12px;
+  color: $color-gray-425;
+  border-top: solid 0.1rem $color-gray-50;
+  padding-top: 3rem;
+}

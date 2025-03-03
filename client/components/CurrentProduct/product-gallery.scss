@@ -1,0 +1,296 @@
+@import "@/styles/variables.scss";
+.gallery {
+  display: flex;
+  //   flex-direction: column-reverse;
+  //   gap: 20px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    gap: 4.1rem;
+    padding: 5.3rem 4.1rem 6rem 0rem;
+  }
+}
+
+.thumbnails {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: auto;
+    max-height: 400px;
+  }
+}
+
+.thumbnail {
+  width: 5.4rem;
+  height: 5.4rem;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: #999;
+  }
+
+  &.active {
+    border-color: #0277bd;
+    border-width: 2px;
+  }
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mainImage {
+  height: 50rem;
+  width: 50rem;
+  position: relative;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.productImage {
+  position: absolute;
+  width: 50rem;
+  height: 50rem;
+  object-fit: contain;
+}
+
+.thumbnailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 767px) {
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
+.thumbnailArrow {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  &.up {
+    transform: rotate(90deg);
+  }
+  &.down {
+    transform: rotate(90deg);
+  }
+
+  &:hover:not(.disabled) {
+    color: $color-gray-425;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  @media (max-width: 767px) {
+    transform: rotate(90deg);
+  }
+}
+
+.zoomButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $color-blue-300;
+  color: white;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &:hover {
+    background: $color-blue-350;
+  }
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s;
+  color: white;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  &:hover {
+    background: $color-blue-350;
+  }
+
+  &.prevButton {
+    left: 10px;
+  }
+
+  &.nextButton {
+    right: 10px;
+  }
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 1000px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #333;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s;
+  &:hover {
+    color: $color-gray-425;
+  }
+}
+
+.modalImageContainer {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.modalNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $color-gray-425;
+  }
+
+  &.modalPrevButton {
+    left: 20px;
+  }
+
+  &.modalNextButton {
+    right: 20px;
+  }
+}
+
+.modalThumbnails {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  overflow-x: auto;
+  background: white;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 5px;
+  }
+}
+
+.modalThumbnail {
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: #999;
+  }
+
+  &.active {
+    border-color: #0277bd;
+    border-width: 2px;
+  }
+}
+
+.modalThumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
