@@ -1,54 +1,18 @@
-.registration-container {
+.login-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.registration-form {
+.login-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-  .form-row {
-    display: flex;
-    gap: 16px;
-
-    @media (max-width: 480px) {
-      flex-direction: column;
-    }
-
-    .form-group {
-      flex: 1;
-    }
-  }
 
   .form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
-
-    &.checkbox {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 10px;
-
-      input {
-        margin-top: 3px;
-      }
-
-      label {
-        font-size: 14px;
-
-        a {
-          color: #0277bd;
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
 
     label {
       font-size: 14px;
@@ -56,6 +20,17 @@
 
       .required {
         color: #e53935;
+      }
+    }
+
+    .password-label-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .error-message {
+        color: #e53935;
+        font-size: 12px;
       }
     }
 
@@ -77,23 +52,47 @@
       }
     }
 
-    input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-
-      &.error {
-        outline: 1px solid #e53935;
-      }
-    }
-
     .error-message {
       color: #e53935;
       font-size: 12px;
     }
   }
 
-  .register-submit-button {
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+      }
+
+      label {
+        font-size: 14px;
+        color: #333;
+        cursor: pointer;
+      }
+    }
+
+    .forgot-password {
+      font-size: 14px;
+      color: #0277bd;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .login-button {
     background-color: #0277bd;
     color: white;
     border: none;
@@ -111,30 +110,33 @@
   }
 }
 
-.login-section {
+.registration-section {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
   border-top: 1px solid #eee;
   padding-top: 20px;
 
-  p {
+  .registration-info {
     font-size: 14px;
     color: #666;
+    line-height: 1.4;
   }
 
-  .login-link-button {
+  .register-button {
     background-color: transparent;
     color: #0277bd;
-    border: none;
-    padding: 0;
+    border: 1px solid #0277bd;
+    border-radius: 4px;
+    padding: 10px 16px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    text-decoration: none;
+    align-self: flex-start;
+    transition: all 0.2s;
 
     &:hover {
-      text-decoration: underline;
+      background-color: rgba(2, 119, 189, 0.05);
     }
   }
 }

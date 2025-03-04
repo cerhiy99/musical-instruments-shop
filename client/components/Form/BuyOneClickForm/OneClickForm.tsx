@@ -2,7 +2,8 @@
 
 import type React from "react";
 import { useState } from "react";
-import "./buy-one-click-form.scss";
+import "../sharedFormStyle.scss";
+import Link from "next/link";
 
 interface BuyOneClickFormProps {
   onSubmit: (formData: {
@@ -155,7 +156,8 @@ const BuyOneClickForm: React.FC<BuyOneClickFormProps> = ({ onSubmit }) => {
           onChange={handleChange}
         />
         <label htmlFor="agreeToTerms">
-          Я согласен на <a href="#">обработку персональных данных</a>
+          Я согласен на{" "}
+          <Link href="/privacy">обработку персональных данных</Link>
         </label>
         {errors.agreeToTerms && (
           <div className="error-message">{errors.agreeToTerms}</div>

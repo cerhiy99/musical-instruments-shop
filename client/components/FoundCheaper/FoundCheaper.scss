@@ -1,0 +1,18 @@
+@import "@/styles/variables.scss";
+.priceMatch {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.3rem;
+  line-height: 2.2rem;
+  color: $color-gray-425;
+  .priceMatchInfo {
+    .spanGreen {
+      font-size: 1.6rem;
+      color: $color-green-300;
+    }
+
+    text-decoration: dotted underline $color-green-300;
+    text-underline-offset: 0.4rem;
+  }
+}

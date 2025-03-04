@@ -1,4 +1,5 @@
 @import "@/styles/variables.scss";
+
 .productPage {
   width: 100%;
 }
@@ -98,69 +99,12 @@
   gap: 3rem;
   margin: 1.6rem 0;
   color: $color-gray-425;
-
-  .priceMatch {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 1.3rem;
-    line-height: 2.2rem;
-    color: $color-gray-425;
-    .priceMatchInfo {
-      .spanGreen {
-        font-size: 1.6rem;
-        color: $color-green-300;
-      }
-
-      text-decoration: dotted underline $color-green-300;
-      text-underline-offset: 0.4rem;
-    }
-  }
 }
 
 .actions {
   display: flex;
   gap: 1.2rem;
   margin: 1.4rem 0;
-
-  .quantitySelector {
-    width: 12.2rem;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: $color-gray-75;
-    overflow: hidden;
-  }
-
-  .quantityButton {
-    border-radius: 0.2rem;
-    display: flex;
-    align-items: center;
-    width: 2.9rem;
-    height: 2.4rem;
-    cursor: pointer;
-    color: $color-gray-450;
-    &.minus {
-      padding-left: 0.5rem;
-    }
-    &.plus {
-      padding-right: 0.5rem;
-    }
-    &:hover {
-      background-color: #f5f5f5;
-    }
-  }
-
-  .quantityInput {
-    background-color: $color-gray-75;
-    color: $color-gray-450;
-    width: 5.5rem;
-    height: 4rem;
-    border: none;
-    text-align: center;
-    font-size: 16px;
-  }
 
   .addToCartButton {
     width: 11.8rem;
@@ -179,24 +123,6 @@
     }
   }
 }
-
-.buyOneClickButton {
-  width: 15.5rem;
-  height: 4rem;
-  background: white;
-  border: 1px solid $color-blue-300;
-  color: $color-blue-300;
-  border-radius: 0.2rem;
-  padding: 10px;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    background-color: #e3f2fd;
-  }
-  margin-bottom: 5.9rem;
-}
-
 .priceNote {
   font-size: 12px;
   color: $color-gray-425;

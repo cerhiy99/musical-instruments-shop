@@ -2,7 +2,8 @@
 
 import type React from "react";
 import { useState } from "react";
-import "./found-cheaper-form.scss";
+import "../sharedFormStyle.scss";
+import Link from "next/link";
 
 interface FoundCheaperFormProps {
   onSubmit: (formData: {
@@ -137,7 +138,9 @@ const FoundCheaperForm: React.FC<FoundCheaperFormProps> = ({
       </div>
 
       <div className="form-group">
-        <label htmlFor="email">E-mail</label>
+        <label htmlFor="email">
+          E-mail <span className="required">*</span>
+        </label>
         <input
           type="email"
           id="email"
@@ -204,7 +207,8 @@ const FoundCheaperForm: React.FC<FoundCheaperFormProps> = ({
           onChange={handleChange}
         />
         <label htmlFor="agreeToTerms">
-          Я согласен на <a href="#">обработку персональных данных</a>
+          Я согласен на{" "}
+          <Link href="/privacy">обработку персональных данных</Link>
         </label>
         {errors.agreeToTerms && (
           <div className="error-message">{errors.agreeToTerms}</div>

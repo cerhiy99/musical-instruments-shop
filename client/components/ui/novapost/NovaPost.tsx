@@ -3,7 +3,7 @@ import "./NovaPost.scss";
 
 export default function NovaPost() {
   return (
-    <div className="delivery">
+    <button className="delivery">
       <div className="deliveryIcon">
         <Image
           src="/images/novapost.png"
@@ -17,6 +17,6 @@ export default function NovaPost() {
         <div className="deliveryTitle">Бесплатная доставка</div>
         <div className="deliverySubtitle">в отделение</div>
       </div>
-    </div>
+    </button>
   );
 }

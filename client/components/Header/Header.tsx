@@ -20,6 +20,9 @@ import { usePathname } from "next/navigation";
 import TopicHeader from "./TopicHeader";
 
 import { useTranslation } from "@/contexts/TranslationProvider";
+import Modal from "../Modal/Modal";
+import RegistrationForm from "../Form/Register/RegisterForm";
+import LoginForm from "../Form/Login/LoginForm";
 type Props = {
   lang: Locale;
 };
@@ -62,9 +65,34 @@ const Header: React.FC<Props> = ({ lang }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isForm, setIsForm] = useState<boolean>(true);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleSubmit = (formData: any) => {
+    console.log("Form submitted:", formData);
+    closeModal();
+    // Here you would typically send the data to your backend
+  };
+  const handleLogin = () => {
+    setIsForm((prev) => !prev);
+  };
 
   return (
     <>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+        {isForm ? (
+          <LoginForm onRegisterClick={handleLogin} onSubmit={handleSubmit} />
+        ) : (
+          <RegistrationForm
+            onLoginClick={handleLogin}
+            onSubmit={handleSubmit}
+          />
+        )}
+        {/* <LoginForm onSubmit={handleSubmit} /> */}
+      </Modal>
       <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
         <SearchBar setSearch={setSearchBar} isOpen />
       </div>
@@ -98,13 +126,13 @@ const Header: React.FC<Props> = ({ lang }) => {
               </div>
             </div>
             <div className="controls">
-              <Link href="/account" className="iconButton">
+              <button className="iconButton" onClick={openModal}>
                 <Login width={16} height={17} />
                 <span className="text-login">
                   <p>{t("navigation.login")}</p>
                 </span>
-              </Link>
-              <Link href="/fav" className="iconButton">
+              </button>
+              <Link href="/favorities" className="iconButton">
                 <Favorite width={18} height={16} />
                 <div className="counter favorite-btn">0</div>
               </Link>

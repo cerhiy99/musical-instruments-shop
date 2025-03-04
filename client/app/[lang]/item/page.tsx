@@ -1,16 +1,14 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import ProductGallery from "@/components/CurrentProduct/product-gallery";
 import ProductTabs from "@/components/CurrentProduct/product-tabs";
 import "./CurrentProduct.scss";
-import Wallet from "@/public/wallet.svg";
-import CircleX from "@/public/circle-x.svg";
 import NovaPost from "@/components/ui/novapost/NovaPost";
 import AvailabilityIcon from "@/components/ui/AvailabilityIcon/AvailabilityIcon";
-import Plus from "@/public/icons/plus.svg";
-import Minus from "@/public/icons/minus.svg";
 import Badge from "@/components/ui/Badge/Bdge";
 import Heart from "@/public/Navbar/NavbarIcons/favorite.svg";
+import QuantitySelector from "@/components/ui/QuantitySelector/QuantitySelector";
+import FoundCheaper from "@/components/FoundCheaper/FoundCheaper";
+import BuyOneClick from "@/components/BuyOneClick/BuyOneClick";
 
 // Имитация получения данных о продукте
 async function getProduct(id: string) {
@@ -100,31 +98,17 @@ export default async function ProductPage({
 
           <div className="availability">
             <AvailabilityIcon availability={product.inStock} />
-            <button className="priceMatch">
-              <Wallet width={15} height={15} />
-              <div className="priceMatchInfo">
-                <span>Нашли дешевле? </span>
-                <span className="spanGreen">Сделаем скидку!</span>
-              </div>
-            </button>
+            <FoundCheaper />
           </div>
 
           <NovaPost />
 
           <div className="actions">
-            <div className="quantitySelector">
-              <button className="quantityButton minus">
-                <Minus size={24} />
-              </button>
-              <input type="text" value="1" className="quantityInput" />
-              <button className="quantityButton plus">
-                <Plus size={24} />
-              </button>
-            </div>
+            <QuantitySelector />
             <button className="addToCartButton">В корзину</button>
           </div>
 
-          <button className="buyOneClickButton">Купить в 1 клик</button>
+          <BuyOneClick />
 
           <div className="priceNote">
             Цена действительна только для интернет-магазина и может отличаться

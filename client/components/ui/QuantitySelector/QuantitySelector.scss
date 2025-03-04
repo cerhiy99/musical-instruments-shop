@@ -1,0 +1,42 @@
+@import "@/styles/variables.scss";
+.quantitySelector {
+  width: 12.2rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-gray-75;
+  overflow: hidden;
+
+  .quantityInput {
+    background-color: $color-gray-75;
+    color: $color-gray-450;
+    width: 5.5rem;
+    height: 4rem;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+  }
+  .quantityButton {
+    border-radius: 0.2rem;
+    display: flex;
+    align-items: center;
+    width: 2.9rem;
+    height: 4rem;
+    cursor: pointer;
+    color: $color-gray-450;
+    &.minus {
+      padding-left: 0.5rem;
+    }
+    &.plus {
+      padding-right: 0.5rem;
+    }
+    &:hover {
+      background-color: #f5f5f5;
+    }
+    &:disabled {
+      color: #a7a7a7c0;
+      cursor: default;
+    }
+  }
+}

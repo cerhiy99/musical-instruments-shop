@@ -4,38 +4,25 @@ import type React from "react";
 import { useState } from "react";
 import "./LoginForm.scss";
 
-interface RegistrationFormProps {
+interface LoginFormProps {
   onSubmit: (formData: {
-    email: string;
+    login: string;
     password: string;
-    confirmPassword: string;
-    firstName: string;
-    lastName: string;
-    agreeToTerms: boolean;
+    rememberMe: boolean;
   }) => void;
-  onLoginClick: () => void;
+  onRegisterClick: () => void;
 }
 
-const RegistrationForm: React.FC<RegistrationFormProps> = ({
-  onSubmit,
-  onLoginClick,
-}) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, onRegisterClick }) => {
   const [formData, setFormData] = useState({
-    email: "",
+    login: "",
     password: "",
-    confirmPassword: "",
-    firstName: "",
-    lastName: "",
-    agreeToTerms: false,
+    rememberMe: false,
   });
 
   const [errors, setErrors] = useState<{
-    email?: string;
+    login?: string;
     password?: string;
-    confirmPassword?: string;
-    firstName?: string;
-    lastName?: string;
-    agreeToTerms?: string;
   }>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,42 +46,16 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
 
     // Validate form
     const newErrors: {
-      email?: string;
+      login?: string;
       password?: string;
-      confirmPassword?: string;
-      firstName?: string;
-      lastName?: string;
-      agreeToTerms?: string;
     } = {};
 
-    if (!formData.email.trim()) {
-      newErrors.email = "Заполните это поле";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Введите корректный email";
+    if (!formData.login.trim()) {
+      newErrors.login = "Заполните это поле";
     }
 
     if (!formData.password) {
       newErrors.password = "Заполните это поле";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Пароль должен содержать минимум 6 символов";
-    }
-
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Заполните это поле";
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Пароли не совпадают";
-    }
-
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = "Заполните это поле";
-    }
-
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = "Заполните это поле";
-    }
-
-    if (!formData.agreeToTerms) {
-      newErrors.agreeToTerms = "Необходимо согласие с условиями";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -106,64 +67,33 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
   };
 
   return (
-    <div className="registration-container">
-      <form className="registration-form" onSubmit={handleSubmit}>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="email">
-            Email <span className="required">*</span>
+          <label htmlFor="login">
+            Логин <span className="required">*</span>
           </label>
           <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
+            type="text"
+            id="login"
+            name="login"
+            value={formData.login}
             onChange={handleChange}
             placeholder="example@email.com"
-            className={errors.email ? "error" : ""}
+            className={errors.login ? "error" : ""}
           />
-          {errors.email && <div className="error-message">{errors.email}</div>}
-        </div>
-
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="firstName">
-              Имя <span className="required">*</span>
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              className={errors.firstName ? "error" : ""}
-            />
-            {errors.firstName && (
-              <div className="error-message">{errors.firstName}</div>
-            )}
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="lastName">
-              Фамилия <span className="required">*</span>
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              className={errors.lastName ? "error" : ""}
-            />
-            {errors.lastName && (
-              <div className="error-message">{errors.lastName}</div>
-            )}
-          </div>
+          {errors.login && <div className="error-message">{errors.login}</div>}
         </div>
 
         <div className="form-group">
-          <label htmlFor="password">
-            Пароль <span className="required">*</span>
-          </label>
+          <div className="password-label-container">
+            <label htmlFor="password">
+              Пароль <span className="required">*</span>
+            </label>
+            {errors.password && (
+              <div className="error-message">{errors.password}</div>
+            )}
+          </div>
           <input
             type="password"
             id="password"
@@ -172,59 +102,40 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             onChange={handleChange}
             className={errors.password ? "error" : ""}
           />
-          {errors.password && (
-            <div className="error-message">{errors.password}</div>
-          )}
         </div>
 
-        <div className="form-group">
-          <label htmlFor="confirmPassword">
-            Подтвердите пароль <span className="required">*</span>
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className={errors.confirmPassword ? "error" : ""}
-          />
-          {errors.confirmPassword && (
-            <div className="error-message">{errors.confirmPassword}</div>
-          )}
+        <div className="form-actions">
+          <div className="remember-me">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              name="rememberMe"
+              checked={formData.rememberMe}
+              onChange={handleChange}
+            />
+            <label htmlFor="rememberMe">Запомнить меня</label>
+          </div>
+          <a href="#" className="forgot-password">
+            Забыли пароль?
+          </a>
         </div>
 
-        <div className="form-group checkbox">
-          <input
-            type="checkbox"
-            id="agreeToTerms"
-            name="agreeToTerms"
-            checked={formData.agreeToTerms}
-            onChange={handleChange}
-            className={errors.agreeToTerms ? "error" : ""}
-          />
-          <label htmlFor="agreeToTerms">
-            Я согласен с <a href="#">условиями использования</a> и{" "}
-            <a href="#">политикой конфиденциальности</a>
-          </label>
-          {errors.agreeToTerms && (
-            <div className="error-message">{errors.agreeToTerms}</div>
-          )}
-        </div>
-
-        <button type="submit" className="register-submit-button">
-          Зарегистрироваться
+        <button type="submit" className="login-button">
+          Войти
         </button>
       </form>
 
-      <div className="login-section">
-        <p>Уже есть аккаунт?</p>
-        <button onClick={onLoginClick} className="login-link-button">
-          Войти
+      <div className="registration-section">
+        <div className="registration-info">
+          Вам будет доступно управление рассылками, использование персональных
+          данных, связь профиля с аккаунтом соцсети и т.д.
+        </div>
+        <button onClick={onRegisterClick} className="register-button">
+          Регистрация
         </button>
       </div>
     </div>
   );
 };
 
-export default RegistrationForm;
+export default LoginForm;
