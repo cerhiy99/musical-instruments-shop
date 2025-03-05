@@ -39,11 +39,7 @@ export default async function RootLayout({
       <body className={ubuntu.className}>
         <TranslationProvider>
           <Header lang={params.lang} />
-          <div className="wrapper">
-            {/* <Sidebar />
-            <main>{children}</main> */}
-            {children}
-          </div>
+          <div className="wrapper">{children}</div>
           <Footer lang={params.lang} />
           <FloatingButtons />
         </TranslationProvider>

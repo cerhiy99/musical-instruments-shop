@@ -6,10 +6,20 @@
   gap: 1.5rem;
   min-height: 46.2rem;
   .greetingImage {
-    width: 25.8rem;
+    max-width: 25.8rem;
+    width: 100%; // Занимает пропорциональную ширину
+    height: auto; // Высота подстраивается автоматически
+    object-fit: contain; // Сохраняет пропорции без обрезки
+    align-self: flex-start; // Выравнивание по верху
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
   .greetingText {
-    width: 81.4rem;
+    max-width: 81.4rem;
+    width: 100%;
     list-style: none;
     padding: 2.4rem 2rem;
 

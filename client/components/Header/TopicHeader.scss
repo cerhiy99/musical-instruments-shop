@@ -5,7 +5,8 @@
   height: 12rem;
   background-color: $color-gray-75;
   &__container {
-    width: 144rem;
+    max-width: 1440px;
+    width: 100%;
     padding: 3rem;
     margin: 0 auto;
   }

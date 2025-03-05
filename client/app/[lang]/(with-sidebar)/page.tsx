@@ -129,7 +129,7 @@ export default async function Home({
 }) {
   const { aside } = await getDictionary(lang);
   return (
-    <div className="home">
+    <>
       <ImageSlider images={sliderImages} interval={5000} />
       <div className="titleCategoty__container">
         <h4 className="titleCategoty__title">{aside.popularCatalog}</h4>
@@ -155,6 +155,6 @@ export default async function Home({
       <HotProducts />
       <GreetingBanner />
       <Brands lang={lang} />
-    </div>
+    </>
   );
 }

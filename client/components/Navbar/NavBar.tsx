@@ -16,9 +16,10 @@ type Props = {
   lang: Locale;
   href: Array<{ title: string; href: string }>;
   setSearch: React.Dispatch<React.SetStateAction<boolean>>;
+  onFormOpen: () => void;
 };
 
-const Navbar: React.FC<Props> = ({ lang, href, setSearch }) => {
+const Navbar: React.FC<Props> = ({ lang, href, setSearch, onFormOpen }) => {
   const { t } = useTranslation();
   return (
     <div className="navbar__container">
@@ -40,15 +41,15 @@ const Navbar: React.FC<Props> = ({ lang, href, setSearch }) => {
       </div>
 
       <div className="navbar__actions">
-        <button className="navbar__action-btn wide-btn">
+        <button className="navbar__action-btn wide-btn" onClick={onFormOpen}>
           <Login height={21} width={21} />
         </button>
-        <button className="navbar__action-btn narrow-btn">
+        <Link href={"/favorities"} className="navbar__action-btn narrow-btn">
           <Favorite height={23} width={21} />
-        </button>
-        <button className="navbar__action-btn narrow-btn">
+        </Link>
+        <Link href={"/cart"} className="navbar__action-btn narrow-btn">
           <Basket height={22} width={21} />
-        </button>
+        </Link>
         <button
           className="navbar__action-btn wide-btn"
           onClick={() => setSearch(true)}

@@ -50,12 +50,17 @@ export default function ImageSlider({
       onMouseLeave={() => setIsHovered(false)}
     >
       {images.map((image, index) => (
-        <Link
+        <div
           key={index}
-          href={image.url}
+          // href={image.url}
           className={`sliderSlide ${index === currentIndex ? "active" : ""}`}
         >
-          <Image fill src={image.src || "/placeholder.svg"} alt={image.alt} />
+          <Image
+            width={1092}
+            height={450}
+            src={image.src || "/placeholder.svg"}
+            alt={image.alt}
+          />
           <div className="sliderSlideContent">
             <h2>{image.text}</h2>
             <div>
@@ -65,7 +70,7 @@ export default function ImageSlider({
               <p>-Віолончелі</p>
             </div>
           </div>
-        </Link>
+        </div>
       ))}
 
       <button

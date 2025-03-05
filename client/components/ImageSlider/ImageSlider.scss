@@ -2,7 +2,9 @@
 
 .slider {
   position: relative;
+  width: 100%; // Занимает всю доступную ширину
   height: 45rem;
+  max-height: 45rem;
   overflow: hidden;
 
   &Slide {

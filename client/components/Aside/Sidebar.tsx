@@ -404,14 +404,15 @@ export default function Sidebar() {
                   : ""
               }`}
             >
-              <Link href={`/category/${encodeURIComponent(category.name)}`}>
+              <div>
+                {/* <Link href={`/category/${encodeURIComponent(category.name)}`}> */}
                 <div className="categoryItem__wrapper">
                   <h3>{t("aside.catalog")[i]}</h3>
                   <div className="categoryItem__wrapper--svg">
                     <ArrowIcon height={8} />
                   </div>
                 </div>
-              </Link>
+              </div>
               {/* {true && ( */}
               {activeCategory === category.name && (
                 <div

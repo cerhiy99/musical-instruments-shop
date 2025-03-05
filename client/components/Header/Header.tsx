@@ -97,7 +97,12 @@ const Header: React.FC<Props> = ({ lang }) => {
         <SearchBar setSearch={setSearchBar} isOpen />
       </div>
       <nav ref={navbarRef} className={`navbar ${showNavbar ? "visible" : ""}`}>
-        <Navbar lang={lang} href={navItems} setSearch={setSearchBar} />
+        <Navbar
+          onFormOpen={openModal}
+          lang={lang}
+          href={navItems}
+          setSearch={setSearchBar}
+        />
       </nav>
 
       <header className="header" ref={headerRef}>

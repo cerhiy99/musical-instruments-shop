@@ -6,12 +6,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // width: 22.44rem;
-  width: 21.839rem;
+  max-width: 21.839rem;
+  width: 100%;
   height: 45.6rem;
   border: 0.1rem solid $color-gray-50;
   transition: all ease 0.2s;
   position: relative;
+
+  @media (max-width: $desktop) {
+    max-width: 46.5rem;
+    width: 100%;
+  }
   a {
     position: absolute;
     inset: 0;
@@ -27,6 +32,9 @@
     position: absolute;
     right: 2.19rem;
     top: 0.1rem;
+    @media (max-width: $desktop) {
+      left: 2.19rem;
+    }
 
     &__container {
       display: flex;
@@ -35,6 +43,9 @@
       padding-top: 2.4rem;
       gap: 0.6rem;
       width: 18.34rem;
+      @media (max-width: $desktop) {
+        width: 30rem;
+      }
     }
     .badge {
       padding: 0.5rem 1rem;

@@ -11,10 +11,10 @@
   &__container {
     height: 6.4rem;
     max-width: 144rem;
+    width: 100%;
     padding: 1.3rem 3rem;
     margin: 0 auto;
     display: flex;
-    // justify-content: space-between;
     align-items: flex-start;
     gap: 2.3rem;
     font-size: 14px;
@@ -22,12 +22,12 @@
 }
 .contact {
   position: relative;
-  width: 464px;
+  width: 46.4rem;
   height: fit-content;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
+  gap: 1.2rem;
   // margin-bottom: 20px;
 
   &__number {
@@ -54,10 +54,10 @@
 }
 
 .controls {
-  margin-left: 203px;
+  margin-left: 20.3rem;
   display: flex;
   align-items: flex-start;
-  gap: 30px;
+  gap: 3rem;
 }
 
 .iconButton {
@@ -78,7 +78,7 @@
   height: 104px;
   border-bottom: 1px solid $color-gray-50;
   &__container {
-    max-width: 1440px;
+    max-width: 144rem;
     padding-left: 3rem;
     padding-right: 3rem;
     margin: 0 auto;
@@ -113,9 +113,9 @@
 
 .flagBanner {
   top: 0;
-  left: 236px;
+  left: 23.6rem;
   position: absolute;
-  width: 228px;
+  width: 22.8rem;
   height: 35px;
   overflow: hidden;
 }

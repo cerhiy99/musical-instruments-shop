@@ -1,11 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import "./HotProducts.scss";
 import CatalogCardItem from "../Card/CatalogCardItem";
-import { Filter } from "@/types/catalog";
 
 type FilterHot = {
   isAdviced: boolean;
