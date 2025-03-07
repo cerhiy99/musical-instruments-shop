@@ -1,4 +1,3 @@
-import BulletPoint from "@/components/ui/BulletPoint";
 import "./Dealers.scss";
 
 const dealersInfoData = [

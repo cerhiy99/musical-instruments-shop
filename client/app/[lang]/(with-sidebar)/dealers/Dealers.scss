@@ -1,7 +1,8 @@
 @import "@/styles/variables.scss";
 
 .dealersPage__grid {
-  width: 44.1rem;
+  max-width: 44.1rem;
+  width: 100%;
   margin-bottom: 4.7rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -9,11 +10,20 @@
 
   &--city {
     width: 33.6rem;
+    @media (max-width: $desktop) {
+      max-width: 100%;
+      width: 100%;
+    }
     p {
       font-weight: 700;
     }
   }
   &--numbers {
     padding-bottom: 2.5rem;
+
+    @media (max-width: $mobile) {
+      justify-self: end;
+      width: fit-content;
+    }
   }
 }
