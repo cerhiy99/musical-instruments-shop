@@ -6,6 +6,9 @@
   gap: 1.5rem;
   min-height: 46.2rem;
   .greetingImage {
+    @media (max-width: $tablet) {
+      display: none;
+    }
     max-width: 25.8rem;
     width: 100%; // Занимает пропорциональную ширину
     height: auto; // Высота подстраивается автоматически
@@ -18,10 +21,16 @@
     }
   }
   .greetingText {
+    p {
+      text-indent: 3rem;
+    }
     max-width: 81.4rem;
     width: 100%;
     list-style: none;
     padding: 2.4rem 2rem;
+    @media (max-width: $mobile) {
+      padding: 0;
+    }
 
     a {
       color: $color-blue-350;

@@ -4,7 +4,12 @@
   position: relative;
   width: 100%; // Занимает всю доступную ширину
   height: 45rem;
-  max-height: 45rem;
+  @media (max-width: $desktop) {
+    max-height: 30rem;
+  }
+  @media (max-width: $tablet) {
+    max-height: 15rem;
+  }
   overflow: hidden;
 
   &Slide {
@@ -27,6 +32,9 @@
     }
 
     &Content {
+      @media (max-width: $tablet) {
+        display: none;
+      }
       position: absolute;
       top: 0;
       left: 0;

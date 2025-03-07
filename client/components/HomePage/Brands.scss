@@ -13,6 +13,9 @@
   @media (max-width: $desktop) {
     grid-template-columns: repeat(3, 1fr);
   }
+  @media (max-width: $mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 .brand__container--item {
   height: 12.2rem;
