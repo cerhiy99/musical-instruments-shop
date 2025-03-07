@@ -18,7 +18,6 @@ import NavLink from "../ui/NavLink";
 import SearchBar from "../SearchBar/SearchBar";
 import { usePathname } from "next/navigation";
 import TopicHeader from "./TopicHeader";
-
 import { useTranslation } from "@/contexts/TranslationProvider";
 import Modal from "../Modal/Modal";
 import RegistrationForm from "../Form/Register/RegisterForm";
@@ -45,10 +44,12 @@ const Header: React.FC<Props> = ({ lang }) => {
   const [showSearchBar, setSearchBar] = useState<boolean>(false);
   const headerRef = useRef<HTMLElement | null>(null);
   const navbarRef = useRef<HTMLElement | null>(null);
+  const [windowWidth, setWindowWidth] = useState(0);
   const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
+      if (window.innerWidth < 1024) return;
       if (!headerRef.current || !navbarRef.current) return;
 
       const headerHeight = headerRef.current.offsetHeight;
@@ -60,6 +61,19 @@ const Header: React.FC<Props> = ({ lang }) => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth); // обновляем состояние на ширину окна
+    };
+    // Инициализируем ширину экрана при монтировании
+    handleResize();
+    // Добавляем обработчик события изменения размера окна
+    window.addEventListener("resize", handleResize);
+
+    // Очистка обработчика при размонтировании компонента
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -79,117 +93,137 @@ const Header: React.FC<Props> = ({ lang }) => {
 
   return (
     <>
-      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        {isForm ? (
-          <LoginForm onRegisterClick={handleLogin} onSubmit={handleSubmit} />
-        ) : (
-          <RegistrationForm
-            onLoginClick={handleLogin}
-            onSubmit={handleSubmit}
-          />
-        )}
-        {/* <LoginForm onSubmit={handleSubmit} /> */}
-      </Modal>
-      <MobileNavbar lang={lang} />
-      <nav ref={navbarRef} className={`navbar ${showNavbar ? "visible" : ""}`}>
-        <Navbar
-          onFormOpen={openModal}
-          lang={lang}
-          href={navItems}
-          setSearch={setSearchBar}
-        />
-      </nav>
-      <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
-        <SearchBar setSearch={setSearchBar} isOpen />
-      </div>
+      {windowWidth <= 1024 ? (
+        <MobileNavbar lang={lang} />
+      ) : (
+        <>
+          <Modal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            title="Обратная связь"
+          >
+            {isForm ? (
+              <LoginForm
+                onRegisterClick={handleLogin}
+                onSubmit={handleSubmit}
+              />
+            ) : (
+              <RegistrationForm
+                onLoginClick={handleLogin}
+                onSubmit={handleSubmit}
+              />
+            )}
+            {/* <LoginForm onSubmit={handleSubmit} /> */}
+          </Modal>
+          <nav
+            ref={navbarRef}
+            className={`navbar ${showNavbar ? "visible" : ""}`}
+          >
+            <Navbar
+              onFormOpen={openModal}
+              lang={lang}
+              href={navItems}
+              setSearch={setSearchBar}
+            />
+          </nav>
+          <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
+            <SearchBar setSearch={setSearchBar} isOpen />
+          </div>
 
-      <header className="header" ref={headerRef}>
-        <div className="topBar">
-          <div className="topBar__container">
-            <div className="contact">
-              <div className="contact__wrapper">
-                <Phone height={17} width={9} strokeWidth={5} />
-                <span className="contact__number">
-                  <a href="tel:0800300334">0 800 300 334</a>
-                </span>
-              </div>
-              {lang === "ru" && (
-                <div className="flagBanner">
-                  <Image src={flagBanner} alt="flag" fill objectFit="cover" />
-                  <div className="btn__container">
-                    <p className="btn-text">Читай сторінку рідною мовою!</p>
+          <header className="header" ref={headerRef}>
+            <div className="topBar">
+              <div className="topBar__container">
+                <div className="contact">
+                  <div className="contact__wrapper">
+                    <Phone height={17} width={9} strokeWidth={5} />
+                    <span className="contact__number">
+                      <a href="tel:0800300334">0 800 300 334</a>
+                    </span>
+                  </div>
+                  {lang === "ru" && (
+                    <div className="flagBanner">
+                      <Image
+                        src={flagBanner}
+                        alt="flag"
+                        fill
+                        objectFit="cover"
+                      />
+                      <div className="btn__container">
+                        <p className="btn-text">Читай сторінку рідною мовою!</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="schedule">
+                  <div className="schedule__wrapper">
+                    <span className="schedule-info">
+                      <p>{t("navigation.schedule")}</p>
+                    </span>
+                    <a className="callback">{t("navigation.callBack")}</a>
                   </div>
                 </div>
-              )}
-            </div>
-            <div className="schedule">
-              <div className="schedule__wrapper">
-                <span className="schedule-info">
-                  <p>{t("navigation.schedule")}</p>
-                </span>
-                <a className="callback">{t("navigation.callBack")}</a>
+                <div className="controls">
+                  <button className="iconButton" onClick={openModal}>
+                    <Login width={16} height={17} />
+                    <span className="text-login">
+                      <p>{t("navigation.login")}</p>
+                    </span>
+                  </button>
+                  <Link href="/favorities" className="iconButton">
+                    <Favorite width={18} height={16} />
+                    <div className="counter favorite-btn">0</div>
+                  </Link>
+
+                  <Link href="/cart" className="iconButton">
+                    <Basket width={16} height={17} />
+
+                    <p className="basket-btn">{t("navigation.cart")}</p>
+
+                    <div className="counter">0</div>
+                  </Link>
+                  <button
+                    className="iconButton"
+                    onClick={() => {
+                      setSearchBar(true);
+                    }}
+                  >
+                    <Search width={17} height={17} />
+                    <p className="search-btn">{t("navigation.search")}</p>
+                  </button>
+                  <LanguageSwitcher lang={lang} />
+                </div>
               </div>
             </div>
-            <div className="controls">
-              <button className="iconButton" onClick={openModal}>
-                <Login width={16} height={17} />
-                <span className="text-login">
-                  <p>{t("navigation.login")}</p>
-                </span>
-              </button>
-              <Link href="/favorities" className="iconButton">
-                <Favorite width={18} height={16} />
-                <div className="counter favorite-btn">0</div>
-              </Link>
 
-              <Link href="/cart" className="iconButton">
-                <Basket width={16} height={17} />
+            <div className="mainBar">
+              <div className="mainBar__container">
+                <div className="logo">
+                  <Link href="/">
+                    <Logo height={83.3} width={190} />
+                  </Link>
+                </div>
+                <div className="shopTitle">
+                  <h1 className="shopTitle__wrapper">
+                    {t("navigation.shopTitle")}
+                  </h1>
+                </div>
 
-                <p className="basket-btn">{t("navigation.cart")}</p>
-
-                <div className="counter">0</div>
-              </Link>
-              <button
-                className="iconButton"
-                onClick={() => {
-                  setSearchBar(true);
-                }}
-              >
-                <Search width={17} height={17} />
-                <p className="search-btn">{t("navigation.search")}</p>
-              </button>
-              <LanguageSwitcher lang={lang} />
+                <nav className="header__nav ">
+                  {navItems.map((navItem) => (
+                    <NavLink
+                      key={navItem.title}
+                      href={navItem.href}
+                      isByClass={true}
+                    >
+                      {t(`navigation.${navItem.title}`)}
+                    </NavLink>
+                  ))}
+                </nav>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="mainBar">
-          <div className="mainBar__container">
-            <div className="logo">
-              <Link href="/">
-                <Logo height={83.3} width={190} />
-              </Link>
-            </div>
-            <div className="shopTitle">
-              <h1 className="shopTitle__wrapper">
-                {t("navigation.shopTitle")}
-              </h1>
-            </div>
-
-            <nav className="header__nav ">
-              {navItems.map((navItem) => (
-                <NavLink
-                  key={navItem.title}
-                  href={navItem.href}
-                  isByClass={true}
-                >
-                  {t(`navigation.${navItem.title}`)}
-                </NavLink>
-              ))}
-            </nav>
-          </div>
-        </div>
-      </header>
+          </header>
+        </>
+      )}
       {pathname === "/en" || pathname === "/ru" || pathname === "/uk" ? null : (
         <TopicHeader />
       )}

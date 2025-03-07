@@ -2,7 +2,8 @@
 @import "variables";
 
 body {
-  min-height: 100vh;
+  // min-height: 100vh;
+  height: fit-content;
   margin: 0 auto;
   overflow-x: hidden;
   background: #ffffff;
