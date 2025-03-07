@@ -2,7 +2,8 @@
 
 .servicePage {
   padding-top: 4rem;
-  width: 109.2rem;
+  max-width: 109.2rem;
+  width: 100%;
   margin-bottom: 4.7rem;
   &__info {
     padding-bottom: 2.3rem;
@@ -12,8 +13,17 @@
     }
   }
   &__image {
-    width: 60rem;
+    position: relative;
+    max-width: 60rem;
+    width: 100%;
+    max-height: 41.85rem;
+
     margin: 4rem auto 2.7rem;
+    img {
+      height: auto;
+      overflow: hidden;
+      object-fit: cover;
+    }
   }
   h2 {
     font-size: 2.8rem;
@@ -31,7 +41,7 @@
   li {
     p {
       margin-left: 0.7rem;
-      display: inline-block;
+      display: inline;
     }
 
     color: $color-blue-300;
