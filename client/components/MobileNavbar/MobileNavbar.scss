@@ -6,6 +6,9 @@ $blue: #0057b7;
 
 // Banner
 .language-banner {
+  @media (min-width: $desktop) {
+    display: none;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +40,9 @@ $blue: #0057b7;
 
 // Header
 .mobile-header {
+  @media (min-width: $desktop) {
+    display: none;
+  }
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,6 +139,9 @@ $blue: #0057b7;
 
 // Mobile Menu
 .mobile-menu-overlay {
+  @media (min-width: $desktop) {
+    display: none;
+  }
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
