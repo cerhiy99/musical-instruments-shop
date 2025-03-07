@@ -10,6 +10,7 @@
     @media (max-width: 1250px) {
       .event__description {
         display: -webkit-box;
+        line-clamp: 6;
         -webkit-line-clamp: 6; /* Количество строк */
         -webkit-box-orient: vertical;
         overflow: hidden;
