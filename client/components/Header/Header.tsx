@@ -23,6 +23,7 @@ import { useTranslation } from "@/contexts/TranslationProvider";
 import Modal from "../Modal/Modal";
 import RegistrationForm from "../Form/Register/RegisterForm";
 import LoginForm from "../Form/Login/LoginForm";
+import MobileNavbar from "../MobileNavbar/MobileNavbar";
 type Props = {
   lang: Locale;
 };
@@ -54,17 +55,13 @@ const Header: React.FC<Props> = ({ lang }) => {
       const navbarHeight = navbarRef.current.offsetHeight;
       const scrollY = window.scrollY;
 
-      if (scrollY > headerHeight) {
-        setShowNavbar(true);
-      }
-      if (scrollY < headerHeight - navbarHeight) {
-        setShowNavbar(false);
-      }
+      setShowNavbar(scrollY > headerHeight);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isForm, setIsForm] = useState<boolean>(true);
 
@@ -93,9 +90,7 @@ const Header: React.FC<Props> = ({ lang }) => {
         )}
         {/* <LoginForm onSubmit={handleSubmit} /> */}
       </Modal>
-      <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
-        <SearchBar setSearch={setSearchBar} isOpen />
-      </div>
+      <MobileNavbar lang={lang} />
       <nav ref={navbarRef} className={`navbar ${showNavbar ? "visible" : ""}`}>
         <Navbar
           onFormOpen={openModal}
@@ -104,15 +99,20 @@ const Header: React.FC<Props> = ({ lang }) => {
           setSearch={setSearchBar}
         />
       </nav>
+      <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
+        <SearchBar setSearch={setSearchBar} isOpen />
+      </div>
 
       <header className="header" ref={headerRef}>
         <div className="topBar">
           <div className="topBar__container">
             <div className="contact">
-              <Phone height={12} width={9} strokeWidth={5} />
-              <span className="contact__number">
-                <a href="tel:0800300334">0 800 300 334</a>
-              </span>
+              <div className="contact__wrapper">
+                <Phone height={17} width={9} strokeWidth={5} />
+                <span className="contact__number">
+                  <a href="tel:0800300334">0 800 300 334</a>
+                </span>
+              </div>
               {lang === "ru" && (
                 <div className="flagBanner">
                   <Image src={flagBanner} alt="flag" fill objectFit="cover" />
@@ -165,9 +165,11 @@ const Header: React.FC<Props> = ({ lang }) => {
 
         <div className="mainBar">
           <div className="mainBar__container">
-            <Link href="/" className="logo">
-              <Logo height={83.3} width={190} />
-            </Link>
+            <div className="logo">
+              <Link href="/">
+                <Logo height={83.3} width={190} />
+              </Link>
+            </div>
             <div className="shopTitle">
               <h1 className="shopTitle__wrapper">
                 {t("navigation.shopTitle")}
@@ -179,8 +181,7 @@ const Header: React.FC<Props> = ({ lang }) => {
                 <NavLink
                   key={navItem.title}
                   href={navItem.href}
-                  margin={{ left: 2.4, right: 2.4 }}
-                  padding={{ top: 3.9, bottom: 3.9 }}
+                  isByClass={true}
                 >
                   {t(`navigation.${navItem.title}`)}
                 </NavLink>

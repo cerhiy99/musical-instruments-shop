@@ -9,6 +9,7 @@ interface NavLinkProps {
   href: string;
   padding?: { left?: number; right?: number; top?: number; bottom?: number };
   margin?: { left?: number; right?: number; top?: number; bottom?: number };
+  isByClass?: boolean | undefined;
   children: ReactNode;
 }
 
@@ -17,6 +18,7 @@ export default function NavLink({
   children,
   padding,
   margin,
+  isByClass,
 }: NavLinkProps) {
   const pathname = usePathname();
   const isActive = pathname.includes(href);
@@ -24,7 +26,7 @@ export default function NavLink({
     console.log(pathname, href);
   }, [pathname, href]);
 
-  return (
+  return !isByClass ? (
     <Link
       href={href}
       className={`nav-link ${isActive ? "nav-link--active" : ""}`}
@@ -39,6 +41,14 @@ export default function NavLink({
         marginTop: `${margin?.top ? margin?.top : 0}rem`,
         marginBottom: `${margin?.bottom ? margin?.bottom : 0}rem`,
       }}
+    >
+      {children}
+      <span className="nav-link__underline"></span>
+    </Link>
+  ) : (
+    <Link
+      href={href}
+      className={`nav-link ${isActive ? "nav-link--active" : ""}`}
     >
       {children}
       <span className="nav-link__underline"></span>

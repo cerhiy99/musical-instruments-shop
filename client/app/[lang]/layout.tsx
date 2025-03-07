@@ -4,7 +4,6 @@ import { Locale, i18n } from "@/i18n.config";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { getDictionary } from "@/lib/dictionary";
-import Sidebar from "../../components/Aside/Sidebar";
 import "@/styles/App.scss";
 import FloatingButtons from "@/components/FloatingButtons/FloatingButtons";
 import { TranslationProvider } from "@/contexts/TranslationProvider";

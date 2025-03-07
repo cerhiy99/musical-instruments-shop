@@ -6,15 +6,37 @@
   height: 24.6rem;
   width: 100%;
   padding-top: 4.2rem;
+  @media (max-width: 1220px) {
+    height: fit-content;
+    padding-bottom: 2rem;
+  }
+  @media (max-width: $tablet) {
+    padding-bottom: 4rem;
+  }
 
   &__container {
     padding: 0 3rem;
     max-width: 144rem;
+    width: 100%;
     margin: 0 auto;
   }
   &__col {
-    display: flex;
-    gap: 15rem;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    @media (max-width: $desktop) {
+      grid-template-columns: repeat(3, auto);
+      justify-content: center;
+      column-gap: 5rem;
+    }
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(1, auto);
+      justify-content: center;
+      row-gap: 1rem;
+      .footer__item {
+        place-items: center;
+      }
+    }
   }
 
   &__contact {
@@ -37,6 +59,7 @@
 }
 .socialLinks {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 0.5rem;
   &__icon {
@@ -50,4 +73,5 @@
   display: flex;
   gap: 1.6rem;
   align-items: center;
+  flex-shrink: 0;
 }

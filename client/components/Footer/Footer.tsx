@@ -25,7 +25,7 @@ const Footer = async ({ lang }: Props) => {
               {new Date().getFullYear()}© {footer.name}
             </p>
           </div>
-          <div className="footer__item ">
+          <div className="footer__item">
             <div className="footer__contacts">
               <p className="footer__contact item__contacts">
                 {footer.contacts}
@@ -39,7 +39,7 @@ const Footer = async ({ lang }: Props) => {
 
               <div className="item__contacts">
                 <div className="contactSVG__wrapper">
-                  <EnvelopeIcon width={16} height={16} />
+                  <EnvelopeIcon width={20} height={16} />
                   <a>lviv@skm-music.com.ua</a>
                 </div>
               </div>

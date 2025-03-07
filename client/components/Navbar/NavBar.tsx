@@ -29,12 +29,7 @@ const Navbar: React.FC<Props> = ({ lang, href, setSearch, onFormOpen }) => {
 
       <div className="navbar__nav">
         {href.map((item) => (
-          <NavLink
-            key={item.href}
-            href={item.href}
-            margin={{ left: 1.6, right: 1.6 }}
-            padding={{ top: 1.9, bottom: 2.1 }}
-          >
+          <NavLink key={item.href} href={item.href} isByClass={true}>
             {t(`navigation.${item.title}`)}
           </NavLink>
         ))}
