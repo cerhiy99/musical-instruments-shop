@@ -1,7 +1,8 @@
 @import "@/styles/variables.scss";
 
 .aboutPage {
-  width: 109.2rem;
+  max-width: 109.2rem;
+  width: 100%;
   margin-bottom: 4.7rem;
 
   &__info {
@@ -23,7 +24,7 @@
   li {
     p {
       margin-left: 0.7rem;
-      display: inline-block;
+      display: inline;
     }
 
     // color: $color-blue-300;
