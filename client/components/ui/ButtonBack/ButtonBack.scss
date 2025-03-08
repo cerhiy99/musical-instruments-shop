@@ -1,0 +1,17 @@
+@import "@/styles/variables.scss";
+
+.ButtonBack {
+  display: flex;
+  align-items: center;
+  //   justify-content: space-around;
+  width: 19rem;
+  height: 4.2rem;
+  border: 0.1rem solid $color-gray-50;
+  &__svgWrapper {
+    padding: 1.2rem 1.2rem;
+    border-right: 0.1rem solid $color-gray-50;
+  }
+  &__container {
+    padding: 0rem 2rem;
+  }
+}

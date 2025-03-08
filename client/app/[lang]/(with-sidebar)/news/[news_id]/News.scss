@@ -1,21 +1,31 @@
 @import "@/styles/variables.scss";
 .news-article {
   overflow: hidden;
+  max-width: 109.2rem;
+  width: 100%;
 
   &__image-container {
     border-radius: 0.5rem;
     position: relative;
-    height: 47.9rem;
+    max-width: 109.2rem;
+    max-height: 47.9rem;
     width: 100%;
+    height: auto;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
   }
 
   &__image {
     object-fit: cover;
+    width: 100%;
+    height: auto;
   }
 
   &__content {
     padding: 1.5rem;
     margin-top: 5.8rem;
+    margin-bottom: 3rem;
+    border-bottom: 0.1rem solid $color-gray-50;
 
     @media (min-width: 768px) {
       padding: 2rem;

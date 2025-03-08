@@ -196,7 +196,7 @@ export default function FeedBackForm() {
             />
             <label htmlFor="consent">
               Я согласен на{" "}
-              <Link href="/" className="link">
+              <Link href="/privacy" className="link">
                 обработку персональных данных
               </Link>
             </label>

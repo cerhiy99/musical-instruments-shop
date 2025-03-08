@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Article } from "@/types/article";
 import "./News.scss";
 import image from "@/public/image/news/newsBanner.png";
+import ButtonBack from "@/components/ui/ButtonBack/ButtonBack";
 
 const mockArticle: Article = {
   title: "The Strad",
@@ -113,6 +114,7 @@ export default function NewsArticle({ article }: NewsArticleProps) {
           })}
         </div>
       </div>
+      <ButtonBack />
     </article>
   );
 }
