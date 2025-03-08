@@ -3,6 +3,12 @@
 .catalog-items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  @media (max-width: $desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   border-top: solid 0.1rem $color-gray-50;
   &__item {
     position: relative;
@@ -12,7 +18,7 @@
       z-index: 1;
     }
     justify-items: center;
-    width: 27.3rem;
+    width: 100%;
     min-height: 22.4rem;
     height: auto;
     border-right: solid 0.1rem $color-gray-50;
@@ -23,7 +29,8 @@
     }
   }
   .catalog-item__name {
-    width: 23rem;
+    max-width: 23rem;
+    width: 100%;
     margin: auto 0;
     margin-bottom: 2.1rem;
     p {
