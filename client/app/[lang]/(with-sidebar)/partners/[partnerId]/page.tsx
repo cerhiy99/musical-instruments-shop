@@ -81,12 +81,12 @@ const page = async ({ params }: { params: Params }) => {
             </p>
           ))}
         </div>
-        {/* <div className="individual-partnerPage__image"> */}
-        <Image
-          src={parntnersData[param].imageSrc}
-          alt={`Certificate of paratnership ${parntnersData[param].title} `}
-        />
-        {/* </div> */}
+        <div className="individual-partnerPage__image">
+          <Image
+            src={parntnersData[param].imageSrc}
+            alt={`Certificate of paratnership ${parntnersData[param].title} `}
+          />
+        </div>
       </div>
     </div>
   );

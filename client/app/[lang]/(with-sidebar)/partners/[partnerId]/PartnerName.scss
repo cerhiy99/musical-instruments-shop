@@ -1,7 +1,8 @@
 @import "@/styles/variables.scss";
 
 .individual-partnerPage {
-  width: 109.2rem;
+  max-width: 109.2rem;
+  width: 100%;
   margin-bottom: 4.7rem;
 
   h2 {
@@ -12,5 +13,13 @@
   &__paragraph {
     margin-bottom: 2.5rem;
     color: $color-gray-450;
+  }
+  &__image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    img {
+      height: auto;
+    }
   }
 }
