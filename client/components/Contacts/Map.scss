@@ -1,8 +1,12 @@
 @import "@/styles/variables.scss";
 .mapContainer {
   overflow: hidden;
-  width: 88.5rem;
+  max-width: 88.5rem;
+  width: 100%;
   height: 40rem;
+  @media (max-width: $desktop) {
+    max-width: 100%;
+  }
 
   .map {
     width: 100%;

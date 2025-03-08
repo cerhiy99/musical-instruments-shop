@@ -32,6 +32,7 @@ export default function ContactsInfo() {
           <h3>Телефон</h3>
           <p>0800 300 334</p>
           <p className="highlight">
+            {" "}
             бесплатный номер для всех мобильных операторов
           </p>
         </div>
