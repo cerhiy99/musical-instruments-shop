@@ -20,6 +20,7 @@ export interface Product {
     isDiscount?: boolean;
   };
   isFavorite?: boolean;
+  brands: string;
 }
 
 export type ViewMode = "grid" | "list" | "compact" | "basic";

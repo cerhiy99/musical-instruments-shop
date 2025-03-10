@@ -103,7 +103,7 @@ export default function CatalogCard({
                 <div className={`favorite-icon ${isFavorite ? "filled" : ""}`}>
                   <Heart width={17} height={15} />
                 </div>
-                <p>В избранное</p>
+                <p className="favorite-button__text">В избранное</p>
               </button>
             </div>
           )}

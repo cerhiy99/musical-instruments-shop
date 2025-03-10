@@ -1,0 +1,69 @@
+@import "@/styles/variables.scss";
+
+.custom-checkbox-container {
+  display: inline-flex;
+  align-items: center;
+
+  .checkbox-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .custom-checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:focus + .custom-checkbox-label .checkbox-icon {
+      border: 1px solid $color-blue-300;
+    }
+
+    &:disabled + .custom-checkbox-label {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  .custom-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .checkbox-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+
+    border: 1px solid $color-gray-300;
+    border-radius: 2px;
+    margin-right: 8px;
+    transition: all 0.2s ease;
+    background-color: white;
+
+    &.checked {
+      background-color: $color-blue-300;
+      border-color: $color-blue-300;
+      color: white;
+    }
+
+    &.disabled {
+      background-color: #f5f5f5;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .checkbox-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}

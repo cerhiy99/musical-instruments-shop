@@ -1,12 +1,16 @@
 @import "@/styles/variables.scss";
 .product-list-container {
+  max-width: 109.2rem;
+  width: 100%;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
   .view-controls {
     display: flex;
     gap: 0.8rem;
     justify-content: flex-end;
     margin-bottom: 6.1rem;
 
-    button {
+    .viewControl-btn {
       width: 3.5rem;
       height: 3.5rem;
       background: $color-gray-60;
@@ -31,6 +35,15 @@
 
     &.grid {
       grid-template-columns: repeat(4, 1fr);
+      @media (max-width: 1280px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (max-width: $desktop) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: $tablet) {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
 
     &.list,

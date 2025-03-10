@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import type { Product, ViewMode } from "@/types/catalog";
-// import CatalogCard from "../Card/CatalogCard";
 import "./CatalogList.scss";
 import CatalogCardItem from "../Card/CatalogCardItem";
 import Grid from "@/public/catalogType/gridType.svg";
 import List from "@/public/catalogType/listType.svg";
 import CompactList from "@/public/catalogType/compactType.svg";
 import CatalogCard from "../Card/CatalogCard";
+import ProductFilter from "../FilterComponent/ProductFilter";
+import FilterIcon from "@/public/filter.svg";
 
 interface ProductListProps {
   products: Product[];
@@ -16,6 +17,11 @@ interface ProductListProps {
 
 export default function ProductList({ products }: ProductListProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
+
+  const handleFilterChange = useCallback((products: Product[]) => {
+    setFilteredProducts(products);
+  }, []);
 
   const handleToggleFavorite = (id: string) => {
     // Implement favorite toggling logic here
@@ -30,23 +36,28 @@ export default function ProductList({ products }: ProductListProps) {
   return (
     <div className="product-list-container">
       <div className="view-controls">
+        <ProductFilter
+          products={products}
+          onFilterChange={handleFilterChange}
+        />
         <button
-          className={viewMode === "grid" ? "active" : ""}
+          className={`viewControl-btn ${viewMode === "grid" ? "active" : ""} `}
           onClick={() => setViewMode("grid")}
           title="Сетка"
         >
           <Grid size={13} />
-          {/* <LayoutGrid size={20} /> */}
         </button>
         <button
-          className={viewMode === "list" ? "active" : ""}
+          className={`viewControl-btn ${viewMode === "list" ? "active" : ""} `}
           onClick={() => setViewMode("list")}
           title="Список"
         >
           <List size={13} />
         </button>
         <button
-          className={viewMode === "compact" ? "active" : ""}
+          className={`viewControl-btn ${
+            viewMode === "compact" ? "active" : ""
+          }`}
           onClick={() => setViewMode("compact")}
           title="Компактный список"
         >
@@ -55,7 +66,7 @@ export default function ProductList({ products }: ProductListProps) {
       </div>
 
       <div className={`product-list ${viewMode}`}>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <CatalogCard
             key={product.id}
             product={product}
@@ -63,7 +74,6 @@ export default function ProductList({ products }: ProductListProps) {
             onToggleFavorite={handleToggleFavorite}
             onDetailsClick={handleDetailsClick}
           />
-          // <CatalogCardItem key={product.id} product={product} />
         ))}
       </div>
     </div>

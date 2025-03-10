@@ -7,9 +7,6 @@ import X from "@/public/X.svg";
 import ChevronLeft from "@/public/navigation/chevronleft.svg";
 import ChevronRight from "@/public/navigation/chevronright.svg";
 import ZoomIn from "@/public/icons/plus.svg";
-// import ChevronUp from "@/public/arrowUp.svg";
-// import ChevronDown from "@/public/arrowUp.svg";
-
 import "./product-gallery.scss";
 
 interface ProductGalleryProps {

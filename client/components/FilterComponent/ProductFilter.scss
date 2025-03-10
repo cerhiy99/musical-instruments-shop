@@ -1,0 +1,31 @@
+@import "@/styles/variables.scss";
+.product-filter {
+  position: relative;
+  margin-right: auto;
+}
+
+.filter-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 3.5rem;
+  padding: 5px 10px;
+  background-color: $color-blue-300;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background-color: $color-gray-60;
+    color: black;
+  }
+  @media (max-width: $tablet) {
+    p {
+      display: none;
+    }
+  }
+}
