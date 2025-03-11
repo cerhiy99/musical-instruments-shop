@@ -8,6 +8,11 @@
   overflow-x: auto;
   border-bottom: solid 0.1rem $color-gray-50;
   height: 5.85rem;
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    height: fit-content;
+    align-items: flex-start;
+  }
 }
 
 .tabButton {

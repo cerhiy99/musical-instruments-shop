@@ -1,69 +1,100 @@
 @import "@/styles/variables.scss";
 .gallery {
   display: flex;
-  //   flex-direction: column-reverse;
-  //   gap: 20px;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    gap: 4.1rem;
-    padding: 5.3rem 4.1rem 6rem 0rem;
+  flex-direction: row;
+  gap: 4.1rem;
+  padding: 5.3rem 4.1rem 6rem 0rem;
+  @media (max-width: $desktop) {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-bottom: 0;
+  }
+  @media (max-width: $tablet) {
+    gap: 2rem;
   }
 }
 
 .thumbnails {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   overflow-x: auto;
-  padding-bottom: 10px;
+  padding-bottom: 1rem;
   transition: all 0.3s;
 
-  @media (min-width: 768px) {
-    flex-direction: column;
-    overflow-x: visible;
-    overflow-y: auto;
-    max-height: 400px;
+  flex-direction: column;
+  overflow-x: visible;
+  overflow-y: auto;
+  max-height: 400px;
+  @media (max-width: $desktop) {
+    flex-direction: row;
+  }
+  @media (max-width: $tablet) {
+    padding-bottom: 0;
   }
 }
 
 .thumbnail {
   width: 5.4rem;
   height: 5.4rem;
-  border: 1px solid #ddd;
+  border: 1px solid $color-gray-300;
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0;
   transition: border-color 0.2s;
+  @media (max-width: $tablet) {
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: $color-gray-300;
+    border-radius: 50%;
+  }
 
   &:hover {
     border-color: #999;
   }
 
   &.active {
-    border-color: #0277bd;
+    border-color: $color-blue-300;
     border-width: 2px;
+    @media (max-width: $tablet) {
+      background-color: $color-blue-300;
+    }
   }
 }
+// .touchWrapper {
+//   width: 100%;
+//   height: 100%;
+// }
 
 .thumbnailImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }
 
 .mainImage {
-  height: 50rem;
   width: 50rem;
+  @media (max-width: $tablet) {
+    max-width: 50rem;
+    width: 100%;
+  }
+  height: auto;
+  aspect-ratio: 1 / 1; // Сохраняет соотношение 1:1
   position: relative;
   border: 1px solid #eee;
   overflow: hidden;
+  margin: 0 auto; // Центрирует контейнер, если нужно
 }
 
 .productImage {
   position: absolute;
-  width: 50rem;
-  height: 50rem;
-  object-fit: contain;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; // Сохраняет пропорции изображения
 }
 
 .thumbnailsContainer {
@@ -72,8 +103,9 @@
   align-items: center;
   gap: 10px;
 
-  @media (max-width: 767px) {
+  @media (max-width: $desktop) {
     flex-direction: row;
+    justify-content: center;
     width: 100%;
   }
 }
@@ -88,11 +120,16 @@
   transition: all 0.2s;
   &.up {
     transform: rotate(90deg);
+    @media (max-width: $desktop) {
+      transform: rotate(0deg);
+    }
   }
   &.down {
     transform: rotate(90deg);
+    @media (max-width: $desktop) {
+      transform: rotate(360deg);
+    }
   }
-
   &:hover:not(.disabled) {
     color: $color-gray-425;
   }
@@ -101,9 +138,8 @@
     opacity: 0.5;
     cursor: default;
   }
-
-  @media (max-width: 767px) {
-    transform: rotate(90deg);
+  @media (max-width: $tablet) {
+    display: none;
   }
 }
 

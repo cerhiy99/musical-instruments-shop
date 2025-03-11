@@ -49,7 +49,7 @@ const Footer = ({ lang }: Props) => {
                 <div className="footer__contact item__contacts">
                   <div className="contactSVG__wrapper">
                     <MobileIcon width={18} height={18} />
-                    <a href="tel:0800300334">080030034</a>
+                    <a href="tel:0800300334">0 800 300 34</a>
                   </div>
                 </div>
 

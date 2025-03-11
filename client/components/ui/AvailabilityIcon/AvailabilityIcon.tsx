@@ -19,7 +19,9 @@ export default function AvailabilityIcon({
       <p>
         {availability
           ? `В наличии (${
-              numberOfItems ? numberOfItems : "кількість уточнюється"
+              numberOfItems && numberOfItems > 0
+                ? numberOfItems
+                : "кількість уточнюється"
             })`
           : "Нет на складе (можно заказать)"}
       </p>

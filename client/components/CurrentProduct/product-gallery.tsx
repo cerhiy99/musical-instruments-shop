@@ -19,6 +19,8 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
   const [showModal, setShowModal] = useState(false);
   const [showControls, setShowControls] = useState(false);
   const thumbnailsRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   const maxVisibleThumbnails = 5;
   const totalImages = images.length;
@@ -38,6 +40,56 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
   const handleNextImage = () => {
     setActiveImage((prev) => (prev === totalImages - 1 ? 0 : prev + 1));
   };
+
+  //____________________________________ Screen slider_______________________________________
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (): void => {
+    // Минимальное расстояние для свайпа (в пикселях)
+    const minSwipeDistance = 100;
+    const distance = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(distance) > minSwipeDistance) {
+      if (distance > 0) {
+        // Свайп влево - следующее изображение
+        handleNextImage();
+      } else {
+        // Свайп вправо - предыдущее изображение
+        handlePrevImage();
+      }
+    }
+  };
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent): void => {
+      if (e.key === "Escape" && showModal) {
+        setShowModal(false);
+      } else if (e.key === "ArrowLeft") {
+        handlePrevImage();
+      } else if (e.key === "ArrowRight") {
+        handleNextImage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showModal]);
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showModal]);
 
   // useEffect(() => {
   //   if (activeImage < startIndex) {
@@ -106,13 +158,20 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
         onMouseEnter={() => setShowControls(true)}
         onMouseLeave={() => setShowControls(false)}
       >
-        <Image
-          src={images[activeImage] || "/placeholder.svg"}
-          alt="Product image"
-          width={500}
-          height={500}
-          className="productImage"
-        />
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className="touchWrapper"
+        >
+          <Image
+            src={images[activeImage] || "/placeholder.svg"}
+            alt="Product image"
+            width={500}
+            height={500}
+            className="productImage"
+          />
+        </div>
 
         <button
           className={`zoomButton ${showControls ? "visible" : ""}`}

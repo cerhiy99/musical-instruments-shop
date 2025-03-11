@@ -1,5 +1,6 @@
 @import "@/styles/variables.scss";
 .quantitySelector {
+  min-width: 12.2rem;
   width: 12.2rem;
   height: 4rem;
   display: flex;
@@ -7,6 +8,7 @@
   justify-content: space-between;
   background: $color-gray-75;
   overflow: hidden;
+  transition: all 0.2s;
 
   .quantityInput {
     background-color: $color-gray-75;

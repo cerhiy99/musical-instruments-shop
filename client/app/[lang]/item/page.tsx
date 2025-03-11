@@ -97,18 +97,21 @@ export default async function ProductPage({
           </div>
 
           <div className="availability">
-            <AvailabilityIcon availability={product.inStock} />
+            <div className="availability__container">
+              <AvailabilityIcon availability={product.inStock} />
+            </div>
             <FoundCheaper />
           </div>
-
-          <NovaPost />
-
+          <div className="novaPostMainContainer">
+            <NovaPost />
+          </div>
           <div className="actions">
             <QuantitySelector />
             <button className="addToCartButton">В корзину</button>
           </div>
-
-          <BuyOneClick />
+          <div className="buyOneClickMainContainer">
+            <BuyOneClick />
+          </div>
 
           <div className="priceNote">
             Цена действительна только для интернет-магазина и может отличаться

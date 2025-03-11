@@ -10,6 +10,14 @@
   margin-bottom: 40px;
   border: solid 0.1rem $color-gray-50;
 
+  @media (max-width: 1248px) {
+    gap: 1rem;
+  }
+  @media (max-width: $desktop) {
+    flex-direction: column;
+    gap: 0;
+  }
+
   .productLeft {
     padding-top: 3.4rem;
     padding-left: 4.1rem;
@@ -18,6 +26,9 @@
     &__sub {
       display: flex;
       justify-content: space-between;
+      @media (max-width: $desktop) {
+        margin-right: 4.1rem;
+      }
       .badge__wrapper__container {
         display: flex;
         flex-wrap: wrap;
@@ -37,6 +48,14 @@
   flex-direction: column;
 
   .productMeta {
+    @media (max-width: $desktop) {
+      padding-right: 4.1rem;
+      padding-left: 4.1rem;
+    }
+    @media (max-width: $mobile) {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
     padding-bottom: 2.7rem;
     display: flex;
     border-bottom: solid 0.1rem $color-gray-50;
@@ -52,6 +71,14 @@
 
 .priceBlock {
   padding-top: 3.3rem;
+  @media (max-width: $desktop) {
+    padding-right: 4.1rem;
+    padding-left: 4.1rem;
+  }
+  @media (max-width: $mobile) {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -99,15 +126,56 @@
   gap: 3rem;
   margin: 1.6rem 0;
   color: $color-gray-425;
+  @media (max-width: $desktop) {
+    padding-right: 4.1rem;
+    padding-left: 4.1rem;
+  }
+  @media (max-width: $mobile) {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    gap: 1rem;
+  }
+  &__container {
+    max-width: 14rem;
+    @media (max-width: $mobile) {
+      max-width: 100%;
+    }
+  }
+}
+.novaPostMainContainer {
+  max-width: 32rem;
+  width: 100%;
+  @media (max-width: $desktop) {
+    margin-right: 4.1rem;
+    margin-left: 4.1rem;
+  }
+  @media (max-width: $mobile) {
+    max-width: 100%;
+    // margin-right: 4.1rem;
+    // margin-left: 4.1rem;
+    margin-right: 0rem;
+    margin-left: 0rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
 }
 
 .actions {
   display: flex;
   gap: 1.2rem;
   margin: 1.4rem 0;
+  @media (max-width: $desktop) {
+    padding-right: 4.1rem;
+    padding-left: 4.1rem;
+  }
+  @media (max-width: $mobile) {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
 
   .addToCartButton {
-    width: 11.8rem;
+    max-width: 11.8rem;
+    width: 100%;
     height: 4rem;
     background-color: $color-blue-300;
     color: white;
@@ -121,6 +189,19 @@
     &:hover {
       background-color: $color-blue-400;
     }
+    @media (max-width: $mobile) {
+      max-width: 100%;
+    }
+  }
+}
+.buyOneClickMainContainer {
+  @media (max-width: $desktop) {
+    padding-right: 4.1rem;
+    padding-left: 4.1rem;
+  }
+  @media (max-width: $mobile) {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
   }
 }
 .priceNote {
@@ -128,4 +209,15 @@
   color: $color-gray-425;
   border-top: solid 0.1rem $color-gray-50;
   padding-top: 3rem;
+  padding-bottom: 3rem;
+  @media (max-width: $desktop) {
+    padding-right: 4.1rem;
+    padding-left: 4.1rem;
+  }
+  // @media (max-width: $tablet) {
+  // }
+  @media (max-width: $mobile) {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
 }
