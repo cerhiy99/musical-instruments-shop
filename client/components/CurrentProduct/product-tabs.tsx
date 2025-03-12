@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ArrowIcon from "@/public/arrowUp.svg";
 import "./product-tabs.scss";
 
 interface ProductTabsProps {
@@ -50,6 +51,57 @@ export default function ProductTabs({ product }: ProductTabsProps) {
         {activeTab === "delivery" && <div>Информация о доставке</div>}
         {activeTab === "reviews" && <div>Отзывы о товаре</div>}
       </div>
+
+      <div className="tabs-accordion">
+        {tabs.map((tab, i) => (
+          <AccordionComponent
+            key={tab.id}
+            product={product}
+            tab={tab}
+            isOpenByDefault={i === 0}
+          />
+        ))}
+      </div>
     </div>
   );
 }
+
+interface AccordionComponentprops extends ProductTabsProps {
+  tab: {
+    id: string;
+    label: string;
+  };
+  isOpenByDefault: boolean;
+}
+const AccordionComponent: React.FC<AccordionComponentprops> = ({
+  product,
+  tab,
+  isOpenByDefault,
+}) => {
+  const [isOpen, setIsOpen] = useState<boolean>(isOpenByDefault);
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="tabs-accordion">
+      <button
+        className={`tabs-accordion-header ${isOpen ? "active" : ""}`}
+        onClick={toggleAccordion}
+      >
+        <span>{tab.label}</span>
+        <span
+          className={`filter-section__toggle ${isOpen ? "open" : ""}`}
+        ></span>
+      </button>
+      <div className={`accordion-content ${isOpen ? "expanded" : ""}`}>
+        <div className="accordion-content--description">
+          {product.description.split("\n").map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};

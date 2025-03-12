@@ -9,9 +9,7 @@
   border-bottom: solid 0.1rem $color-gray-50;
   height: 5.85rem;
   @media (max-width: $tablet) {
-    flex-direction: column;
-    height: fit-content;
-    align-items: flex-start;
+    display: none;
   }
 }
 
@@ -55,9 +53,12 @@
 }
 
 .tabContent {
-  color: $color-gray-450;
+  color: $color-gray-425;
   padding: 6.4rem 0;
   min-height: 200px;
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }
 
 .description {
@@ -65,5 +66,59 @@
 
   p {
     margin-bottom: 15px;
+  }
+}
+.tabs-accordion {
+  display: none;
+  @media (max-width: $tablet) {
+    display: flex;
+    flex-direction: column;
+    // padding: 0 0.5rem;
+  }
+  width: 100%;
+  max-width: 100%;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.7rem 2.5rem;
+    font-weight: 500;
+    box-shadow: $box-shadow-01;
+    cursor: pointer;
+    &.active {
+      color: $color-blue-300;
+    }
+  }
+
+  .accordion-content {
+    margin-left: 2.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+
+    &.expanded {
+      max-height: fit-content; // Adjust as needed
+      padding: 1.6rem 0;
+    }
+    &--description {
+      p {
+        color: $color-gray-425;
+      }
+    }
+  }
+
+  .filter-section__toggle {
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid $color-gray-300;
+    border-bottom: 2px solid $color-gray-300;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+
+    &.open {
+      transform: rotate(-135deg);
+      border-color: $color-blue-300;
+    }
   }
 }
