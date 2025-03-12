@@ -23,6 +23,7 @@ import Modal from "../Modal/Modal";
 import RegistrationForm from "../Form/Register/RegisterForm";
 import LoginForm from "../Form/Login/LoginForm";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
+import SwitchFlagBanner from "../ui/FlagBannerSwitch/FlagBannerSwitch";
 type Props = {
   lang: Locale;
 };
@@ -93,28 +94,29 @@ const Header: React.FC<Props> = ({ lang }) => {
 
   return (
     <>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+        {isForm ? (
+          <LoginForm onRegisterClick={handleLogin} onSubmit={handleSubmit} />
+        ) : (
+          <RegistrationForm
+            onLoginClick={handleLogin}
+            onSubmit={handleSubmit}
+          />
+        )}
+        {/* <LoginForm onSubmit={handleSubmit} /> */}
+      </Modal>
+      <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
+        <SearchBar setSearch={setSearchBar} isOpen />
+      </div>
+
       {windowWidth <= 1024 ? (
-        <MobileNavbar lang={lang} />
+        <MobileNavbar
+          onFormOpen={openModal}
+          lang={lang}
+          setSearch={setSearchBar}
+        />
       ) : (
         <>
-          <Modal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            title="Обратная связь"
-          >
-            {isForm ? (
-              <LoginForm
-                onRegisterClick={handleLogin}
-                onSubmit={handleSubmit}
-              />
-            ) : (
-              <RegistrationForm
-                onLoginClick={handleLogin}
-                onSubmit={handleSubmit}
-              />
-            )}
-            {/* <LoginForm onSubmit={handleSubmit} /> */}
-          </Modal>
           <nav
             ref={navbarRef}
             className={`navbar ${showNavbar ? "visible" : ""}`}
@@ -126,9 +128,6 @@ const Header: React.FC<Props> = ({ lang }) => {
               setSearch={setSearchBar}
             />
           </nav>
-          <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
-            <SearchBar setSearch={setSearchBar} isOpen />
-          </div>
 
           <header className="header" ref={headerRef}>
             <div className="topBar">
@@ -142,7 +141,7 @@ const Header: React.FC<Props> = ({ lang }) => {
                   </div>
                   {lang === "ru" && (
                     <div className="flagBanner">
-                      <Image
+                      {/* <Image
                         src={flagBanner}
                         alt="flag"
                         fill
@@ -150,7 +149,8 @@ const Header: React.FC<Props> = ({ lang }) => {
                       />
                       <div className="btn__container">
                         <p className="btn-text">Читай сторінку рідною мовою!</p>
-                      </div>
+                      </div> */}
+                      <SwitchFlagBanner />
                     </div>
                   )}
                 </div>

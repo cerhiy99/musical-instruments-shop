@@ -48,9 +48,12 @@
   }
   .flagBanner {
     position: relative;
-    width: 22.8rem;
-    height: 35px;
-    overflow: hidden;
+    // width: 22.8rem;
+    // height: 35px;
+
+    max-width: 22.8rem;
+    height: 3.5rem;
+    width: 100%;
   }
   .btn__container {
     position: absolute;

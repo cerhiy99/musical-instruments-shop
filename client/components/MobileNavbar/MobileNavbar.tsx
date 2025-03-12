@@ -16,6 +16,9 @@ import LocationIcon from "@/public/Footer/location.svg";
 import EnvelopeIcon from "@/public/Footer/envelope.svg";
 import ArrowIcon from "@/public/arrow.svg";
 import ArrowLeft from "@/public/arrowLeft.svg";
+import Modal from "../Modal/Modal";
+import FeedbackForm from "../Form/FeedBack/FeedBack";
+import SwitchFlagBanner from "../ui/FlagBannerSwitch/FlagBannerSwitch";
 
 type CategoryType = {
   id: string;
@@ -25,6 +28,8 @@ type CategoryType = {
 };
 type Props = {
   lang: Locale;
+  setSearch: React.Dispatch<React.SetStateAction<boolean>>;
+  onFormOpen: () => void;
 };
 const categories: CategoryType[] = [
   {
@@ -110,9 +115,8 @@ const categories: CategoryType[] = [
   { id: "contacts", title: "Контакти", link: "/contacts" },
 ];
 
-export default function MobileNavbar({ lang }: Props) {
+export default function MobileNavbar({ lang, setSearch, onFormOpen }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
   const [navigationStack, setNavigationStack] = useState<CategoryType[][]>([]);
   const [currentLevel, setCurrentLevel] = useState<CategoryType[]>(categories);
   const [currentTitle, setCurrentTitle] = useState<string | null>(null);
@@ -174,17 +178,23 @@ export default function MobileNavbar({ lang }: Props) {
     }
   };
 
+  // ________________________________________________________________________
+  const [isModalOpen, setModalopen] = useState<boolean>(false);
+  const handleSubmit = () => {
+    console.log("form submitted");
+  };
+
+  const closeModal = () => {
+    setModalopen(false);
+  };
+  // ________________________________________________________________________
   return (
     <>
-      {showBanner && (
-        <div className="language-banner">
-          <span>Читай сторінку рідною мовою!</span>
-          {/* <button className="close-banner" onClick={() => setShowBanner(false)}>
-            ×
-          </button> */}
-        </div>
-      )}
+      {lang === "ru" && <SwitchFlagBanner />}
 
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+        <FeedbackForm onSubmit={handleSubmit} />
+      </Modal>
       <header className="mobile-header">
         <button className="menu-toggle" onClick={toggleMenu}>
           <div className={`hamburger ${menuOpen ? "open" : ""}`}>
@@ -205,7 +215,7 @@ export default function MobileNavbar({ lang }: Props) {
             <Basket width={22} height={21} />
             <span className="cart-count">0</span>
           </Link>
-          <button className="search-button">
+          <button className="search-button" onClick={() => setSearch(true)}>
             <Search width={22} height={21} />
           </button>
         </div>
@@ -269,10 +279,10 @@ export default function MobileNavbar({ lang }: Props) {
                 className="user-account-section"
                 onClick={() => setMenuOpen(false)}
               >
-                <Link href="/account" className="account-link">
+                <button className="account-link" onClick={onFormOpen}>
                   <Login width={17} height={16} />
                   <span>Особистий кабінет</span>
-                </Link>
+                </button>
 
                 <Link
                   href="/cart"
@@ -309,13 +319,15 @@ export default function MobileNavbar({ lang }: Props) {
                     <div>
                       <span>Пн.-Пт. з 11:00 до 18:00 години</span>
                       <br />
-                      <a
-                        href="#"
+                      <button
                         className="callback-link"
-                        onClick={() => setMenuOpen(false)}
+                        onClick={() => {
+                          setMenuOpen(false);
+                          setModalopen(true);
+                        }}
                       >
                         Зворотний дзвінок
-                      </a>
+                      </button>
                     </div>
                   </div>
 

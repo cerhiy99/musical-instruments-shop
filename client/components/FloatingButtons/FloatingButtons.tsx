@@ -58,27 +58,29 @@ const FloatingButtons = () => {
   };
 
   return (
-    <div className="floatingButtons">
-      <button
-        className="floatingButton__btn feedbackButton"
-        onClick={openFeedback}
-      >
-        <div className="feedbackButton__inner">
-          <ChatIcon width={28} height={28} />
-        </div>
-      </button>
-      {showScrollTop && (
+    <>
+      <div className="floatingButtons">
         <button
-          className="floatingButton__btn scrollTopButton"
-          onClick={scrollToTop}
+          className="floatingButton__btn feedbackButton"
+          onClick={openFeedback}
         >
-          <ArrowUpIcon width={22} height={30} />
+          <div className="feedbackButton__inner">
+            <ChatIcon width={28} height={28} />
+          </div>
         </button>
-      )}
+        {showScrollTop && (
+          <button
+            className="floatingButton__btn scrollTopButton"
+            onClick={scrollToTop}
+          >
+            <ArrowUpIcon width={22} height={30} />
+          </button>
+        )}
+      </div>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
         <FeedbackForm onSubmit={handleSubmit} />
       </Modal>
-    </div>
+    </>
   );
 };
 
