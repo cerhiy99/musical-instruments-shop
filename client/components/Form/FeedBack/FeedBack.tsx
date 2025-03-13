@@ -3,6 +3,7 @@
 import type React from "react";
 import { useState } from "react";
 import "./feedBack.scss";
+import Link from "next/link";
 
 interface FeedbackFormProps {
   onSubmit: (formData: {
@@ -103,7 +104,8 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit }) => {
           required
         />
         <label htmlFor="consent">
-          Я согласен на <a href="#">обработку персональных даних</a>
+          Я согласен на{" "}
+          <Link href="/privacy">обработку персональных даних</Link>
         </label>
       </div>
 

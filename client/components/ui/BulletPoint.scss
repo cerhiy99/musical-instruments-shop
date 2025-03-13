@@ -6,6 +6,10 @@
   height: 1.2rem;
   border-radius: 50%;
   background: $color-blue-300;
+  @media (max-width: $tablet) {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
   @media (max-width: $mobile) {
     width: 0.6rem;
     height: 0.6rem;
