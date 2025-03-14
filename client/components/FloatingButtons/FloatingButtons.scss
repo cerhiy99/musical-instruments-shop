@@ -6,8 +6,13 @@
   right: 4rem;
   display: flex;
   align-items: center;
-  // flex-direction: column;
   gap: 2rem;
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    bottom: 1rem;
+    right: 1rem;
+    gap: 4rem;
+  }
 
   button {
     border: none;
@@ -47,33 +52,3 @@
     border-radius: 0.2rem;
   }
 }
-
-// .feedbackButton {
-//   background-color: var(--color-primary);
-//   color: black;
-
-//   &:hover {
-//     background-color: var(--color-primary-hover);
-//   }
-// }
-
-// .scrollTopButton {
-//   background-color: var(--color-secondary);
-//   color: var(--color-secondary-foreground);
-
-//   &:hover {
-//     background-color: var(--color-secondary-hover);
-//   }
-// }
-
-// .srOnly {
-//   position: absolute;
-//   width: 1px;
-//   height: 1px;
-//   padding: 0;
-//   margin: -1px;
-//   overflow: hidden;
-//   clip: rect(0, 0, 0, 0);
-//   white-space: nowrap;
-//   border-width: 0;
-// }

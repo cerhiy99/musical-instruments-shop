@@ -4,7 +4,7 @@ import "./Header.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Locale } from "@/i18n.config";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Logo from "@/public/logo-small.svg";
 import Login from "@/public/Navbar/NavbarIcons/login.svg";
 import Favorite from "@/public/Navbar/NavbarIcons/favorite.svg";
@@ -24,6 +24,7 @@ import RegistrationForm from "../Form/Register/RegisterForm";
 import LoginForm from "../Form/Login/LoginForm";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import SwitchFlagBanner from "../ui/FlagBannerSwitch/FlagBannerSwitch";
+import FeedbackForm from "../Form/FeedBack/FeedBack";
 type Props = {
   lang: Locale;
 };
@@ -78,32 +79,48 @@ const Header: React.FC<Props> = ({ lang }) => {
   }, []);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isForm, setIsForm] = useState<boolean>(true);
+  const [isForm, setIsForm] = useState<"SignUp" | "SignIn" | "CallBack" | null>(
+    null
+  );
 
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, [setIsModalOpen]);
 
   const handleSubmit = (formData: any) => {
     console.log("Form submitted:", formData);
     closeModal();
     // Here you would typically send the data to your backend
   };
-  const handleLogin = () => {
-    setIsForm((prev) => !prev);
+  const handleOpenFormType = (typeForm: "SignUp" | "SignIn" | "CallBack") => {
+    if (!typeForm) return;
+    setIsForm(typeForm);
+  };
+
+  const onFeedBackSubmit = (formData: any) => {
+    console.log("Form submitted:", formData);
+    closeModal();
+    // Here you would typically send the data to your backend
   };
 
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        {isForm ? (
-          <LoginForm onRegisterClick={handleLogin} onSubmit={handleSubmit} />
-        ) : (
-          <RegistrationForm
-            onLoginClick={handleLogin}
+        {isForm === "SignIn" && (
+          <LoginForm
+            onRegisterClick={() => handleOpenFormType("SignUp")}
             onSubmit={handleSubmit}
           />
         )}
-        {/* <LoginForm onSubmit={handleSubmit} /> */}
+        {isForm === "SignUp" && (
+          <RegistrationForm
+            onLoginClick={() => handleOpenFormType("SignIn")}
+            onSubmit={handleSubmit}
+          />
+        )}
+        {isForm === "CallBack" && <FeedbackForm onSubmit={onFeedBackSubmit} />}
       </Modal>
       <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
         <SearchBar setSearch={setSearchBar} isOpen />
@@ -114,6 +131,7 @@ const Header: React.FC<Props> = ({ lang }) => {
           onFormOpen={openModal}
           lang={lang}
           setSearch={setSearchBar}
+          onTypeFormSubmit={handleOpenFormType}
         />
       ) : (
         <>
@@ -159,11 +177,25 @@ const Header: React.FC<Props> = ({ lang }) => {
                     <span className="schedule-info">
                       <p>{t("navigation.schedule")}</p>
                     </span>
-                    <a className="callback">{t("navigation.callBack")}</a>
+                    <button
+                      className="callback"
+                      onClick={() => {
+                        openModal();
+                        handleOpenFormType("CallBack");
+                      }}
+                    >
+                      {t("navigation.callBack")}
+                    </button>
                   </div>
                 </div>
                 <div className="controls">
-                  <button className="iconButton" onClick={openModal}>
+                  <button
+                    className="iconButton"
+                    onClick={() => {
+                      openModal();
+                      setIsForm("SignIn");
+                    }}
+                  >
                     <Login width={16} height={17} />
                     <span className="text-login">
                       <p>{t("navigation.login")}</p>

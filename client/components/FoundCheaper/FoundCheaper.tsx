@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Wallet from "@/public/wallet.svg";
 import "./FoundCheaper.scss";
 import Modal from "@/components/Modal/Modal";
@@ -10,7 +10,9 @@ export default function FoundCheaper() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, [setIsModalOpen]);
 
   const handleSubmit = (formData: any) => {
     console.log("Form submitted:", formData);

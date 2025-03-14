@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import X from "@/public/X.svg";
 import "./Modal.scss";
 
+import { usePathname } from "next/navigation";
+
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -14,22 +16,28 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (isOpen) {
+      console.log("[MODAL WINDOW] Modal is open: " + isOpen);
       setIsVisible(true);
       document.body.style.overflow = "hidden";
+      console.log(document.body.style.overflow);
     } else {
       setTimeout(() => {
         setIsVisible(false);
       }, 300);
       document.body.style.overflow = "";
     }
-
     return () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+  useEffect(() => {
+    console.log(pathname);
+    onClose(); // Закрываем модалку при смене роута
+  }, [pathname, onClose]);
 
   if (!isVisible) return null;
 

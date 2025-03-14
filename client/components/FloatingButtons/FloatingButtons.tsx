@@ -1,7 +1,7 @@
 "use client";
 
 import "./FloatingButtons.scss";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import ChatIcon from "@/public/chat.svg";
 import ArrowUpIcon from "@/public/arrowUp.svg";
 import Modal from "../Modal/Modal";
@@ -15,7 +15,9 @@ const FloatingButtons = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, [setIsModalOpen]);
 
   const handleSubmit = (formData: any) => {
     console.log("Form submitted:", formData);
@@ -59,6 +61,9 @@ const FloatingButtons = () => {
 
   return (
     <>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+        <FeedbackForm onSubmit={handleSubmit} />
+      </Modal>
       <div className="floatingButtons">
         <button
           className="floatingButton__btn feedbackButton"
@@ -77,9 +82,6 @@ const FloatingButtons = () => {
           </button>
         )}
       </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        <FeedbackForm onSubmit={handleSubmit} />
-      </Modal>
     </>
   );
 };

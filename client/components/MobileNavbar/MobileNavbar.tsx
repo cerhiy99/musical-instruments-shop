@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Login from "@/public/Navbar/NavbarIcons/login.svg";
@@ -16,8 +16,6 @@ import LocationIcon from "@/public/Footer/location.svg";
 import EnvelopeIcon from "@/public/Footer/envelope.svg";
 import ArrowIcon from "@/public/arrow.svg";
 import ArrowLeft from "@/public/arrowLeft.svg";
-import Modal from "../Modal/Modal";
-import FeedbackForm from "../Form/FeedBack/FeedBack";
 import SwitchFlagBanner from "../ui/FlagBannerSwitch/FlagBannerSwitch";
 
 type CategoryType = {
@@ -30,6 +28,7 @@ type Props = {
   lang: Locale;
   setSearch: React.Dispatch<React.SetStateAction<boolean>>;
   onFormOpen: () => void;
+  onTypeFormSubmit: (typeForm: "SignUp" | "SignIn" | "CallBack") => void;
 };
 const categories: CategoryType[] = [
   {
@@ -115,7 +114,12 @@ const categories: CategoryType[] = [
   { id: "contacts", title: "Контакти", link: "/contacts" },
 ];
 
-export default function MobileNavbar({ lang, setSearch, onFormOpen }: Props) {
+export default function MobileNavbar({
+  lang,
+  setSearch,
+  onFormOpen,
+  onTypeFormSubmit,
+}: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navigationStack, setNavigationStack] = useState<CategoryType[][]>([]);
   const [currentLevel, setCurrentLevel] = useState<CategoryType[]>(categories);
@@ -179,22 +183,23 @@ export default function MobileNavbar({ lang, setSearch, onFormOpen }: Props) {
   };
 
   // ________________________________________________________________________
-  const [isModalOpen, setModalopen] = useState<boolean>(false);
-  const handleSubmit = () => {
-    console.log("form submitted");
-  };
+  // const [isModalOpen, setModalopen] = useState<boolean>(false);
+  // const handleSubmit = () => {
+  //   console.log("form submitted");
+  // };
 
-  const closeModal = () => {
-    setModalopen(false);
-  };
+  // const closeModal = useCallback(() => {
+  //   setModalopen(false);
+  // }, [setModalopen]);
+
   // ________________________________________________________________________
   return (
     <>
       {lang === "ru" && <SwitchFlagBanner />}
 
-      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+      {/* <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
         <FeedbackForm onSubmit={handleSubmit} />
-      </Modal>
+      </Modal> */}
       <header className="mobile-header">
         <button className="menu-toggle" onClick={toggleMenu}>
           <div className={`hamburger ${menuOpen ? "open" : ""}`}>
@@ -279,7 +284,14 @@ export default function MobileNavbar({ lang, setSearch, onFormOpen }: Props) {
                 className="user-account-section"
                 onClick={() => setMenuOpen(false)}
               >
-                <button className="account-link" onClick={onFormOpen}>
+                <button
+                  className="account-link"
+                  onClick={() => {
+                    // setMenuOpen(false);
+                    onFormOpen();
+                    onTypeFormSubmit("SignIn");
+                  }}
+                >
                   <Login width={17} height={16} />
                   <span>Особистий кабінет</span>
                 </button>
@@ -322,8 +334,9 @@ export default function MobileNavbar({ lang, setSearch, onFormOpen }: Props) {
                       <button
                         className="callback-link"
                         onClick={() => {
-                          setMenuOpen(false);
-                          setModalopen(true);
+                          // setMenuOpen(false);
+                          onFormOpen();
+                          onTypeFormSubmit("CallBack");
                         }}
                       >
                         Зворотний дзвінок

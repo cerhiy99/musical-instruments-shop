@@ -3,6 +3,7 @@
 import type React from "react";
 import { useState } from "react";
 import "./RegisterForm.scss";
+import Link from "next/link";
 
 interface RegistrationFormProps {
   onSubmit: (formData: {
@@ -204,8 +205,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
             className={errors.agreeToTerms ? "error" : ""}
           />
           <label htmlFor="agreeToTerms">
-            Я согласен с <a href="#">условиями использования</a> и{" "}
-            <a href="#">политикой конфиденциальности</a>
+            {/* Я согласен с <a href="#">условиями использования</a> и{" "} */}Я
+            согласен с условиями использования и{" "}
+            <Link href="/privacy">политикой конфиденциальности</Link>
           </label>
           {errors.agreeToTerms && (
             <div className="error-message">{errors.agreeToTerms}</div>

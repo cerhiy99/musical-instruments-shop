@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./Footer.scss";
 import { Locale } from "@/i18n.config";
 import Link from "next/link";
@@ -25,9 +25,10 @@ const Footer = ({ lang }: Props) => {
   const handleSubmit = () => {
     console.log("form submitted");
   };
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setModalopen(false);
-  };
+  }, [setModalopen]);
+
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
