@@ -129,12 +129,14 @@ export default function MobileNavbar({
   // Prevent body scrolling when menu is open
   useEffect(() => {
     if (menuOpen) {
+      console.log("[MENU WINDOW] Menu is open: " + menuOpen);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      console.log("[MENU WINDOW] Menu is close: " + menuOpen);
     };
   }, [menuOpen]);
 
@@ -287,7 +289,7 @@ export default function MobileNavbar({
                 <button
                   className="account-link"
                   onClick={() => {
-                    // setMenuOpen(false);
+                    setMenuOpen(false);
                     onFormOpen();
                     onTypeFormSubmit("SignIn");
                   }}
@@ -334,7 +336,7 @@ export default function MobileNavbar({
                       <button
                         className="callback-link"
                         onClick={() => {
-                          // setMenuOpen(false);
+                          setMenuOpen(false);
                           onFormOpen();
                           onTypeFormSubmit("CallBack");
                         }}

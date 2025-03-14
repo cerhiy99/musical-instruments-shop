@@ -107,21 +107,6 @@ const Header: React.FC<Props> = ({ lang }) => {
 
   return (
     <>
-      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        {isForm === "SignIn" && (
-          <LoginForm
-            onRegisterClick={() => handleOpenFormType("SignUp")}
-            onSubmit={handleSubmit}
-          />
-        )}
-        {isForm === "SignUp" && (
-          <RegistrationForm
-            onLoginClick={() => handleOpenFormType("SignIn")}
-            onSubmit={handleSubmit}
-          />
-        )}
-        {isForm === "CallBack" && <FeedbackForm onSubmit={onFeedBackSubmit} />}
-      </Modal>
       <div className={`searchBar ${showSearchBar ? "visible" : ""}`}>
         <SearchBar setSearch={setSearchBar} isOpen />
       </div>
@@ -256,6 +241,21 @@ const Header: React.FC<Props> = ({ lang }) => {
           </header>
         </>
       )}
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+        {isForm === "SignIn" && (
+          <LoginForm
+            onRegisterClick={() => handleOpenFormType("SignUp")}
+            onSubmit={handleSubmit}
+          />
+        )}
+        {isForm === "SignUp" && (
+          <RegistrationForm
+            onLoginClick={() => handleOpenFormType("SignIn")}
+            onSubmit={handleSubmit}
+          />
+        )}
+        {isForm === "CallBack" && <FeedbackForm onSubmit={onFeedBackSubmit} />}
+      </Modal>
       {pathname === "/en" || pathname === "/ru" || pathname === "/uk" ? null : (
         <TopicHeader />
       )}
