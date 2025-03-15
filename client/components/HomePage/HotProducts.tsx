@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import "./HotProducts.scss";
 import CatalogCardItem from "../Card/CatalogCardItem";
+import { Locale } from "@/i18n.config";
 
 type FilterHot = {
   isAdviced: boolean;
@@ -34,6 +35,7 @@ const products = [
       isDiscount: false,
     },
     isFavorite: false,
+    brands: "CKM",
   },
   {
     id: "2",
@@ -56,6 +58,7 @@ const products = [
       isDiscount: false,
     },
     isFavorite: false,
+    brands: "CKM",
   },
   {
     id: "3",
@@ -78,6 +81,7 @@ const products = [
       isDiscount: true,
     },
     isFavorite: false,
+    brands: "CKM",
   },
   {
     id: "4",
@@ -100,6 +104,7 @@ const products = [
       isDiscount: true,
     },
     isFavorite: false,
+    brands: "CKM",
   },
   {
     id: "5",
@@ -122,6 +127,7 @@ const products = [
       isDiscount: true,
     },
     isFavorite: false,
+    brands: "CKM",
   },
 
   {
@@ -145,6 +151,7 @@ const products = [
       isDiscount: true,
     },
     isFavorite: false,
+    brands: "CKM",
   },
   {
     id: "7",
@@ -167,6 +174,7 @@ const products = [
       isDiscount: true,
     },
     isFavorite: false,
+    brands: "CKM",
   },
   {
     id: "8",
@@ -189,6 +197,7 @@ const products = [
       isDiscount: true,
     },
     isFavorite: false,
+    brands: "CKM",
   },
   {
     id: "9",
@@ -211,6 +220,7 @@ const products = [
       isDiscount: true,
     },
     isFavorite: false,
+    brands: "CKM",
   },
 
   {
@@ -234,10 +244,11 @@ const products = [
       isDiscount: true,
     },
     isFavorite: false,
+    brands: "CKM",
   },
 ];
 
-const HotProducts: React.FC = () => {
+const HotProducts: React.FC<{ lang: Locale }> = ({ lang }) => {
   const [filter, setFilter] = useState<FilterHot>({
     isAdviced: false,
     isNew: false,
@@ -291,7 +302,7 @@ const HotProducts: React.FC = () => {
 
       <div className="categories__grid">
         {filteredProducts.map((product) => (
-          <CatalogCardItem key={product.id} product={product} />
+          <CatalogCardItem key={product.id} product={product} lang={lang} />
         ))}
       </div>
     </div>

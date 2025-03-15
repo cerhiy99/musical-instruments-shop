@@ -6,6 +6,7 @@ import "./News.scss";
 import Image from "next/image";
 import Pagination from "@/components/ui/PaginationComponent";
 import Link from "next/link";
+import { Locale } from "@/i18n.config";
 const categories = [
   {
     id: 1,
@@ -120,7 +121,11 @@ const categories = [
     text: "Знаменитий український скрипаль Олег Криса (учень педагога Костянтина Михайлова і легендарного професора Давида Ойстраха) вже більше як півстоліття захоплює і дивує своєю виконавською майстерністю світову музичну спільноту. Напрочуд грандіозний його репертуарний доробок охоплює скрипкові шедеври старовинної італійської спадщини, епохи бароко, віденських класиків, композиторів-романтиків, найяскравіші зразки музики ХХ сторіччя та найбільш знакові твори",
   },
 ];
-export default function Page() {
+export default function Page({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [totalItems, setTotalItems] = useState(categories.length);
@@ -137,7 +142,7 @@ export default function Page() {
           .map((category, i) => (
             <div className="newsPage__grid--item" key={category.id}>
               <Link
-                href={`/news/${category.id}`}
+                href={`/${lang}/news/${category.id}`}
                 className="newsPage__grid--item-link"
               >
                 <div className="newsPage--image">

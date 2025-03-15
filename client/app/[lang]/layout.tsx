@@ -40,26 +40,9 @@ export default async function RootLayout({
           <Header lang={params.lang} />
           <div className="wrapper">{children}</div>
           <Footer lang={params.lang} />
-          <FloatingButtons />
+          <FloatingButtons lang={params.lang} />
         </TranslationProvider>
       </body>
     </html>
   );
 }
-
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const locale = params?.lang || "uk"; // Получаем язык из параметра или по умолчанию "uk"
-  try {
-    const dictionary = await getDictionary(locale as Locale); // Загружаем словарь для нужного языка
-    return {
-      props: {
-        dictionary, // Передаем в компонент
-      },
-    };
-  } catch (error) {
-    console.error("Error loading dictionary:", error);
-    return {
-      notFound: true, // Возвращаем 404 если не удалось загрузить словарь
-    };
-  }
-};

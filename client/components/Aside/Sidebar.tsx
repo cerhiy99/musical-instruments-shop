@@ -6,6 +6,7 @@ import ArrowIcon from "@/public/arrow.svg";
 import Image from "next/image";
 import SideNews from "./SideNews";
 import { useTranslation } from "@/contexts/TranslationProvider";
+import { Locale } from "@/i18n.config";
 
 const imageUrl = "/images/banner1.jpg";
 const categories = [
@@ -375,7 +376,7 @@ const categories = [
   },
 ];
 const isActive = false;
-export default function Sidebar() {
+export default function Sidebar({ lang }: { lang: Locale }) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const { t } = useTranslation();
 
@@ -459,7 +460,7 @@ export default function Sidebar() {
           ))}
         </ul>
       </nav>
-      <SideNews />
+      <SideNews lang={lang} />
     </aside>
   );
 }

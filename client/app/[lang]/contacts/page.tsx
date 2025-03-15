@@ -2,8 +2,13 @@ import "./Contacts.scss";
 import ContactsInfo from "@/components/Contacts/ContactsInfo";
 import FeedBackForm from "@/components/Contacts/FeedBackForm";
 import Map from "@/components/Contacts/Map";
+import { Locale } from "@/i18n.config";
 
-export default function ContactPage() {
+export default function ContactPage({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
   return (
     <div className="contactPage">
       <div className="container">
@@ -11,7 +16,7 @@ export default function ContactPage() {
           <ContactsInfo />
           <Map />
         </div>
-        <FeedBackForm />
+        <FeedBackForm lang={lang} />
       </div>
     </div>
   );

@@ -32,7 +32,7 @@ const Footer = ({ lang }: Props) => {
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        <FeedbackForm onSubmit={handleSubmit} />
+        <FeedbackForm onSubmit={handleSubmit} lang={lang} />
       </Modal>
       <footer className="footer">
         <div className="footer__container">
@@ -61,7 +61,7 @@ const Footer = ({ lang }: Props) => {
                   </div>
                 </div>
 
-                <Link href={"/public-offer"} className="item__contacts">
+                <Link href={`/${lang}/public-offer`} className="item__contacts">
                   {t("footer.public")}
                 </Link>
               </div>

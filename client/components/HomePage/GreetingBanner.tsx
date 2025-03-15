@@ -2,8 +2,9 @@ import Image from "next/image";
 import "./GreetingBanner.scss";
 import React from "react";
 import Link from "next/link";
+import { Locale } from "@/i18n.config";
 
-const GreetingBanner: React.FC = () => {
+const GreetingBanner: React.FC<{ lang: Locale }> = ({ lang }) => {
   return (
     <div className="greetingBanner">
       <div className="greetingImage">
@@ -23,23 +24,28 @@ const GreetingBanner: React.FC = () => {
           академических коллективов, учебных заведений и мастеров по
           изготовлению и ремонту музыкальных инструментов всем необходимым. Так,
           в нашем
-          <Link href={"/catalog"}>каталоге товаров</Link>
+          <Link href={`/${lang}/catalog`}>каталоге товаров</Link>
           Вы найдете:
-          <Link href={"/catalog"}>Струнно-смычковые инструменты,</Link>
-          <Link href={"/catalog"}>Аксессуары для струнных инструментов,</Link>
-          <Link href={"/catalog"}>Струны,</Link>
-          <Link href={"/catalog"}>
+          <Link href={`/${lang}/catalog`}>Струнно-смычковые инструменты,</Link>
+          <Link href={`/${lang}/catalog`}>
+            Аксессуары для струнных инструментов,
+          </Link>
+          <Link href={`/${lang}/catalog`}>Струны,</Link>
+          <Link href={`/${lang}/catalog`}>
             Футляры и чехлы для струнных инструментов,
           </Link>
-          <Link href={"/catalog"}>
+          <Link href={`/${lang}/catalog`}>
             Инструменты и материалы для скрипичных мастеров,
           </Link>
-          <Link href={"/catalog"}>Духовые инструменты, </Link>
-          <Link href={"/catalog"}>Аксессуары для духовых инструментов, </Link>
-          <Link href={"/catalog"}>
+          <Link href={`/${lang}/catalog`}>Духовые инструменты, </Link>
+          <Link href={`/${lang}/catalog`}>
+            Аксессуары для духовых инструментов,{" "}
+          </Link>
+          <Link href={`/${lang}/catalog`}>
             Футляры и чехлы для духовых инструментов,
           </Link>
-          <Link href={"/catalog"}>Сувениры </Link>и множество других товаров.
+          <Link href={`/${lang}/catalog`}>Сувениры </Link>и множество других
+          товаров.
         </p>
         <p>
           В творческое объединение входит целый ряд компаний, предприятий,
@@ -48,25 +54,25 @@ const GreetingBanner: React.FC = () => {
         </p>
         <p>
           Творческое объединение «СКМ» - учредитель и организатор
-          <Link href={"/catalog"}>
+          <Link href={`/${lang}/catalog`}>
             {" "}
             Международного конкурса скрипачей Олега Крысы,
           </Link>
           а также{" "}
-          <Link href={"/catalog"}>
+          <Link href={`/${lang}/catalog`}>
             Международной музыкальной Академии «СКМ»!
           </Link>
         </p>
         <p>
           Наша компания является официальным представителем в Украине (Вы можете
           ознакомиться с нашими сертификатами, перейдя по следующим ссылкам)
-          <Link href={"/catalog"}> «Jakob Winter»,</Link>
-          <Link href={"/catalog"}> «Bam»,</Link>
-          <Link href={"/catalog"}> «Laubach»,</Link>
-          <Link href={"/catalog"}> «Pilgerstorfer»,</Link>
-          <Link href={"/catalog"}> «Petz Kolophonium Vienna», </Link> а также
-          дилером других, представленных на сайте брендов, тем самым, предлагая
-          клиенту самую низкую цену и быструю доставку.
+          <Link href={`/${lang}/catalog`}> «Jakob Winter»,</Link>
+          <Link href={`/${lang}/catalog`}> «Bam»,</Link>
+          <Link href={`/${lang}/catalog`}> «Laubach»,</Link>
+          <Link href={`/${lang}/catalog`}> «Pilgerstorfer»,</Link>
+          <Link href={`/${lang}/catalog`}> «Petz Kolophonium Vienna», </Link> а
+          также дилером других, представленных на сайте брендов, тем самым,
+          предлагая клиенту самую низкую цену и быструю доставку.
         </p>
         <p>
           Учитывая тот факт, что часть средств, полученных от продажи,

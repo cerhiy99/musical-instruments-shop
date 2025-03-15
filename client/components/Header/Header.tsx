@@ -186,12 +186,12 @@ const Header: React.FC<Props> = ({ lang }) => {
                       <p>{t("navigation.login")}</p>
                     </span>
                   </button>
-                  <Link href="/favorities" className="iconButton">
+                  <Link href={`/${lang}/favorities`} className="iconButton">
                     <Favorite width={18} height={16} />
                     <div className="counter favorite-btn">0</div>
                   </Link>
 
-                  <Link href="/cart" className="iconButton">
+                  <Link href={`${lang}/cart`} className="iconButton">
                     <Basket width={16} height={17} />
 
                     <p className="basket-btn">{t("navigation.cart")}</p>
@@ -215,7 +215,7 @@ const Header: React.FC<Props> = ({ lang }) => {
             <div className="mainBar">
               <div className="mainBar__container">
                 <div className="logo">
-                  <Link href="/">
+                  <Link href={`/${lang}`}>
                     <Logo height={83.3} width={190} />
                   </Link>
                 </div>
@@ -229,7 +229,7 @@ const Header: React.FC<Props> = ({ lang }) => {
                   {navItems.map((navItem) => (
                     <NavLink
                       key={navItem.title}
-                      href={navItem.href}
+                      href={`/${lang}/${navItem.href}`}
                       isByClass={true}
                     >
                       {t(`navigation.${navItem.title}`)}
@@ -254,7 +254,9 @@ const Header: React.FC<Props> = ({ lang }) => {
             onSubmit={handleSubmit}
           />
         )}
-        {isForm === "CallBack" && <FeedbackForm onSubmit={onFeedBackSubmit} />}
+        {isForm === "CallBack" && (
+          <FeedbackForm onSubmit={onFeedBackSubmit} lang={lang} />
+        )}
       </Modal>
       {pathname === "/en" || pathname === "/ru" || pathname === "/uk" ? null : (
         <TopicHeader />

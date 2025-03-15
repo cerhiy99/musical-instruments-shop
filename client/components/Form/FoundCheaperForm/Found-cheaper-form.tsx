@@ -4,8 +4,10 @@ import type React from "react";
 import { useState } from "react";
 import "../sharedFormStyle.scss";
 import Link from "next/link";
+import { Locale } from "@/i18n.config";
 
 interface FoundCheaperFormProps {
+  lang: Locale;
   onSubmit: (formData: {
     name: string;
     phone: string;
@@ -20,6 +22,7 @@ interface FoundCheaperFormProps {
 
 const FoundCheaperForm: React.FC<FoundCheaperFormProps> = ({
   onSubmit,
+  lang,
   defaultProductName = "Скрипка мастеровая Josef Cermak",
 }) => {
   const [formData, setFormData] = useState({
@@ -208,7 +211,7 @@ const FoundCheaperForm: React.FC<FoundCheaperFormProps> = ({
         />
         <label htmlFor="agreeToTerms">
           Я согласен на{" "}
-          <Link href="/privacy">обработку персональных данных</Link>
+          <Link href={`/${lang}/privacy`}>обработку персональных данных</Link>
         </label>
         {errors.agreeToTerms && (
           <div className="error-message">{errors.agreeToTerms}</div>

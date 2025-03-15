@@ -6,12 +6,14 @@ import type { Product, ViewMode } from "@/types/catalog";
 import "./CatalogCard.scss";
 import Badge from "../ui/Badge/Bdge";
 import { useState } from "react";
+import { Locale } from "@/i18n.config";
 
 interface ProductCardProps {
   product: Product;
   viewMode: ViewMode;
   onToggleFavorite: (id: string) => void;
   onDetailsClick: (id: string) => void;
+  lang: Locale;
 }
 
 export default function CatalogCard({
@@ -19,6 +21,7 @@ export default function CatalogCard({
   viewMode,
   onToggleFavorite,
   onDetailsClick,
+  lang,
 }: ProductCardProps) {
   const [isFavorite, setIsFavorite] = useState(false);
   return (

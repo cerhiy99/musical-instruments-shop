@@ -184,24 +184,10 @@ export default function MobileNavbar({
     }
   };
 
-  // ________________________________________________________________________
-  // const [isModalOpen, setModalopen] = useState<boolean>(false);
-  // const handleSubmit = () => {
-  //   console.log("form submitted");
-  // };
-
-  // const closeModal = useCallback(() => {
-  //   setModalopen(false);
-  // }, [setModalopen]);
-
-  // ________________________________________________________________________
   return (
     <>
       {lang === "ru" && <SwitchFlagBanner />}
 
-      {/* <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        <FeedbackForm onSubmit={handleSubmit} />
-      </Modal> */}
       <header className="mobile-header">
         <button className="menu-toggle" onClick={toggleMenu}>
           <div className={`hamburger ${menuOpen ? "open" : ""}`}>
@@ -212,13 +198,13 @@ export default function MobileNavbar({
         </button>
 
         <div className="logo">
-          <Link href="/">
+          <Link href={`/${lang}`}>
             <Logo height={43} width={100} />
           </Link>
         </div>
 
         <div className="header-actions">
-          <Link href="/cart" className="cart-icon">
+          <Link href={`/${lang}/cart`} className="cart-icon">
             <Basket width={22} height={21} />
             <span className="cart-count">0</span>
           </Link>
@@ -270,7 +256,10 @@ export default function MobileNavbar({
                       className="category-link__wrapper"
                       onClick={() => setMenuOpen(false)}
                     >
-                      <Link href={item.link || "#"} className="category-link">
+                      <Link
+                        href={`/${lang}${item.link || "#"}`}
+                        className="category-link"
+                      >
                         {item.title}
                       </Link>
                       <span className="category-link__wrapper__underline"></span>
@@ -299,7 +288,7 @@ export default function MobileNavbar({
                 </button>
 
                 <Link
-                  href="/cart"
+                  href={`/${lang}/cart`}
                   className="cart-link"
                   onClick={() => setMenuOpen(false)}
                 >
@@ -310,7 +299,7 @@ export default function MobileNavbar({
                 </Link>
 
                 <Link
-                  href="/wishlist"
+                  href={`/${lang}/wishlist`}
                   className="wishlist-link"
                   onClick={() => setMenuOpen(false)}
                 >

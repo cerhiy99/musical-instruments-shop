@@ -1,8 +1,13 @@
 import Link from "next/link";
 import "./Favorities.scss";
 import Fav from "@/public/cart/favoritites.svg";
+import { Locale } from "@/i18n.config";
 
-export default function page() {
+export default function page({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
   return (
     <div className="favPage">
       <div className="favPage__container">
@@ -14,8 +19,8 @@ export default function page() {
         </div>
         <div>
           <p>
-            <Link href={"/catalog"}>Нажмите здесь</Link>, чтобы продолжить
-            покупки
+            <Link href={`/${lang}/catalog`}>Нажмите здесь</Link>, чтобы
+            продолжить покупки
           </p>
         </div>
       </div>

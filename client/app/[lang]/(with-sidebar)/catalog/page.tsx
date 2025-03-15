@@ -3,6 +3,7 @@ import React from "react";
 import "./Catalog.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { Locale } from "@/i18n.config";
 const imageUrl = "/images/banner1.jpg";
 const categories = [
   {
@@ -139,14 +140,18 @@ const categories = [
     ],
   },
 ];
-export default function Page() {
+export default function Page({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
   return (
     <div className="catalogPage">
       <div className="catalogPage__grid">
         {categories.map((category, i) => (
           <div className="catalogPage__grid--item" key={i}>
             <Link
-              href={`/catalog/${i}`}
+              href={`/${lang}/catalog/${i}`}
               className="catalogPage__grid--item-overlay"
             />
             <div className="catalogPage--image">

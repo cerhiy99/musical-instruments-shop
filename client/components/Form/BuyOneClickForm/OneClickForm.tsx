@@ -4,8 +4,10 @@ import type React from "react";
 import { useState } from "react";
 import "../sharedFormStyle.scss";
 import Link from "next/link";
+import { Locale } from "@/i18n.config";
 
 interface BuyOneClickFormProps {
+  lang: Locale;
   onSubmit: (formData: {
     contactPerson: string;
     phone: string;
@@ -15,7 +17,10 @@ interface BuyOneClickFormProps {
   }) => void;
 }
 
-const BuyOneClickForm: React.FC<BuyOneClickFormProps> = ({ onSubmit }) => {
+const BuyOneClickForm: React.FC<BuyOneClickFormProps> = ({
+  onSubmit,
+  lang,
+}) => {
   const [formData, setFormData] = useState({
     contactPerson: "",
     phone: "",
@@ -157,7 +162,7 @@ const BuyOneClickForm: React.FC<BuyOneClickFormProps> = ({ onSubmit }) => {
         />
         <label htmlFor="agreeToTerms">
           Я согласен на{" "}
-          <Link href="/privacy">обработку персональных данных</Link>
+          <Link href={`/${lang}/privacy`}>обработку персональных данных</Link>
         </label>
         {errors.agreeToTerms && (
           <div className="error-message">{errors.agreeToTerms}</div>

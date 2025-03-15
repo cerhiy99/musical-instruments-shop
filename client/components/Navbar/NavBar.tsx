@@ -23,13 +23,17 @@ const Navbar: React.FC<Props> = ({ lang, href, setSearch, onFormOpen }) => {
   const { t } = useTranslation();
   return (
     <div className="navbar__container">
-      <Link href="/" className="navbar__logo">
+      <Link href={`/${lang}`} className="navbar__logo">
         <SmallLogo height={46} width={105} />
       </Link>
 
       <div className="navbar__nav">
         {href.map((item) => (
-          <NavLink key={item.href} href={item.href} isByClass={true}>
+          <NavLink
+            key={item.href}
+            href={`/${lang}/${item.href}`}
+            isByClass={true}
+          >
             {t(`navigation.${item.title}`)}
           </NavLink>
         ))}
@@ -39,10 +43,13 @@ const Navbar: React.FC<Props> = ({ lang, href, setSearch, onFormOpen }) => {
         <button className="navbar__action-btn wide-btn" onClick={onFormOpen}>
           <Login height={21} width={21} />
         </button>
-        <Link href={"/favorities"} className="navbar__action-btn narrow-btn">
+        <Link
+          href={`/${lang}/favorities`}
+          className="navbar__action-btn narrow-btn"
+        >
           <Favorite height={23} width={21} />
         </Link>
-        <Link href={"/cart"} className="navbar__action-btn narrow-btn">
+        <Link href={`/${lang}/cart`} className="navbar__action-btn narrow-btn">
           <Basket height={22} width={21} />
         </Link>
         <button

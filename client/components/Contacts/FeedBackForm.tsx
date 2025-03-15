@@ -4,8 +4,9 @@ import "./FeedBackForm.scss";
 import { useState, type FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Locale } from "@/i18n.config";
 
-export default function FeedBackForm() {
+export default function FeedBackForm({ lang }: { lang: Locale }) {
   const [formData, setFormData] = useState({
     message: "",
     name: "",
@@ -196,7 +197,7 @@ export default function FeedBackForm() {
             />
             <label htmlFor="consent">
               Я согласен на{" "}
-              <Link href="/privacy" className="link">
+              <Link href={`/${lang}/privacy`} className="link">
                 обработку персональных данных
               </Link>
             </label>

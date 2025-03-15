@@ -10,26 +10,31 @@ import {
 import { getDictionary } from "@/lib/dictionary";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/i18n.config";
-// import { Dictionary } from "@/types/dictonary";
 
 interface TranslationContextType {
-  t: (key: string) => string; // Функція для отримання перекладу за ключем
-  locale: Locale; // Поточна мова
-  setLocale: (locale: Locale) => void; // Функція для зміни мови
+  t: (key: string) => string;
+  locale: Locale;
+  setLocale: (locale: Locale) => void;
 }
 
-// Створюємо контекст
 const TranslationContext = createContext<TranslationContextType | undefined>(
   undefined
 );
 
-// Провайдер
 export function TranslationProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const initialLocale = pathname.split("/")[1] as Locale; // Отримуємо поточну мову
-  const [locale, setLocale] = useState<Locale>(initialLocale);
-  //   const [dictionary, setDictionary] = useState<Dictionary>({});
+  const [locale, setLocale] = useState<Locale>(
+    (pathname.split("/")[1] as Locale) || "uk"
+  );
   const [dictionary, setDictionary] = useState({});
+
+  // Этот эффект будет следить за изменениями пути и обновлять локаль
+  useEffect(() => {
+    const pathLocale = pathname.split("/")[1] as Locale;
+    if (pathLocale && pathLocale !== locale) {
+      setLocale(pathLocale);
+    }
+  }, [pathname, locale]);
 
   useEffect(() => {
     async function loadTranslations() {
@@ -40,11 +45,10 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   }, [locale]);
 
   const t = (key: string): string => {
-    const keys = key.split("."); // Розділяємо ключ на категорію і підключ
-    const category = keys[0]; // Перша частина - категорія
-    const subKey = keys[1]; // Друга частина - підключ
+    const keys = key.split(".");
+    const category = keys[0];
+    const subKey = keys[1];
 
-    // Повертаємо переклад, або сам ключ, якщо не знайдений
     return dictionary[category]?.[subKey] || key;
   };
 
@@ -55,7 +59,6 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   );
 }
 
-// Хук для використання контексту
 export function useTranslation() {
   const context = useContext(TranslationContext);
   if (!context) {
@@ -63,4 +66,3 @@ export function useTranslation() {
   }
   return context;
 }
-//     {t(`navigation.${navItem.title}`)}

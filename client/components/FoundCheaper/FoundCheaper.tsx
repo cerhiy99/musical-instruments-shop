@@ -5,8 +5,9 @@ import Wallet from "@/public/wallet.svg";
 import "./FoundCheaper.scss";
 import Modal from "@/components/Modal/Modal";
 import FoundCheaperForm from "@/components/Form/FoundCheaperForm/Found-cheaper-form";
+import { Locale } from "@/i18n.config";
 
-export default function FoundCheaper() {
+export default function FoundCheaper({ lang }: { lang: Locale }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -29,7 +30,7 @@ export default function FoundCheaper() {
         </div>
       </button>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        <FoundCheaperForm onSubmit={handleSubmit} />
+        <FoundCheaperForm lang={lang} onSubmit={handleSubmit} />
       </Modal>
     </>
   );

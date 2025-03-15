@@ -9,6 +9,7 @@ import Heart from "@/public/Navbar/NavbarIcons/favorite.svg";
 import QuantitySelector from "@/components/ui/QuantitySelector/QuantitySelector";
 import FoundCheaper from "@/components/FoundCheaper/FoundCheaper";
 import BuyOneClick from "@/components/BuyOneClick/BuyOneClick";
+import { Locale } from "@/i18n.config";
 
 // Имитация получения данных о продукте
 async function getProduct(id: string) {
@@ -42,11 +43,11 @@ async function getProduct(id: string) {
 }
 
 export default async function ProductPage({
-  params,
+  params: { id, lang },
 }: {
-  params: { id: string };
+  params: { id: string; lang: Locale };
 }) {
-  const product = await getProduct(params.id);
+  const product = await getProduct(id);
 
   if (!product) {
     notFound();
@@ -100,7 +101,7 @@ export default async function ProductPage({
             <div className="availability__container">
               <AvailabilityIcon availability={product.inStock} />
             </div>
-            <FoundCheaper />
+            <FoundCheaper lang={lang} />
           </div>
           <div className="novaPostMainContainer">
             <NovaPost />
@@ -110,7 +111,7 @@ export default async function ProductPage({
             <button className="addToCartButton">В корзину</button>
           </div>
           <div className="buyOneClickMainContainer">
-            <BuyOneClick />
+            <BuyOneClick lang={lang} />
           </div>
 
           <div className="priceNote">

@@ -4,8 +4,10 @@ import type React from "react";
 import { useState } from "react";
 import "./feedBack.scss";
 import Link from "next/link";
+import { Locale } from "@/i18n.config";
 
 interface FeedbackFormProps {
+  lang: Locale;
   onSubmit: (formData: {
     name: string;
     callTime: string;
@@ -15,7 +17,7 @@ interface FeedbackFormProps {
   }) => void;
 }
 
-const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit }) => {
+const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit, lang }) => {
   const [formData, setFormData] = useState({
     name: "",
     callTime: "",
@@ -105,7 +107,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit }) => {
         />
         <label htmlFor="consent">
           Я согласен на{" "}
-          <Link href="/privacy">обработку персональных даних</Link>
+          <Link href={`/${lang}/privacy`}>обработку персональных даних</Link>
         </label>
       </div>
 

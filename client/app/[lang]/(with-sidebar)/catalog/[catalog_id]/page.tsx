@@ -2,6 +2,7 @@ import ProductList from "@/components/CatalogList/CatalogList";
 import "./CatalogId.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { Locale } from "@/i18n.config";
 const categories = [
   {
     id: 1,
@@ -347,18 +348,22 @@ const sampleProducts = [
 ];
 
 // const sampleProducts = [];
-export default function Page() {
+export default function Page({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
   if (categories.length === 0) {
     return <div>Нет категорий</div>;
   }
   if (sampleProducts.length > 0) {
-    return <ProductList products={sampleProducts} />;
+    return <ProductList products={sampleProducts} lang={lang} />;
   }
   return (
     <div className="catalog-items">
       {categories.map((category) => (
         <div className="catalog-items__item" key={category.id}>
-          <Link href={`/catalog/${category.id}`}></Link>
+          <Link href={`/${lang}/catalog/${category.id}`}></Link>
           <div className="catalog-item__image">
             <Image
               src={category.image}

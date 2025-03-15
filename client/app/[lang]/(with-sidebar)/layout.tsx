@@ -10,7 +10,7 @@ export default function WithSidebarLayout({
 }) {
   return (
     <>
-      <Sidebar />
+      <Sidebar lang={params.lang} />
       <main>{children}</main>
     </>
   );

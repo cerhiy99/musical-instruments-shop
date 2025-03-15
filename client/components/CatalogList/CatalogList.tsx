@@ -3,19 +3,19 @@
 import { useCallback, useState } from "react";
 import type { Product, ViewMode } from "@/types/catalog";
 import "./CatalogList.scss";
-import CatalogCardItem from "../Card/CatalogCardItem";
 import Grid from "@/public/catalogType/gridType.svg";
 import List from "@/public/catalogType/listType.svg";
 import CompactList from "@/public/catalogType/compactType.svg";
 import CatalogCard from "../Card/CatalogCard";
 import ProductFilter from "../FilterComponent/ProductFilter";
-import FilterIcon from "@/public/filter.svg";
+import { Locale } from "@/i18n.config";
 
 interface ProductListProps {
   products: Product[];
+  lang: Locale;
 }
 
-export default function ProductList({ products }: ProductListProps) {
+export default function ProductList({ products, lang }: ProductListProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
@@ -73,6 +73,7 @@ export default function ProductList({ products }: ProductListProps) {
             viewMode={viewMode}
             onToggleFavorite={handleToggleFavorite}
             onDetailsClick={handleDetailsClick}
+            lang={lang}
           />
         ))}
       </div>

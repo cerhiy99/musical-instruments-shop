@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import ArrowIcon from "@/public/arrowUp.svg";
 import "./product-tabs.scss";
 
 interface ProductTabsProps {

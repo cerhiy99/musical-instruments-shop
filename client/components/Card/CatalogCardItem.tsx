@@ -4,14 +4,16 @@ import React from "react";
 import "./CatalogCardItem.scss";
 import { type Product } from "@/types/catalog";
 import Badge from "../ui/Badge/Bdge";
+import { Locale } from "@/i18n.config";
 interface ProductCardProps {
   product: Product;
+  lang: Locale;
 }
 
-const CatalogCardItem: React.FC<ProductCardProps> = ({ product }) => {
+const CatalogCardItem: React.FC<ProductCardProps> = ({ product, lang }) => {
   return (
     <div>
-      <Link href={"/catalog"}></Link>
+      <Link href={`/${lang}/catalog`}></Link>
       <div className="hotGoods__grid--item">
         <div className="inner__wrapper">
           <div className="badge__wrapper">

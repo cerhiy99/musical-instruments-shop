@@ -133,11 +133,11 @@ export default async function Home({
       <ImageSlider images={sliderImages} interval={5000} />
       <div className="titleCategoty__container">
         <h4 className="titleCategoty__title">{aside.popularCatalog}</h4>
-        <Link href={"/catalog"}>{aside.allCatalog}</Link>
+        <Link href={`/${lang}/catalog`}>{aside.allCatalog}</Link>
       </div>
       <div className="categories__grid">
         {categories.map((category, i) => (
-          <Link href={"/catalog"} key={category.id}>
+          <Link href={`/${lang}/catalog`} key={category.id}>
             <div className="categories__grid--item">
               <Image
                 src={category.image}
@@ -152,8 +152,8 @@ export default async function Home({
           </Link>
         ))}
       </div>
-      <HotProducts />
-      <GreetingBanner />
+      <HotProducts lang={lang} />
+      <GreetingBanner lang={lang} />
       <Brands lang={lang} />
     </>
   );

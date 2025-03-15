@@ -6,8 +6,9 @@ import ChatIcon from "@/public/chat.svg";
 import ArrowUpIcon from "@/public/arrowUp.svg";
 import Modal from "../Modal/Modal";
 import FeedbackForm from "../Form/FeedBack/FeedBack";
+import { Locale } from "@/i18n.config";
 
-const FloatingButtons = () => {
+const FloatingButtons = ({ lang }: { lang: Locale }) => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLElement | null>(null);
@@ -62,7 +63,7 @@ const FloatingButtons = () => {
   return (
     <>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        <FeedbackForm onSubmit={handleSubmit} />
+        <FeedbackForm onSubmit={handleSubmit} lang={lang} />
       </Modal>
       <div className="floatingButtons">
         <button

@@ -4,8 +4,9 @@ import React, { useCallback, useState } from "react";
 import "./BuyOneClick.scss";
 import Modal from "@/components/Modal/Modal";
 import BuyOneClickForm from "../Form/BuyOneClickForm/OneClickForm";
+import { Locale } from "@/i18n.config";
 
-export default function BuyOneClick() {
+export default function BuyOneClick({ lang }: { lang: Locale }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -25,7 +26,7 @@ export default function BuyOneClick() {
         Купить в 1 клик
       </button>
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
-        <BuyOneClickForm onSubmit={handleSubmit} />
+        <BuyOneClickForm onSubmit={handleSubmit} lang={lang} />
       </Modal>
     </>
   );
