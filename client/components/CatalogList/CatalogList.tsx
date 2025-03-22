@@ -9,6 +9,7 @@ import CompactList from "@/public/catalogType/compactType.svg";
 import CatalogCard from "../Card/CatalogCard";
 import ProductFilter from "../FilterComponent/ProductFilter";
 import { Locale } from "@/i18n.config";
+import { useRouter } from "next/navigation";
 
 interface ProductListProps {
   products: Product[];
@@ -18,6 +19,7 @@ interface ProductListProps {
 export default function ProductList({ products, lang }: ProductListProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
+  const router = useRouter();
 
   const handleFilterChange = useCallback((products: Product[]) => {
     setFilteredProducts(products);
@@ -29,7 +31,9 @@ export default function ProductList({ products, lang }: ProductListProps) {
   };
 
   const handleDetailsClick = (id: string) => {
+    router.push("/item");
     // Implement details click logic here
+
     console.log("Show details:", id);
   };
 
