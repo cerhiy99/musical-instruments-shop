@@ -1,69 +1,85 @@
 @import "@/styles/variables.scss";
 
-.sidebar {
+.sidebar-user {
   max-width: 25.8rem;
   width: 100%;
   flex-shrink: 0;
   @media (max-width: $desktop) {
     display: none;
   }
-}
 
-.categories {
-  box-shadow: 0 0 0 0.1rem $color-gray-50;
-}
-
-.categoryItem {
-  position: relative;
-  background-color: $color-gray-100;
-  padding: 1.4rem 2rem;
-  box-shadow: 0 0 0 0.1rem $color-gray-50;
-  font-size: 1.3rem;
-  a {
-    position: absolute;
-    inset: 0;
+  .categories {
+    box-shadow: 0 0 0 0.1rem $color-gray-50;
   }
 
-  &:hover {
-    background-color: white;
-    color: $color-blue-300;
-    .categoryItem__underline {
-      transform: scaleY(1);
-      a {
-        color: $color-blue-300;
+  .categoryItem {
+    position: relative;
+    background-color: $color-gray-100;
+    padding: 1.4rem 2rem;
+    box-shadow: 0 0 0 0.1rem $color-gray-50;
+    font-size: 1.3rem;
+    a {
+      position: absolute;
+      inset: 0;
+    }
+
+    &:hover {
+      background-color: white;
+      color: $color-blue-300;
+      .categoryItem__underline {
+        transform: scaleY(1);
+        a {
+          color: $color-blue-300;
+        }
+      }
+    }
+
+    &.activeNavLink {
+      color: white;
+      background-color: $color-blue-350;
+    }
+    &__underline {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 100%;
+      width: 0.2rem;
+      background-color: $color-blue-300;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.3s ease;
+    }
+
+    &__wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      h3 {
+        font-weight: 400;
+        padding-right: 0.2rem;
+        font-size: 1.3rem;
+      }
+      &--svg {
+        padding-top: 0.7rem;
+        height: 0.8rem;
+        width: 1.2rem;
       }
     }
   }
-
-  &.activeNavLink {
-    color: white;
-    background-color: $color-blue-350;
-  }
-  &__underline {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100%;
-    width: 0.2rem;
-    background-color: $color-blue-300;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.3s ease;
-  }
-
-  &__wrapper {
+  .sidebar-logout {
+    height: 4.75rem;
+    background-color: $color-gray-100;
+    padding: 1.4rem 2rem;
+    box-shadow: 0 0 0 0.1rem $color-gray-50;
+    font-size: 1.3rem;
+    max-width: 25.8rem;
+    width: 100%;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    h3 {
-      font-weight: 400;
-      padding-right: 0.2rem;
-      font-size: 1.3rem;
-    }
-    &--svg {
-      padding-top: 0.7rem;
-      height: 0.8rem;
-      width: 1.2rem;
+    gap: 1rem;
+    align-items: center;
+    color: $color-blue-350;
+    svg {
+      transform: rotate(180deg);
     }
   }
 }

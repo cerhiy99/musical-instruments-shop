@@ -1,13 +1,13 @@
 "use client";
+
 import Link from "next/link";
 import "./UserSidebar.scss";
-import { useState } from "react";
 import ArrowIcon from "@/public/arrow.svg";
 import Image from "next/image";
 import SideNews from "./SideNews";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { Locale } from "@/i18n.config";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const DashboardNavigation = [
   { title: "Мій кабінет", link: "/dashboard" },
@@ -20,12 +20,17 @@ const DashboardNavigation = [
 ];
 
 export default function UserSidebar({ lang }: { lang: Locale }) {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const { t } = useTranslation();
   const currentPath = usePathname();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    router.push(`/${lang}`);
+    console.log("Log out");
+  };
 
   return (
-    <aside className="sidebar">
+    <aside className="sidebar-user">
       <nav className="categories">
         <ul>
           {DashboardNavigation.map((navigation) => (
@@ -37,7 +42,7 @@ export default function UserSidebar({ lang }: { lang: Locale }) {
                   : ""
               }`}
             >
-              <Link href={navigation.link} />
+              <Link href={`/${lang}${navigation.link}`} />
               <div>
                 <div className="categoryItem__wrapper">
                   <h3>{navigation.title}</h3>
@@ -47,7 +52,16 @@ export default function UserSidebar({ lang }: { lang: Locale }) {
             </li>
           ))}
         </ul>
+        <button className="sidebar-logout" onClick={handleLogout}>
+          <div>
+            <ArrowIcon height={8} />
+          </div>
+          <div>
+            <p>Выйти</p>
+          </div>
+        </button>
       </nav>
+
       <SideNews lang={lang} />
     </aside>
   );
