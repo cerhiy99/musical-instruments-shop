@@ -43,7 +43,6 @@ export default function UserSidebar({ lang }: { lang: Locale }) {
                   <h3>{navigation.title}</h3>
                 </div>
               </div>
-
               <span className="categoryItem__underline"></span>
             </li>
           ))}

@@ -229,7 +229,7 @@ const Header: React.FC<Props> = ({ lang }) => {
                   {navItems.map((navItem) => (
                     <NavLink
                       key={navItem.title}
-                      href={`/${lang}/${navItem.href}`}
+                      href={`/${lang}${navItem.href}`}
                       isByClass={true}
                     >
                       {t(`navigation.${navItem.title}`)}
