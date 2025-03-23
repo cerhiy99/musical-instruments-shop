@@ -6,6 +6,25 @@
     font-weight: 400;
     margin-bottom: 4rem;
   }
+  &-none {
+    .orders-item--link {
+      position: relative;
+      padding: 2rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: $color-blue-300;
+      border: solid 0.1rem $color-gray-50;
+      margin-bottom: 2rem;
+      &:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        color: black;
+      }
+      a {
+        position: absolute;
+        inset: 0;
+      }
+    }
+  }
   &-item {
     min-height: 6.2rem;
     height: fit-content;
