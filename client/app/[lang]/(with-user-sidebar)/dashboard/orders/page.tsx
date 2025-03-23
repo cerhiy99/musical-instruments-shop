@@ -1,20 +1,26 @@
 import { Locale } from "@/i18n.config";
-// import "./Dashboard.scss";
+import "./Orders.scss";
 import Link from "next/link";
-
-import Brands from "@/components/HomePage/Brands";
-
 import { getDictionary } from "@/lib/dictionary";
 
-export default async function DashBoard({
+export default async function Orders({
   params: { lang },
 }: {
   params: { lang: Locale };
 }) {
-  const { aside } = await getDictionary(lang);
+  // const { aside } = await getDictionary(lang);
+
   return (
-    <>
-      <p>Orders</p>
-    </>
+    <div className="orders">
+      <h3>Текущие заказы не найдены</h3>
+      <div className="orders-link">
+        <Link href={`/${lang}/dashboard/orders/history`} />
+        Посмотреть историю заказов
+      </div>
+      <div className="orders-link">
+        <Link href={`/${lang}/catalog`} />
+        Перейти в каталог
+      </div>
+    </div>
   );
 }

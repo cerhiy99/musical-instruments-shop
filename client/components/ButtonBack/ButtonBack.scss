@@ -1,0 +1,22 @@
+@import "@/styles/variables.scss";
+
+.button-back {
+  height: 4.75rem;
+  background-color: $color-gray-100;
+  padding: 1.4rem 2rem;
+  box-shadow: 0 0 0 0.1rem $color-gray-50;
+  font-size: 1.3rem;
+  // max-width: 25.8rem;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: $color-blue-350;
+  svg {
+    transform: rotate(180deg);
+  }
+  @media (min-width: $desktop) {
+    visibility: hidden;
+    display: none;
+  }
+}

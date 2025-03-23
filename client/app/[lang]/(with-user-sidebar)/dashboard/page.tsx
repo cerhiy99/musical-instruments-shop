@@ -7,7 +7,7 @@ import Contacts from "@/public/dashboard/contacts.svg";
 import Receipt from "@/public/dashboard/receipt.svg";
 import History from "@/public/dashboard/history.svg";
 import Cart from "@/public/dashboard/cartThin.svg";
-import LogOut from "@/public/dashboard/logOut.svg";
+import ButtonLogout from "@/components/ButtonLogout/ButtonLogout";
 
 type DashboardNavItem = {
   title: string;
@@ -34,6 +34,7 @@ export default async function DashBoard({
   params: { lang: Locale };
 }) {
   // const { aside } = await getDictionary(lang);
+
   return (
     <div className="dashboard__grid">
       {DashboardNavigation.map((navItem, i) => (
@@ -43,10 +44,7 @@ export default async function DashBoard({
           <p>{navItem.title}</p>
         </div>
       ))}
-      <button className="dashboard__grid--item">
-        <LogOut width={50} height={50} strokeWidth={1.5} />
-        <p>Выйти</p>
-      </button>
+      <ButtonLogout lang={lang} />
     </div>
   );
 }

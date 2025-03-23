@@ -1,0 +1,102 @@
+@import "@/styles/variables.scss";
+
+.orders {
+  h3 {
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+  }
+  &-item {
+    height: 6.2rem;
+    padding: 2.3rem;
+    p {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    border: solid 0.1rem $color-gray-50;
+    background-color: $color-gray-100;
+  }
+  &-buttons {
+    padding: 1.2rem 2.3rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border: solid 0.1rem $color-gray-50;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1.3rem;
+    justify-content: space-between;
+    width: 100%;
+    @media (max-width: $tablet) {
+      flex-direction: column;
+    }
+
+    &__left {
+      display: flex;
+      gap: 1.3rem;
+      @media (max-width: $tablet) {
+        flex-direction: column;
+        max-width: 100%;
+      }
+      max-width: 38.4rem;
+      width: 100%;
+
+      .orders-buttons--details {
+        max-width: 19.9rem;
+        @media (max-width: $tablet) {
+          max-width: 100%;
+        }
+      }
+      .orders-buttons--repeat {
+        max-width: 17.2rem;
+        @media (max-width: $tablet) {
+          max-width: 100%;
+        }
+      }
+      .blue-orders-button {
+        width: 100%;
+        height: 3.6rem;
+        background-color: $color-blue-300;
+        color: white;
+        border: none;
+        line-height: 1.8rem;
+        border-radius: 0.2rem;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        &:hover {
+          background-color: $color-blue-400;
+        }
+      }
+    }
+    &__right {
+      max-width: 15.7rem;
+      width: 100%;
+      @media (max-width: $tablet) {
+        max-width: 100%;
+      }
+      .orders-buttons--cancel {
+        @media (max-width: $tablet) {
+          max-width: 100%;
+        }
+        width: 100%;
+        white-space: nowrap;
+        width: 100%;
+        @media (max-width: $mobile) {
+          max-width: 100%;
+        }
+        height: 3.6rem;
+        background: white;
+        border: 1px solid $color-blue-300;
+        color: $color-blue-300;
+        border-radius: 0.2rem;
+
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+          background-color: #e3f2fd;
+        }
+      }
+    }
+  }
+}

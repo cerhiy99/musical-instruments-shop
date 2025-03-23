@@ -3,7 +3,6 @@
 import Link from "next/link";
 import "./UserSidebar.scss";
 import ArrowIcon from "@/public/arrow.svg";
-import Image from "next/image";
 import SideNews from "./SideNews";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import { Locale } from "@/i18n.config";
