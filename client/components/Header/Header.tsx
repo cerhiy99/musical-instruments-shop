@@ -16,7 +16,7 @@ import flagBanner from "@/public/Navbar/flagBanner.png";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import NavLink from "../ui/NavLink";
 import SearchBar from "../SearchBar/SearchBar";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import TopicHeader from "./TopicHeader";
 import { useTranslation } from "@/contexts/TranslationProvider";
 import Modal from "../Modal/Modal";
@@ -25,6 +25,7 @@ import LoginForm from "../Form/Login/LoginForm";
 import MobileNavbar from "../MobileNavbar/MobileNavbar";
 import SwitchFlagBanner from "../ui/FlagBannerSwitch/FlagBannerSwitch";
 import FeedbackForm from "../Form/FeedBack/FeedBack";
+import ForgetPasswordForm from "../Form/ForgetPassword/ForgetPasswordForm";
 type Props = {
   lang: Locale;
 };
@@ -48,6 +49,8 @@ const Header: React.FC<Props> = ({ lang }) => {
   const navbarRef = useRef<HTMLElement | null>(null);
   const [windowWidth, setWindowWidth] = useState(0);
   const { t } = useTranslation();
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,22 +82,28 @@ const Header: React.FC<Props> = ({ lang }) => {
   }, []);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isForm, setIsForm] = useState<"SignUp" | "SignIn" | "CallBack" | null>(
-    null
-  );
+  const [isForm, setIsForm] = useState<
+    "SignUp" | "SignIn" | "CallBack" | "ForgetPassword" | null
+  >(null);
 
   const openModal = () => setIsModalOpen(true);
 
   const closeModal = useCallback(() => {
+    setIsForm(null);
     setIsModalOpen(false);
   }, [setIsModalOpen]);
 
   const handleSubmit = (formData: any) => {
     console.log("Form submitted:", formData);
+    setIsForm(null);
     closeModal();
+    router.push(`/${lang}/dashboard`);
+
     // Here you would typically send the data to your backend
   };
-  const handleOpenFormType = (typeForm: "SignUp" | "SignIn" | "CallBack") => {
+  const handleOpenFormType = (
+    typeForm: "SignUp" | "SignIn" | "CallBack" | "ForgetPassword"
+  ) => {
     if (!typeForm) return;
     setIsForm(typeForm);
   };
@@ -244,7 +253,9 @@ const Header: React.FC<Props> = ({ lang }) => {
       <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
         {isForm === "SignIn" && (
           <LoginForm
+            lang={lang}
             onRegisterClick={() => handleOpenFormType("SignUp")}
+            onForgetPassword={() => handleOpenFormType("ForgetPassword")}
             onSubmit={handleSubmit}
           />
         )}
@@ -256,6 +267,9 @@ const Header: React.FC<Props> = ({ lang }) => {
         )}
         {isForm === "CallBack" && (
           <FeedbackForm onSubmit={onFeedBackSubmit} lang={lang} />
+        )}
+        {isForm === "ForgetPassword" && (
+          <ForgetPasswordForm onSubmit={handleSubmit} lang={lang} />
         )}
       </Modal>
       {pathname === "/en" || pathname === "/ru" || pathname === "/uk" ? null : (

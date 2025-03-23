@@ -2,30 +2,20 @@
 
 import type React from "react";
 import { useState } from "react";
-import "./LoginForm.scss";
+import "./ForgetPasswordForm.scss";
 import { useRouter } from "next/navigation";
 import { Locale } from "@/i18n.config";
 
 interface LoginFormProps {
   lang: Locale;
-  onSubmit: (formData: {
-    login: string;
-    password: string;
-    rememberMe: boolean;
-  }) => void;
-  onRegisterClick: () => void;
-  onForgetPassword: () => void;
+  onSubmit: (formData: { login: string; password: string }) => void;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({
-  lang,
-  onSubmit,
-  onRegisterClick,
-  onForgetPassword,
-}) => {
+const ForgetPasswordForm: React.FC<LoginFormProps> = ({ lang, onSubmit }) => {
   const [formData, setFormData] = useState({
     login: "",
     password: "",
+    confirmPassword: "",
     rememberMe: false,
   });
 
@@ -84,6 +74,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
           <label htmlFor="login">
             Логин <span className="required">*</span>
           </label>
+          {errors.login && <div className="error-message">{errors.login}</div>}
           <input
             type="text"
             id="login"
@@ -93,7 +84,6 @@ const LoginForm: React.FC<LoginFormProps> = ({
             placeholder="example@email.com"
             className={errors.login ? "error" : ""}
           />
-          {errors.login && <div className="error-message">{errors.login}</div>}
         </div>
 
         <div className="form-group">
@@ -114,39 +104,35 @@ const LoginForm: React.FC<LoginFormProps> = ({
             className={errors.password ? "error" : ""}
           />
         </div>
-
-        <div className="form-actions">
-          <div className="remember-me">
-            <input
-              type="checkbox"
-              id="rememberMe"
-              name="rememberMe"
-              checked={formData.rememberMe}
-              onChange={handleChange}
-            />
-            <label htmlFor="rememberMe">Запомнить меня</label>
+        <div className="form-group">
+          <div className="password-label-container">
+            <label htmlFor="password">
+              Пароль <span className="required">*</span>
+            </label>
+            {errors.password && (
+              <div className="error-message">{errors.password}</div>
+            )}
           </div>
-          <button onClick={onForgetPassword} className="forgot-password">
-            Забыли пароль?
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className={errors.password ? "error" : ""}
+          />
+        </div>
+        <div className="forget-pass-btns">
+          <button type="submit" className="login-button">
+            Сменить пароль
           </button>
+          {/* <button className="login-close" onClick={}>
+            Отмена
+          </button> */}
         </div>
-
-        <button type="submit" className="login-button">
-          Войти
-        </button>
       </form>
-
-      <div className="registration-section">
-        <div className="registration-info">
-          Вам будет доступно управление рассылками, использование персональных
-          данных, связь профиля с аккаунтом соцсети и т.д.
-        </div>
-        <button onClick={onRegisterClick} className="register-button">
-          Регистрация
-        </button>
-      </div>
     </div>
   );
 };
 
-export default LoginForm;
+export default ForgetPasswordForm;

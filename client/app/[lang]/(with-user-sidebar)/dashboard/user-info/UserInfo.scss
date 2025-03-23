@@ -1,0 +1,77 @@
+@import "@/styles/variables.scss";
+
+.profile-form-container {
+  padding: 4rem;
+  border: solid 0.1rem $color-gray-50;
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .label-container {
+      width: 20rem;
+      padding: 0.8rem;
+
+      label {
+        font-size: 1.4rem;
+        color: $color-gray-400;
+        .required {
+          color: #e74c3c;
+        }
+      }
+    }
+
+    .input-help-container {
+      width: 100%;
+      display: flex;
+      gap: 2rem;
+      input {
+        max-width: 55rem;
+        width: 100%;
+        padding: 1.2rem 1.5rem;
+        border: solid 0.1rem $color-gray-50;
+        border-radius: 4px;
+        font-size: 14px;
+
+        &:focus {
+          outline: none;
+          border-color: $color-blue-350;
+        }
+      }
+
+      .help-text {
+        margin-top: 0.5rem;
+        font-size: 1.3rem;
+        color: $color-gray-400;
+      }
+    }
+  }
+
+  .form-actions {
+    margin-top: 30px;
+
+    .save-button {
+      max-width: 18.7rem;
+      width: 100%;
+      height: 3.6rem;
+      background-color: $color-blue-300;
+      color: white;
+      border: none;
+      line-height: 1.8rem;
+      border-radius: 0.2rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      &:hover {
+        background-color: $color-blue-400;
+      }
+    }
+  }
+}
+.social-link-info {
+  padding: 4rem;
+  font-size: 14px;
+  border: solid 0.1rem $color-gray-50;
+  border-top: none;
+  color: $color-gray-400;
+}
