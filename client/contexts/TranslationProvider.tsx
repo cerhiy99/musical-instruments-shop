@@ -11,8 +11,12 @@ import { getDictionary } from "@/lib/dictionary";
 import { usePathname } from "next/navigation";
 import { Locale } from "@/i18n.config";
 
+type Dictionary = {
+  [key: string]: Record<string, string | string[]>; // Позволяет хранить строки и массивы строк
+};
+
 interface TranslationContextType {
-  t: (key: string) => string;
+  t: (key: string) => string | Array<string>;
   locale: Locale;
   setLocale: (locale: Locale) => void;
 }
@@ -26,7 +30,7 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   const [locale, setLocale] = useState<Locale>(
     (pathname.split("/")[1] as Locale) || "uk"
   );
-  const [dictionary, setDictionary] = useState({});
+  const [dictionary, setDictionary] = useState<Dictionary>({});
 
   // Этот эффект будет следить за изменениями пути и обновлять локаль
   useEffect(() => {
@@ -44,7 +48,7 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
     loadTranslations();
   }, [locale]);
 
-  const t = (key: string): string => {
+  const t = (key: string): string | Array<string> => {
     const keys = key.split(".");
     const category = keys[0];
     const subKey = keys[1];

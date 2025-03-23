@@ -31,7 +31,7 @@ const Navbar: React.FC<Props> = ({ lang, href, setSearch, onFormOpen }) => {
         {href.map((item) => (
           <NavLink
             key={item.href}
-            href={`/${lang}/${item.href}`}
+            href={`/${lang}${item.href}`}
             isByClass={true}
           >
             {t(`navigation.${item.title}`)}

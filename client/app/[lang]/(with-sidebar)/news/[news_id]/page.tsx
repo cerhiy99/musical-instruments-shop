@@ -41,7 +41,8 @@ interface NewsArticleProps {
   article: Article;
 }
 
-export default function NewsArticle({ article }: NewsArticleProps) {
+// export default function NewsArticle({ article }: NewsArticleProps) {
+export default function NewsArticle() {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = {

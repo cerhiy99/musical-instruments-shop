@@ -23,7 +23,7 @@ export default function NavLink({
   const pathname = usePathname();
   const isActive = pathname.includes(href);
   useEffect(() => {
-    console.log(pathname, href);
+    // console.log(pathname, href);
   }, [pathname, href]);
 
   return !isByClass ? (

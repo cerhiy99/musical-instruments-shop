@@ -257,7 +257,8 @@ export default function MobileNavbar({
                       onClick={() => setMenuOpen(false)}
                     >
                       <Link
-                        href={`/${lang}${item.link || "#"}`}
+                        // href={`/${lang}${item.link || "#"}`}
+                        href={`/${lang}/catalog`}
                         className="category-link"
                       >
                         {item.title}
