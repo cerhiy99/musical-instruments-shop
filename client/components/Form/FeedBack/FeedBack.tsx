@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useState } from "react";
-import "./feedBack.scss";
+import "./FeedBack.scss";
 import Link from "next/link";
 import { Locale } from "@/i18n.config";
 

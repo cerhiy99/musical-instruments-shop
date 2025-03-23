@@ -1,4 +1,4 @@
-import "./privacy.scss";
+import "./Privacy.scss";
 
 export default function PrivacyPolicy() {
   return (
