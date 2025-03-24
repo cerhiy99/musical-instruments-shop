@@ -46,27 +46,32 @@ const categories: CategoryType[] = [
               {
                 id: "master-violins",
                 title: "Майстрові скрипки",
-                link: "/catalog/string-instruments/violin/master",
+                // link: "/catalog/string-instruments/violin/master",
+                link: "/catalog",
               },
               {
                 id: "complete-violins",
                 title: "Укомплектовані скрипки",
-                link: "/catalog/string-instruments/violin/complete",
+                // link: "/catalog/string-instruments/violin/complete",
+                link: "/catalog",
               },
               {
                 id: "factory-violins",
                 title: "Скрипки фабричного/мануфактурного виробництва",
-                link: "/catalog/string-instruments/violin/factory",
+                // link: "/catalog/string-instruments/violin/factory",
+                link: "/catalog",
               },
               {
                 id: "carbon-violins",
                 title: "Карбонові скрипки",
-                link: "/catalog/string-instruments/violin/carbon",
+                link: "/catalog",
+                // link: "/catalog/string-instruments/violin/carbon",
               },
               {
                 id: "electric-violins",
                 title: "Електроскрипки",
-                link: "/catalog/string-instruments/violin/electric",
+                // link: "/catalog/string-instruments/violin/electric",
+                link: "/catalog",
               },
             ],
           },
@@ -77,12 +82,14 @@ const categories: CategoryType[] = [
               {
                 id: "master-violas",
                 title: "Майстрові альти",
-                link: "/catalog/string-instruments/viola/master",
+                link: "/catalog",
+                // link: "/catalog/string-instruments/viola/master",
               },
               {
                 id: "complete-violas",
                 title: "Укомплектовані альти",
-                link: "/catalog/string-instruments/viola/complete",
+                link: "/catalog",
+                // link: "/catalog/string-instruments/viola/complete",
               },
             ],
           },
@@ -257,8 +264,8 @@ export default function MobileNavbar({
                       onClick={() => setMenuOpen(false)}
                     >
                       <Link
-                        // href={`/${lang}${item.link || "#"}`}
-                        href={`/${lang}/catalog`}
+                        href={`/${lang}${item.link || "#"}`}
+                        // href={`/${lang}/catalog`}
                         className="category-link"
                       >
                         {item.title}
