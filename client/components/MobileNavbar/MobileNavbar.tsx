@@ -17,7 +17,6 @@ import EnvelopeIcon from "@/public/Footer/envelope.svg";
 import ArrowIcon from "@/public/arrow.svg";
 import ArrowLeft from "@/public/arrowLeft.svg";
 import SwitchFlagBanner from "../ui/FlagBannerSwitch/FlagBannerSwitch";
-
 type CategoryType = {
   id: string;
   title: string;
