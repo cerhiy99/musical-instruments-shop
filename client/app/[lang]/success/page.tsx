@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import "./Success.scss";
 import Modal from "@/components/Modal/Modal";
 import { Locale } from "@/i18n.config";
-import LoginForm from "@/components/Form/Login/LoginForm";
+import LoginForm from "../../../components/Form/LogIn/LoginForm"// /components/Form/Login/LoginForm";
 import RegistrationForm from "@/components/Form/Register/RegisterForm";
 import ForgetPasswordForm from "@/components/Form/ForgetPassword/ForgetPasswordForm";
 
