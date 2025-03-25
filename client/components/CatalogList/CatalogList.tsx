@@ -31,7 +31,7 @@ export default function ProductList({ products, lang }: ProductListProps) {
   };
 
   const handleDetailsClick = (id: string) => {
-    router.push("/item");
+    router.push(`/${lang}/item`);
     // Implement details click logic here
 
     console.log("Show details:", id);
