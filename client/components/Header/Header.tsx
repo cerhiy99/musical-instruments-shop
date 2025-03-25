@@ -88,7 +88,15 @@ const Header: React.FC<Props> = ({ lang }) => {
   >(null);
 
   const openModal = () => setIsModalOpen(true);
-
+  const isTypeModal = (
+    type: "SignUp" | "SignIn" | "CallBack" | "ForgetPassword" | null
+  ) => {
+    if (type === "SignUp") return "Регистрация";
+    if (type === "SignIn") return "Личный кабинет";
+    if (type === "CallBack") return "Обратная связь";
+    if (type === "ForgetPassword") return "Смена пароля";
+    return "Обратная связь";
+  };
   const closeModal = useCallback(() => {
     setIsForm(null);
     setIsModalOpen(false);
@@ -139,6 +147,7 @@ const Header: React.FC<Props> = ({ lang }) => {
               lang={lang}
               href={navItems}
               setSearch={setSearchBar}
+              onTypeFormSubmit={handleOpenFormType}
             />
           </nav>
 
@@ -251,7 +260,11 @@ const Header: React.FC<Props> = ({ lang }) => {
           </header>
         </>
       )}
-      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title={isTypeModal(isForm)}
+      >
         {isForm === "SignIn" && (
           <LoginForm
             lang={lang}
@@ -270,7 +283,11 @@ const Header: React.FC<Props> = ({ lang }) => {
           <FeedbackForm onSubmit={onFeedBackSubmit} lang={lang} />
         )}
         {isForm === "ForgetPassword" && (
-          <ForgetPasswordForm onSubmit={handleSubmit} lang={lang} />
+          <ForgetPasswordForm
+            onSubmit={handleSubmit}
+            lang={lang}
+            onRegisterClick={() => handleOpenFormType("SignUp")}
+          />
         )}
       </Modal>
       {pathname === "/en" || pathname === "/ru" || pathname === "/uk" ? null : (

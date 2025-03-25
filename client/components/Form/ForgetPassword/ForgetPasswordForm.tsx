@@ -8,10 +8,15 @@ import { Locale } from "@/i18n.config";
 
 interface LoginFormProps {
   lang: Locale;
+  onRegisterClick: () => void;
   onSubmit: (formData: { login: string; password: string }) => void;
 }
 
-const ForgetPasswordForm: React.FC<LoginFormProps> = ({ lang, onSubmit }) => {
+const ForgetPasswordForm: React.FC<LoginFormProps> = ({
+  lang,
+  onSubmit,
+  onRegisterClick,
+}) => {
   const [formData, setFormData] = useState({
     login: "",
     password: "",
@@ -89,7 +94,7 @@ const ForgetPasswordForm: React.FC<LoginFormProps> = ({ lang, onSubmit }) => {
         <div className="form-group">
           <div className="password-label-container">
             <label htmlFor="password">
-              Пароль <span className="required">*</span>
+              Новый пароль <span className="required">*</span>
             </label>
             {errors.password && (
               <div className="error-message">{errors.password}</div>
@@ -107,7 +112,7 @@ const ForgetPasswordForm: React.FC<LoginFormProps> = ({ lang, onSubmit }) => {
         <div className="form-group">
           <div className="password-label-container">
             <label htmlFor="password">
-              Пароль <span className="required">*</span>
+              Подтверждение пароль <span className="required">*</span>
             </label>
             {errors.password && (
               <div className="error-message">{errors.password}</div>
@@ -131,6 +136,15 @@ const ForgetPasswordForm: React.FC<LoginFormProps> = ({ lang, onSubmit }) => {
           </button> */}
         </div>
       </form>
+      <div className="registration-section">
+        <div className="registration-info">
+          Вам будет доступно управление рассылками, использование персональных
+          данных, связь профиля с аккаунтом соцсети и т.д.
+        </div>
+        <button onClick={onRegisterClick} className="register-button">
+          Регистрация
+        </button>
+      </div>
     </div>
   );
 };

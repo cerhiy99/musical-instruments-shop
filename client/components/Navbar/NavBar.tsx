@@ -17,9 +17,16 @@ type Props = {
   href: Array<{ title: string; href: string }>;
   setSearch: React.Dispatch<React.SetStateAction<boolean>>;
   onFormOpen: () => void;
+  onTypeFormSubmit: (typeForm: "SignUp" | "SignIn" | "CallBack") => void;
 };
 
-const Navbar: React.FC<Props> = ({ lang, href, setSearch, onFormOpen }) => {
+const Navbar: React.FC<Props> = ({
+  lang,
+  href,
+  setSearch,
+  onFormOpen,
+  onTypeFormSubmit,
+}) => {
   const { t } = useTranslation();
   return (
     <div className="navbar__container">
@@ -40,7 +47,13 @@ const Navbar: React.FC<Props> = ({ lang, href, setSearch, onFormOpen }) => {
       </div>
 
       <div className="navbar__actions">
-        <button className="navbar__action-btn wide-btn" onClick={onFormOpen}>
+        <button
+          className="navbar__action-btn wide-btn"
+          onClick={() => {
+            onFormOpen();
+            onTypeFormSubmit("SignIn");
+          }}
+        >
           <Login height={21} width={21} />
         </button>
         <Link

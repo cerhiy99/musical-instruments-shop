@@ -6,7 +6,15 @@ import Modal from "@/components/Modal/Modal";
 import BuyOneClickForm from "../Form/BuyOneClickForm/OneClickForm";
 import { Locale } from "@/i18n.config";
 
-export default function BuyOneClick({ lang }: { lang: Locale }) {
+export default function BuyOneClick({
+  lang,
+  title,
+  hasClass,
+}: {
+  lang: Locale;
+  title?: string;
+  hasClass?: string;
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -22,10 +30,13 @@ export default function BuyOneClick({ lang }: { lang: Locale }) {
   };
   return (
     <>
-      <button className="buyOneClickButton" onClick={openModal}>
-        Купить в 1 клик
+      <button
+        className={hasClass ? hasClass : "buyOneClickButton"}
+        onClick={openModal}
+      >
+        {title ? title : " Купить в 1 клик"}
       </button>
-      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+      <Modal isOpen={isModalOpen} onClose={closeModal} title="Купить в 1 клик">
         <BuyOneClickForm onSubmit={handleSubmit} lang={lang} />
       </Modal>
     </>
