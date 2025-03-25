@@ -201,7 +201,7 @@ const Header: React.FC<Props> = ({ lang }) => {
                     <div className="counter favorite-btn">0</div>
                   </Link>
 
-                  <Link href={`${lang}/cart`} className="iconButton">
+                  <Link href={`/${lang}/cart`} className="iconButton">
                     <Basket width={16} height={17} />
 
                     <p className="basket-btn">{t("navigation.cart")}</p>
