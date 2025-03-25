@@ -38,10 +38,23 @@ export default function Success({
     if (!typeForm) return;
     setIsForm(typeForm);
   };
+  const isTypeModal = (
+    type: "SignUp" | "SignIn" | "CallBack" | "ForgetPassword" | null
+  ) => {
+    if (type === "SignUp") return "Регистрация";
+    if (type === "SignIn") return "Личный кабинет";
+    if (type === "CallBack") return "Обратная связь";
+    if (type === "ForgetPassword") return "Смена пароля";
+    return "Обратная связь";
+  };
 
   return (
     <>
-      <Modal isOpen={isModalOpen} onClose={closeModal} title="Обратная связь">
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title={isTypeModal(isForm)}
+      >
         {isForm === "SignIn" && (
           <LoginForm
             lang={lang}
@@ -57,7 +70,11 @@ export default function Success({
           />
         )}
         {isForm === "ForgetPassword" && (
-          <ForgetPasswordForm onSubmit={handleSubmit} lang={lang} />
+          <ForgetPasswordForm
+            onSubmit={handleSubmit}
+            lang={lang}
+            onRegisterClick={() => handleOpenFormType("SignUp")}
+          />
         )}
       </Modal>
       <div className="success">

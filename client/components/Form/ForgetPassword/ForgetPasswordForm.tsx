@@ -5,10 +5,11 @@ import { useState } from "react";
 import "./ForgetPasswordForm.scss";
 import { useRouter } from "next/navigation";
 import { Locale } from "@/i18n.config";
+import Link from "next/link";
 
 interface LoginFormProps {
   lang: Locale;
-  onRegisterClick: () => void;
+  onRegisterClick?: () => void;
   onSubmit: (formData: { login: string; password: string }) => void;
 }
 
@@ -20,13 +21,13 @@ const ForgetPasswordForm: React.FC<LoginFormProps> = ({
   const [formData, setFormData] = useState({
     login: "",
     password: "",
-    confirmPassword: "",
-    rememberMe: false,
+    newPassword: "",
   });
 
   const [errors, setErrors] = useState<{
     login?: string;
     password?: string;
+    newPassword?: string;
   }>({});
 
   const router = useRouter();
@@ -53,6 +54,7 @@ const ForgetPasswordForm: React.FC<LoginFormProps> = ({
     const newErrors: {
       login?: string;
       password?: string;
+      newPassword?: string;
     } = {};
 
     if (!formData.login.trim()) {
@@ -69,7 +71,7 @@ const ForgetPasswordForm: React.FC<LoginFormProps> = ({
     }
 
     onSubmit(formData);
-    router.push(`/${lang}/dashboard`);
+    router.push(`/${lang}/success`);
   };
 
   return (
@@ -111,18 +113,18 @@ const ForgetPasswordForm: React.FC<LoginFormProps> = ({
         </div>
         <div className="form-group">
           <div className="password-label-container">
-            <label htmlFor="password">
-              Подтверждение пароль <span className="required">*</span>
+            <label htmlFor="newPassword">
+              Подтверждение пароля <span className="required">*</span>
             </label>
-            {errors.password && (
-              <div className="error-message">{errors.password}</div>
+            {errors.newPassword && (
+              <div className="error-message">{errors.newPassword}</div>
             )}
           </div>
           <input
             type="password"
-            id="password"
-            name="password"
-            value={formData.password}
+            id="newPassword"
+            name="newPassword"
+            value={formData.newPassword}
             onChange={handleChange}
             className={errors.password ? "error" : ""}
           />
@@ -136,15 +138,19 @@ const ForgetPasswordForm: React.FC<LoginFormProps> = ({
           </button> */}
         </div>
       </form>
-      <div className="registration-section">
-        <div className="registration-info">
-          Вам будет доступно управление рассылками, использование персональных
-          данных, связь профиля с аккаунтом соцсети и т.д.
+      {onRegisterClick !== undefined ? (
+        <div className="registration-section">
+          <div className="registration-info">
+            Вам будет доступно управление рассылками, использование персональных
+            данных, связь профиля с аккаунтом соцсети и т.д.
+          </div>
+          <button onClick={onRegisterClick} className="register-button">
+            Регистрация
+          </button>
         </div>
-        <button onClick={onRegisterClick} className="register-button">
-          Регистрация
-        </button>
-      </div>
+      ) : (
+        <Link href={`/${lang}`}>Вернуться на главную</Link>
+      )}
     </div>
   );
 };
