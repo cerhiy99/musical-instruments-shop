@@ -5,6 +5,8 @@ import Image from "next/image";
 import "./CartList.scss";
 import X from "@/public/X.svg";
 import QuantitySelector from "../ui/QuantitySelector/QuantitySelector";
+import { useRouter } from "next/navigation";
+import { Locale } from "@/i18n.config";
 
 interface CartItem {
   id: number;
@@ -16,7 +18,9 @@ interface CartItem {
   quantity: number;
   image: string;
 }
+
 type CartList = {
+  lang: Locale;
   cartitems: Array<CartItem>;
   onClearCart: () => void;
   onUpdateQuantity: (id: number, newQuantity: number) => void;
@@ -24,11 +28,16 @@ type CartList = {
 };
 
 export default function CartList({
+  lang,
   cartitems,
   onClearCart,
   onUpdateQuantity,
   onRemoveItem,
 }: CartList) {
+  const router = useRouter();
+  const handleOrderConfirm = () => {
+    router.push(`/${lang}/order`);
+  };
   // Calculate totals
   const subtotal = cartitems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -67,7 +76,9 @@ export default function CartList({
         </div> */}
 
         <div className="action-buttons">
-          <button className="checkout-button">Оформить заказ</button>
+          <button className="checkout-button" onClick={handleOrderConfirm}>
+            Оформить заказ
+          </button>
           <button className="quick-order-button">Быстрый заказ</button>
         </div>
       </div>

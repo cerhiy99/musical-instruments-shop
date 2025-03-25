@@ -1,0 +1,388 @@
+@import "@/styles/variables.scss";
+.checkoutContainer {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+  position: relative;
+
+  // @media (max-width: 768px) {
+  //   flex-direction: column;
+  // }
+  @media (max-width: $desktop) {
+    flex-direction: column-reverse;
+  }
+}
+
+.checkoutContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .submitSearch__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    .submitSearch-btn {
+      margin-left: auto;
+      height: 4rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.3rem;
+      border: solid 0.1rem $color-gray-50;
+      // @media (max-width: $tablet) {
+      //   max-width: 100%;
+      //   margin-bottom: 0;
+      // }
+      max-width: 10.2rem;
+      background-color: $color-blue-300;
+      color: white;
+      border: none;
+      line-height: 1.8rem;
+      border-radius: 0.2rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      &:hover {
+        background-color: $color-blue-400;
+      }
+    }
+  }
+}
+
+.checkoutSection {
+  overflow: hidden;
+  border: solid 0.1rem $color-gray-50;
+}
+
+.sectionHeader {
+  height: 8.4rem;
+  display: flex;
+  align-items: center;
+  padding: 1.6rem 2rem;
+  border-bottom: solid 0.1rem $color-gray-50;
+  gap: 12px;
+  background-color: $color-gray-75;
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.sectionIcon {
+  color: $color-blue-300;
+  width: 4rem;
+  height: 4rem;
+}
+
+.sectionContent {
+  padding: 2rem;
+  &.padding-hidden {
+    padding: 0rem;
+  }
+}
+
+.formGroup {
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+}
+
+.required {
+  color: #e53935;
+}
+
+.requiredField {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.searchInput {
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+
+    &:focus {
+      outline: none;
+      border-color: #0078c8;
+    }
+  }
+
+  .searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #757575;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.cityButtons {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.cityButton {
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
+  @media (max-width: $tablet) {
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+  white-space: nowrap;
+  background: white;
+  border: 1px solid $color-blue-300;
+  color: $color-blue-300;
+  border-radius: 0.2rem;
+
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #e3f2fd;
+  }
+  &.selected {
+    background-color: #e3f2fd;
+    border-color: #0078c8;
+    color: #0078c8;
+  }
+}
+
+.cartTable {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    &:first-child {
+      text-align: left;
+    }
+    // text-align: right;
+    padding: 2rem;
+    @media (max-width: $tablet) {
+      padding: 0.5rem;
+    }
+    border-bottom: solid 0.1rem $color-gray-50;
+    font-weight: 500;
+    color: $color-gray-400;
+    font-size: 14px;
+  }
+
+  td {
+    &:first-child {
+      text-align: left;
+    }
+    // text-align: right;
+    padding: 2rem;
+    @media (max-width: $tablet) {
+      padding: 0.5rem;
+    }
+    border-bottom: solid 0.1rem $color-gray-50;
+  }
+}
+.thidden,
+.priceCell {
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+.productCell {
+  width: 70%;
+
+  .productInfo {
+    display: flex;
+    gap: 2rem;
+    @media (max-width: $tablet) {
+      flex-direction: column;
+    }
+    @media (max-width: $mobile) {
+      align-items: center;
+    }
+  }
+
+  .productImage {
+    width: 7rem;
+    height: 7rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .productName {
+    font-size: 14px;
+  }
+}
+
+.priceCell,
+.totalCell,
+.quantityCell {
+  width: 10%;
+}
+
+.price {
+  font-weight: 600;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+  color: $color-gray-400;
+  font-size: 12px;
+}
+
+.agreement {
+  padding: 2rem;
+  @media (max-width: $tablet) {
+    padding: 0.5rem;
+  }
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.link {
+  color: $color-blue-300;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Стили для фиксированной области заказа справа
+.orderSummary {
+  @media (max-width: $desktop) {
+    width: 100%;
+    padding: 2rem;
+  }
+  @media (max-width: $tablet) {
+    padding: 0.5rem;
+  }
+  width: 33rem;
+  // position: sticky;
+  // top: 0;
+  align-self: flex-start;
+  overflow: hidden;
+  border: solid 0.1rem $color-gray-50;
+
+  // @media (max-width: 768px) {
+  //   width: 100%;
+  //   position: static;
+  // }
+}
+
+.orderSummaryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem;
+  @media (max-width: $tablet) {
+    padding: 0.5rem;
+  }
+  border-bottom: solid 0.1rem $color-gray-50;
+
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.orderSummaryContent {
+  padding: 2rem;
+  @media (max-width: $tablet) {
+    padding: 0.5rem;
+  }
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.deliveryInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.carrierInfo {
+  color: $color-blue-300;
+  font-size: 12px;
+}
+
+.savingsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  background-color: #ffd700;
+  padding: 0.2rem 2rem;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.6rem;
+  border-top: solid 0.1rem $color-gray-50;
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.totalValue {
+  font-size: 1.8rem;
+}
+
+.nextButton {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.2rem;
+  background-color: $color-blue-300;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $color-blue-300;
+  }
+}
+.editButton {
+  color: $color-blue-300;
+  &:hover {
+    text-decoration: underline;
+  }
+}

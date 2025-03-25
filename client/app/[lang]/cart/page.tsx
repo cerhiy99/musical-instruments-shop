@@ -120,6 +120,7 @@ export default function CartPage({
         </div>
       ) : (
         <CartList
+          lang={lang}
           cartitems={cartItems}
           onClearCart={clearCart}
           onRemoveItem={removeItem}
