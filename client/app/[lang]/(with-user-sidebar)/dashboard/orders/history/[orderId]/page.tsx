@@ -165,8 +165,12 @@ export default function OrderDetails() {
                 <th className="order-details__table-header order-details__table-header--name">
                   Наименование
                 </th>
-                <th className="order-details__table-header">Цена</th>
-                <th className="order-details__table-header">Скидка</th>
+                <th className="order-details__table-header theader__hidden">
+                  Цена
+                </th>
+                <th className="order-details__table-header theader__hidden">
+                  Скидка
+                </th>
                 <th className="order-details__table-header">Количество</th>
                 <th className="order-details__table-header">Сумма</th>
               </tr>
@@ -194,10 +198,10 @@ export default function OrderDetails() {
                       </div>
                     </div>
                   </td>
-                  <td className="order-details__table-cell">
+                  <td className="order-details__table-cell torder__hidden">
                     {item.price} грн.
                   </td>
-                  <td className="order-details__table-cell">
+                  <td className="order-details__table-cell torder__hidden">
                     {item.discount}%
                   </td>
                   <td className="order-details__table-cell">
