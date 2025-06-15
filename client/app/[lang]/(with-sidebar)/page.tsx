@@ -122,12 +122,28 @@ const categories = [
     link: "/categories/literature",
   },
 ];
+
+const getCategory=async()=>{
+  try{
+    const res=await fetch(process.env.NEXT_PUBLIC_API_SERVER+'category/get');
+    if(!res.ok){
+      console.log(`помика отримання категорії: ${res}`);
+    }
+    const data=await res.json();
+    return data.res;
+  }catch(err){
+    console.log(`помика отримання категорії: ${err}`);
+    return []
+  }
+}
+
 export default async function Home({
   params: { lang },
 }: {
   params: { lang: Locale };
 }) {
   const { aside } = await getDictionary(lang);
+  const categorie=await getCategory();
   return (
     <>
       <ImageSlider images={sliderImages} interval={5000} />
@@ -136,17 +152,17 @@ export default async function Home({
         <Link href={`/${lang}/catalog`}>{aside.allCatalog}</Link>
       </div>
       <div className="categories__grid">
-        {categories.map((category, i) => (
+        {categorie.map((category:any, i:number) => (
           <Link href={`/${lang}/catalog`} key={category.id}>
             <div className="categories__grid--item">
               <Image
-                src={category.image}
+                src={'/images/category/categoryItem3.png'/*category.image*/}
                 width={140}
                 height={140}
-                alt={aside.catalog[i]}
+                alt={category.name}
               />
               <div className="grid--item-text">
-                <p>{aside.catalog[i]}</p>
+                <p>{category.name}{/*aside.catalog[i]*/}</p>
               </div>
             </div>
           </Link>

@@ -1,9 +1,9 @@
-import "./ContactsInfo.scss";
+import './ContactsInfo.scss';
 
-import MapIcon from "@/public/contacts/map.svg";
-import PhoneIcon from "@/public/contacts/phone.svg";
-import MessageIcon from "@/public/contacts/message.svg";
-import ClockIcon from "@/public/contacts/clock.svg";
+import MapIcon from '@/public/contacts/map.svg';
+import PhoneIcon from '@/public/contacts/phone.svg';
+import MessageIcon from '@/public/contacts/message.svg';
+import ClockIcon from '@/public/contacts/clock.svg';
 
 export default function ContactsInfo() {
   return (
@@ -30,11 +30,10 @@ export default function ContactsInfo() {
         </div>
         <div className="infoContent">
           <h3>Телефон</h3>
-          <p>0800 300 334</p>
-          <p className="highlight">
-            {" "}
-            бесплатный номер для всех мобильных операторов
+          <p>
+            <a href="tel:+380800300334">0800 300 334</a>
           </p>
+          <p className="highlight"> бесплатный номер для всех мобильных операторов</p>
         </div>
       </div>
 
@@ -44,7 +43,9 @@ export default function ContactsInfo() {
         </div>
         <div className="infoContent">
           <h3>E-mail</h3>
-          <p>lviv@skm-music.com.ua</p>
+          <p>
+            <a href="tel:lviv@skm-music.com.ua">lviv@skm-music.com.ua</a>
+          </p>
         </div>
       </div>
 

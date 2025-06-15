@@ -1,99 +1,100 @@
-import ProductList from "@/components/CatalogList/CatalogList";
-import "./CatalogId.scss";
-import Image from "next/image";
-import Link from "next/link";
-import { Locale } from "@/i18n.config";
+import ProductList from '@/components/CatalogList/CatalogList';
+import './CatalogId.scss';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Locale } from '@/i18n.config';
+import { TypeCategorory } from '@/types/catalog';
 const categories = [
   {
     id: 1,
-    name: "Струнно-смычковые инструменты",
-    image: "/images/category/categoryItem1.png",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    name: 'Струнно-смычковые инструменты',
+    image: '/images/category/categoryItem1.png',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 2,
-    image: "/images/category/categoryItem2.png",
-    name: "Футляры и чехлы для струнных инструментов",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem2.png',
+    name: 'Футляры и чехлы для струнных инструментов',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 3,
-    image: "/images/category/categoryItem3.png",
-    name: "Аксессуары для струнных инструментов",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem3.png',
+    name: 'Аксессуары для струнных инструментов',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 4,
-    image: "/images/category/categoryItem4.png",
-    name: "Струны",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem4.png',
+    name: 'Струны',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 5,
-    image: "/images/category/categoryItem5.png",
-    name: "Инструменты и материалы для скрипичных и гитарных мастеров",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem5.png',
+    name: 'Инструменты и материалы для скрипичных и гитарных мастеров',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 6,
-    image: "/images/category/categoryItem6.png",
-    name: "Аксессуары для духовых инструментов",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem6.png',
+    name: 'Аксессуары для духовых инструментов',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 7,
-    image: "/images/category/categoryItem7.png",
-    name: "Деревянные духовые инструменты",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem7.png',
+    name: 'Деревянные духовые инструменты',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 8,
-    image: "/images/category/categoryItem8.png",
-    name: "Медные духовые инструменты",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem8.png',
+    name: 'Медные духовые инструменты',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 9,
-    image: "/images/category/categoryItem9.png",
-    name: "Футляры и чехлы для духовых инструментов",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem9.png',
+    name: 'Футляры и чехлы для духовых инструментов',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 10,
-    image: "/images/category/categoryItem10.png",
-    name: "Футляры и чехлы для гитар",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem10.png',
+    name: 'Футляры и чехлы для гитар',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 11,
-    image: "/images/category/categoryItem11.png",
-    name: "Пюпитры, стойки и прочие аксессуары",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem11.png',
+    name: 'Пюпитры, стойки и прочие аксессуары',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 12,
-    image: "/images/category/categoryItem12.png",
-    name: "Канцелярия и сувениры",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem12.png',
+    name: 'Канцелярия и сувениры',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 13,
-    image: "/images/category/categoryItem13.png",
-    name: "Музыкальная литература, ноты",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem13.png',
+    name: 'Музыкальная литература, ноты',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
   {
     id: 14,
-    image: "/images/category/categoryItem14.png",
-    name: "Ремонт музыкальных инструментов, экспертная оценка",
-    innerCategory: ["Скрипки", "Виолончели", "Альты", "Контрабасы"],
+    image: '/images/category/categoryItem14.png',
+    name: 'Ремонт музыкальных инструментов, экспертная оценка',
+    innerCategory: ['Скрипки', 'Виолончели', 'Альты', 'Контрабасы'],
   },
 ];
 const sampleProducts = [
   {
-    id: "1",
+    id: '1',
     title: 'Скрипка "CKM-Luthier" Solist 4/4, модель "Strad" (Antik)',
-    articleNumber: "CKM-V StradAnt",
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 447,
       old: 470,
@@ -102,7 +103,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: true,
     labels: {
       isAdviced: false,
@@ -111,12 +112,12 @@ const sampleProducts = [
       isDiscount: false,
     },
     isFavorite: false,
-    brands: "СКМ",
+    brands: 'СКМ',
   },
   {
-    id: "2",
+    id: '2',
     title: "Скрипка 'CKM-Luthier' Solo 4/4 Artist модель",
-    articleNumber: "CKM-V StradAnt",
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 133950,
       old: 145000,
@@ -125,7 +126,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: true,
     labels: {
       isAdviced: true,
@@ -134,12 +135,12 @@ const sampleProducts = [
       isDiscount: false,
     },
     isFavorite: false,
-    brands: "СКМ & Co.",
+    brands: 'СКМ & Co.',
   },
   {
-    id: "3",
+    id: '3',
     title: "Нотная тетрадь 'CKM'",
-    articleNumber: "CKM-V StradAnt",
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 133950,
       old: 145000,
@@ -148,7 +149,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: true,
     labels: {
       isAdviced: true,
@@ -157,12 +158,12 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "СКМ & Co.",
+    brands: 'СКМ & Co.',
   },
   {
-    id: "4",
-    title: "Футляр для скрипки MAX&FINN",
-    articleNumber: "CKM-V StradAnt",
+    id: '4',
+    title: 'Футляр для скрипки MAX&FINN',
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 11261,
       old: 12999,
@@ -171,7 +172,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: false,
     labels: {
       isAdviced: true,
@@ -180,12 +181,12 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "СКМ & Co. Tech",
+    brands: 'СКМ & Co. Tech',
   },
   {
-    id: "5",
-    title: "Волос для смичка Silver",
-    articleNumber: "CKM-V StradAnt",
+    id: '5',
+    title: 'Волос для смичка Silver',
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 670,
       old: 720,
@@ -194,7 +195,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: false,
     labels: {
       isAdviced: true,
@@ -203,13 +204,13 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "Fridher",
+    brands: 'Fridher',
   },
 
   {
-    id: "6",
-    title: "Футляр для віолончелі BC1602",
-    articleNumber: "CKM-V StradAnt",
+    id: '6',
+    title: 'Футляр для віолончелі BC1602',
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 13864,
       old: 15000,
@@ -218,7 +219,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: false,
     labels: {
       isAdviced: true,
@@ -227,12 +228,12 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "Fridher",
+    brands: 'Fridher',
   },
   {
-    id: "7",
-    title: "Полегшений металічний футляр для скрипки",
-    articleNumber: "CKM-V StradAnt",
+    id: '7',
+    title: 'Полегшений металічний футляр для скрипки',
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 26567,
       old: 27999,
@@ -241,7 +242,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: false,
     labels: {
       isAdviced: true,
@@ -250,12 +251,12 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "СКМ & Co.",
+    brands: 'СКМ & Co.',
   },
   {
-    id: "8",
+    id: '8',
     title: "Віолончель 'CKM-Luthier' 4/4 Artist",
-    articleNumber: "CKM-V StradAnt",
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 189763,
       old: 209763,
@@ -264,7 +265,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: false,
     labels: {
       isAdviced: false,
@@ -273,12 +274,12 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "Fridher",
+    brands: 'Fridher',
   },
   {
-    id: "9",
-    title: "Підставка для скрипки Aubert з Міланської фанери",
-    articleNumber: "CKM-V StradAnt",
+    id: '9',
+    title: 'Підставка для скрипки Aubert з Міланської фанери',
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 1429,
       old: 1500,
@@ -287,7 +288,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: false,
     labels: {
       isAdviced: false,
@@ -296,13 +297,13 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "СКМ & Co.",
+    brands: 'СКМ & Co.',
   },
 
   {
-    id: "10",
-    title: "Футляр для альта BAM Stylus Oblong до 41,5 см",
-    articleNumber: "CKM-V StradAnt",
+    id: '10',
+    title: 'Футляр для альта BAM Stylus Oblong до 41,5 см',
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 17637,
       old: 19999,
@@ -311,7 +312,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: false,
     labels: {
       isAdviced: false,
@@ -320,12 +321,12 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "СКМ & Co.",
+    brands: 'СКМ & Co.',
   },
   {
-    id: "11",
-    title: "Футляр для альта BAM Stylus Oblong до 41,5 см",
-    articleNumber: "CKM-V StradAnt",
+    id: '11',
+    title: 'Футляр для альта BAM Stylus Oblong до 41,5 см',
+    articleNumber: 'CKM-V StradAnt',
     price: {
       current: 17637,
       old: 19999,
@@ -334,7 +335,7 @@ const sampleProducts = [
       amount: 7050,
       percentage: 5,
     },
-    image: "/images/banner1.jpg",
+    image: '/images/banner1.jpg',
     inStock: false,
     labels: {
       isAdviced: false,
@@ -343,30 +344,51 @@ const sampleProducts = [
       isDiscount: true,
     },
     isFavorite: false,
-    brands: "СКМ & Co.",
+    brands: 'СКМ & Co.',
   },
 ];
 
+const getCategory = async (categoryId: string) => {
+  try {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_SERVER + `category/get/${categoryId}`);
+    if (!res.ok) {
+      console.log(`помика отримання категорії: ${res}`);
+    }
+    const data = await res.json();
+    return data.res;
+  } catch (err) {
+    console.log(`помика отримання категорії: ${err}`);
+    return [];
+  }
+};
+
 // const sampleProducts = [];
-export default function Page({
-  params: { lang },
+export default async function Page({
+  params: { lang, catalog_id },
 }: {
-  params: { lang: Locale };
+  params: { lang: Locale; catalog_id: string };
 }) {
-  if (categories.length === 0) {
+  const categorie: TypeCategorory = await getCategory(catalog_id);
+  if (categorie.children.length === 0) {
     return <div>Нет категорий</div>;
   }
-  if (sampleProducts.length > 0) {
+  /*if (sampleProducts.length > 0) {
     return <ProductList products={sampleProducts} lang={lang} />;
-  }
+  }*/
   return (
     <div className="catalog-items">
-      {categories.map((category) => (
+      {categorie.children.map(category => (
         <div className="catalog-items__item" key={category.id}>
-          <Link href={`/${lang}/catalog/${category.id}`}></Link>
+          <Link
+            href={
+              category.children.length > 0
+                ? `/${lang}/catalog/${category.id}`
+                : `/${lang}/product/${category.id}`
+            }
+          ></Link>
           <div className="catalog-item__image">
             <Image
-              src={category.image}
+              src={/*category.image*/ '/images/banner1.jpg'}
               alt={category.name}
               width={140}
               height={140}

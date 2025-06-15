@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import '@/styles/variables.scss';
 
 .contactForm {
   h2 {
@@ -26,7 +26,6 @@
         width: 100%;
       }
       width: 100%;
-      height: 21.75rem;
       textarea {
         height: 19.3rem;
         resize: vertical;
@@ -164,7 +163,8 @@
 .errorText {
   color: red;
   font-size: 14px;
-  margin-top: 5px;
+  margin-top: -5px;
+  margin-bottom: 12px;
 }
 
 .successMessage {

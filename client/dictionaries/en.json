@@ -45,5 +45,38 @@
     "public": "Public offer",
     "stayInTouch": "Stay Connected"
   },
-  "home": {}
+  "contact": {
+    "Feedback": "Feedback",
+    "thank": "Thank you! Your message has been sent.",
+    "sms": "Message",
+    "name": "Your name",
+    "phone": "Phone",
+    "textImg": "Enter text from the image",
+    "iAgree": "I agree to",
+    "personal": "personal data processing",
+    "send": "Send",
+    "cansel": "Cancel"
+  },
+  "home": {},
+  "about": {
+    "a": "The creative association <span className='aboutPage--bold'>“World of Classical Music”</span> was founded with the aim of popularizing classical music, integrating Ukrainian violin music into the global context, and providing professional musicians, academic ensembles, educational institutions, and masters of musical instrument making and repair with everything they need.",
+    "b": "The creative association &quot;WCM&quot; is the founder and organizer of the <a className='aboutPage--link' href='https://olehkrysa-competition.com'>Oleh Krysa International Violin Competition</a> as well as the <a href='https://olehkrysa-competition.com/akademy/academy-2015/'>WCM International Music Academy</a>!",
+    "c": "The association includes a number of companies, enterprises, private entrepreneurs, professional musicians, cultural asset experts, and violin makers.",
+    "d": "The “WCM” music online store is the first Ukrainian specialized store where you can buy or order everything you need from A to Z!",
+    "e": "The company is the official representative in Ukraine of <span className='aboutPage--bold'>Jakob Winter</span>, <span className='aboutPage--bold'>Bam</span>, <span className='aboutPage--bold'>Laubach</span>, <span className='aboutPage--bold'>Pilgerstorfer</span>, <span className='aboutPage--bold'>Petz Kolophonium Vienna</span>, as well as a dealer of other brands presented on the website — offering the lowest prices and fast delivery.",
+    "f": "We work with both individuals and legal entities. We have extensive experience collaborating with orchestras, theaters, music education institutions, concert organizations, and both European and Ukrainian violin makers. We are always open to new partnership proposals.",
+    "g": "Main areas of our company’s activity:",
+    "h": "Sale of:",
+    "a1": "string and bow instruments",
+    "a2": "woodwind and brass instruments",
+    "a3": "accessories and care products for instruments",
+    "a4": "cases and bags for instruments",
+    "a5": "tools and materials for violin makers",
+    "a6": "repair, restoration, and maintenance of musical instruments",
+    "a7": "expert evaluation of musical instruments and other cultural assets",
+    "a8": "organization, production, and management of classical music projects and musicians",
+    "a9": "recording services <span className='aboutPage--bold'>“LIVE SOUND”</span>",
+    "a10": "If you have any questions, please use the feedback page.",
+    "a11": "We look forward to working with you!"
+  }
 }

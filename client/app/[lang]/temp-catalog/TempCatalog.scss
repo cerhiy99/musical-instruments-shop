@@ -1,0 +1,85 @@
+.catalogPage {
+  }
+  
+  .catalog-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // якщо фіксовано 4 на великому екрані
+    @media (max-width:800px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width:600px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    gap: 1.5rem;
+  }
+  
+  .catalog-items__item {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+  
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+  
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  
+    .catalog-item__image {
+      margin-bottom: 0.5rem;
+      img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+  
+    .catalog-item__name p {
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+  
+  .pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  
+    button {
+      background: #f2f2f2;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s;
+  
+      &:hover {
+        background: #ddd;
+      }
+  
+      &.active {
+        background: #0070f3;
+        color: white;
+        font-weight: bold;
+      }
+  
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    }
+  
+    span {
+      padding: 0.5rem;
+      color: #777;
+    }
+  }
+  

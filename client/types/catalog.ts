@@ -23,7 +23,18 @@ export interface Product {
   brands: string;
 }
 
-export type ViewMode = "grid" | "list" | "compact" | "basic";
+export type ViewMode = 'grid' | 'list' | 'compact' | 'basic';
 export type Filter = {
-  type: "hit" | "advice" | "new" | "discount";
+  type: 'hit' | 'advice' | 'new' | 'discount';
 };
+
+export interface TypeCategorory {
+  id: string;
+  name: string;
+  version: string;
+  deleted: number;
+  parentId: string | null;
+  createdAt: string;
+  updatedAt: string;
+  children: TypeCategorory[];
+}

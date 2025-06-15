@@ -53,3 +53,11 @@ client/now.json
 
 # VSCode
 .vscode/
+
+server/node_modules
+server/files
+server/uploads2
+server/static
+server/uploads2.zip
+musical.zip
+client.zip
